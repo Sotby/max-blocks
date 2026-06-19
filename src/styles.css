@@ -1,4 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+:root{
+    --Cor-primaria: #345A66;
+    --Cor-secundaria: #75DDDD;
+    --Cor-terciaria: #63B3B7;
+}
 body{
     margin: 0;
     padding: 0;
