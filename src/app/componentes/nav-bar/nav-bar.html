@@ -1,6 +1,11 @@
 <header>
     <a href="#" id="logo">Max<span>Blox</span></a>
-    <div class="links">
+    <button (click)="tooglemenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </button>
+    <div class="links" [class.escondido]="!menuaberto">
         <nav>
             <ul>
                 <li><a href="Inicio">Home</a></li>

@@ -44,7 +44,7 @@
   font-size: 24px;
   letter-spacing: 2px;
 }
-@media (max-width:900px){
+@media (max-width:1200px){
   .painel-esquerda{
     display: none;
   }

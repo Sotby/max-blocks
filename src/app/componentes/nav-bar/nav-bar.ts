@@ -6,4 +6,11 @@ import { Component } from '@angular/core';
   templateUrl: './nav-bar.html',
   styleUrl: './nav-bar.css',
 })
-export class NavBar {}
+export class NavBar {
+  menuaberto = false;
+  tooglemenu(){
+    this.menuaberto = !this.menuaberto;
+  }
+}
+
+

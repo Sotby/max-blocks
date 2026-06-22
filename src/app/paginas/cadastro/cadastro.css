@@ -4,6 +4,9 @@ main{
     grid-template-columns: 1fr 1fr;
     align-items: center;
   }
+.logo-cell{
+  display: none;
+}
   .painel-direita{
     background-color: var(--Cor-primaria);
     height: 100%;
@@ -136,7 +139,34 @@ main{
     transition: opacity 0.4s ease;
     pointer-events: none;
   }
-
+@media (max-width: 1200px){
+  main{
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .painel-direita{
+    width: 100vw;
+    height: 100vh;
+  }
+  .logo-cell{
+    display: block;
+    font-size: 48px;
+    color: white;
+    font-family: sans-serif;
+    text-decoration: none;
+    font-weight: 700;
+    background-color: var(--Cor-primaria);
+    width: 100%;
+    text-align: center;
+    padding-top: 20px;
+    text-decoration: underline;
+    text-decoration-thickness: 5px;
+  }
+  .logo-cell span{
+    color: var(--Cor-secundaria);
+  }
+}
   
     
   

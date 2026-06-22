@@ -139,9 +139,11 @@ main{
   transition: opacity 0.4s ease;
   pointer-events: none;
 }
-@media (max-width: 900px){
+@media (max-width: 1200px){
   main{
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
   .painel-direita{
     width: 100vw;
@@ -152,12 +154,14 @@ main{
     font-size: 48px;
     color: white;
     font-family: sans-serif;
-    position: absolute;
-    top: 40px;
-    left: 50%;
-    transform: translateX(-50%);
     text-decoration: none;
     font-weight: 700;
+    background-color: var(--Cor-primaria);
+    width: 100%;
+    text-align: center;
+    padding-top: 20px;
+    text-decoration: underline;
+    text-decoration-thickness: 5px;
   }
   .logo-cell span{
     color: var(--Cor-secundaria);
