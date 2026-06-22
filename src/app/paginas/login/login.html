@@ -1,22 +1,18 @@
-<main>
-  <div class="login-pagina">
-      <div class="login-painel fundo-pontos">
-      <div class="painel-esquerda">
-        <a href="../../index.html" id="logo">Max<span>Block</span></a>
-        <div>
-          <div class="linha-acento"></div>
-          <h2 class="login-frase">Bem-vindo jogador!</h2>
-        </div>
-        <p class="login-rodape-painel">O sit de jogos mais divertido do universo!</p>
-      </div>
+<main>  
+      <app-banner-lateral></app-banner-lateral>
+      <!-- Painel Direita -->
+      <a href="Inicio" class="logo-cell">Max<Span>Block</Span></a>
       <div class="painel-direita">
-        <div class="login-painel">
           <div class="login-form-card card-brilho">
-            <p class="login-subtitulo">Entre com sua conta, jogador</p>
+
+            <!-- Subtítulo -->
+            <p class="login-subtitulo">Entre com sua conta, jogador!</p>
+            
+            <!-- Formulário de Login -->
             <form class="login-form" action="#">
-  
+              
+              <!-- Campo E-mail -->
               <div class="campo-grupo">
-           
                 <label class="campo-label" for="email">E-mail</label>
                 <input
                   class="campo-input"
@@ -27,7 +23,8 @@
                   required
                 />
               </div>
-  
+              
+              <!-- Campo Senha -->
               <div class="campo-grupo">
                 <label class="campo-label" for="senha">Senha</label>
                 <input
@@ -40,19 +37,16 @@
                 />
                 <a href="#" class="login-esqueceu">Esqueceu a senha?</a>
               </div>
-  
+              <!-- Botão de Login -->
               <button class="btn-primario login-btn-submit" type="submit">
                 Entrar na conta <i class="fas fa-sign-in-alt"></i>
               </button>
-  
             </form>
-  
+            
+            <!-- Link para Cadastro -->
             <p class="login-cadastro-link">
-              Ainda não tem conta? <a href="../cadastro/cadastro.html">Criar conta grátis</a>
+              Ainda não tem conta? <a href="Cadastro">Criar conta grátis</a>
             </p>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>      
+        </div>   
 </main>

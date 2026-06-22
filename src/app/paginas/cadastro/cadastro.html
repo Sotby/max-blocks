@@ -1,18 +1,59 @@
 <main class="body">
-    <a id="logo" href="#">Maze<span class="Blox">Blox</span></a>
-    <div class="cadastro">
-       <h3 class="Cadastre-se">Cadastre-se</h3>
-        <form action="">
-            <div class="Email">
-            <label for="email">Email</label>
-            <input class="email" type="email">
+    <app-banner-lateral></app-banner-lateral>
+    <div class="painel-direita">
+        <div class="login-form-card card-brilho">
+          
+          <!-- Subtítulo -->
+          <p class="login-subtitulo">Bem-vindo a família, jogador!</p>
+          
+          <!-- Formulário de Cadastro -->
+          <form class="login-form" action="#">
+            
+            <!-- Campo E-mail -->
+            <div class="campo-grupo">
+              <label class="campo-label" for="email">E-mail</label>
+              <input
+                class="campo-input"
+                type="email"
+                id="email"
+                name="email"
+                placeholder="seu@email.com"
+                required
+              />
             </div>
             
-        <div class="Senha-css">
-            <label for="Senha">Senha</label>
-            <input class="Senha" type="password">
+            <!-- Campo Senha -->
+            <div class="campo-grupo">
+              <label class="campo-label" for="senha">Senha</label>
+              <input
+                class="campo-input"
+                type="password"
+                id="senha"
+                name="senha"
+                placeholder="••••••••"
+                required
+              />
+              <label for="conf-senha" class="campo-label">Confirmar a senha</label>
+              <input
+                class="campo-input"
+                type="password"
+                id="senha"
+                name="c-senha"
+                placeholder="••••••••"
+                required
+              />
+            </div>
+            <!-- Botão de Login -->
+            <button class="btn-primario login-btn-submit" type="submit">
+             Criar conta <i class="fas fa-sign-in-alt"></i>
+            </button>
+          </form>
+          
+          <!-- Link para Cadastro -->
+          <p class="login-cadastro-link">
+           Já possui uma conta? <a href="Login">Entrar na conta</a>
+          </p>
         </div>
-        </form>
-    </div>
+      </div>
 </main>
 

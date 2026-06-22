@@ -5,7 +5,10 @@ import { Login } from './paginas/login/login';
 
 export const routes: Routes = [
     {path: 'Inicio', component: Inicio},
+    {path: 'inicio', component: Inicio},
     {path: 'Cadastro', component: Cadastro},
+    {path: 'cadastro', redirectTo: 'Cadastro'},
     {path: 'Login', component: Login},
+    {path: 'login', redirectTo:'Login'},
     {path: '**', pathMatch: 'full', redirectTo: 'Inicio'}
 ];

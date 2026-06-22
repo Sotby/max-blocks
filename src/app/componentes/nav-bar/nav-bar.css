@@ -1,0 +1,38 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    height: 50px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+#logo{
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: sans-serif;
+    margin-left: 20px;
+}
+#logo span{
+    color: var(--Cor-secundaria);
+}
+header nav ul{
+    display: flex;
+    list-style: none;
+    gap: 48px;
+    padding: 0 20px;
+}
+header nav ul li a{
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 24px;
+    font-family: sans-serif;
+    transition: all ease .25s;
+}
+header nav ul li a:hover{
+    color: var(--Cor-secundaria);
+}
