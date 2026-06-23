@@ -63,10 +63,10 @@ section{
     height: 100%;
     width: 100%;
     border-radius: 10px;
-    /* mix-blend-mode: multiply; */
 }
 #jogos-por-categoria{
-    background: linear-gradient(to right,rgba(80,80,80,1) 25%,var(--Cor-secundaria) 50%, rgba(80,80,80,1) 75%);
+    /* background: linear-gradient(to right,var(--Cor-primaria) 25%,var(--Cor-secundaria) 50%, var(--Cor-primaria) 75%); */
+    background: linear-gradient(to right,rgba(20,20,20,.95),rgba(50,50,50,1) 80%);
     padding: 20px 0;
 }
 #jogos-por-categoria h1{
@@ -76,7 +76,7 @@ section{
     color: white;
     margin: 20px 0;
     text-decoration: underline;
-    text-decoration-color: #333;
+    text-decoration-color: white;
     text-decoration-thickness:5px;
     text-underline-offset: 20px;
 }
