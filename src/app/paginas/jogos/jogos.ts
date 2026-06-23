@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { NavBar } from "../../componentes/nav-bar/nav-bar";
 
 @Component({
-  selector: 'app-categorias',
+  selector: 'app-jogos',
   imports: [NavBar],
-  templateUrl: './categorias.html',
-  styleUrl: './categorias.css',
+  templateUrl: './jogos.html',
+  styleUrl: './jogos.css',
 })
-export class Categorias {}
+export class Jogos {}

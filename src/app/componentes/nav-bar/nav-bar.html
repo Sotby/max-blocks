@@ -1,5 +1,5 @@
 <header>
-    <a href="#" id="logo">Max<span>Block</span></a>
+    <a routerLink="/Inicio" id="logo">Max<span>Block</span></a>
     <button (click)="tooglemenu()">
         <div></div>
         <div></div>
@@ -8,10 +8,10 @@
     <div class="links" [class.escondido]="!menuaberto">
         <nav>
             <ul>
-                <li><a href="Inicio">Home</a></li>
-                <li><a href="Sobre-Nos">Sobre nos</a></li>
-                <li><a href="Categorias">Categorias</a></li>
-                <li><a href="Login">Entrar</a></li>
+                <li><a routerLink="/Inicio" routerLinkActive="ativo">Home</a></li>
+                <li><a routerLink="/Sobre-Nos" routerLinkActive="ativo">Sobre nos</a></li>
+                <li><a routerLink="/Jogos" routerLinkActive="ativo">Jogos</a></li>
+                <li><a routerLink="/Login" id="login">Login</a></li>
             </ul>
         </nav>
     </div>

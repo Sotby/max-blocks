@@ -1,0 +1,85 @@
+
+.beneficios-secao {
+    padding: 50px 20px;
+    background-color: var(--cor-secundaria);
+    text-align: center;
+}
+
+.secao-header {
+    margin-bottom: 30px;
+}
+
+.secao-tag {
+    font-size: 1.2rem;
+    color: rgb(23, 70, 73);
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.secao-titulo {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.secao-subtitulo {
+    font-size: 1rem;
+    color: rgb(26, 83, 87);
+}
+
+.beneficios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 10px;
+}
+
+.beneficio-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(122, 251, 255, 0.918);
+    transition: transform 0.3s ease;
+    width: 270px;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.beneficio-card:hover {
+    transform: translateY(-10px);
+}
+
+.beneficio-icone {
+    font-size: 2rem;
+    color: rgb(85, 225, 235);
+    margin-bottom: 10px;
+}
+
+.animar-subir {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: subir 0.5s forwards;
+}
+
+.delay-1 {
+    animation-delay: 0.2s;
+}
+
+.delay-2 {
+    animation-delay: 0.4s;
+}
+
+.delay-3 {
+    animation-delay: 0.6s;
+}
+
+@keyframes subir {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

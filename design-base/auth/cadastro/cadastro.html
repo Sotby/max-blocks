@@ -1,0 +1,104 @@
+<!doctype html>
+<!-- 
+  ========================================================================
+  [MAXBLOCK ONLINE GAMING PLATFORM]
+  ARQUIVO: auth/cadastro/cadastro.html (Página de Cadastro)
+  ========================================================================
+-->
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MaxBlock — Criar Conta</title>
+    
+    <!-- Importação de fontes e biblioteca de ícones do Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+    <!-- CSS LINKINGS -->
+    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="cadastro.css" />
+</head>
+<body>
+
+    <div class="cadastro-pagina">
+
+        <!-- TOPO DO FORMULÁRIO (Navegação minimalista) -->
+        <div class="cadastro-topo">
+            <a href="../../index.html" class="logo">Max<span>Block</span></a>
+            <a href="../login/login.html" class="cadastro-topo-link">Já tenho uma conta <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <!-- CORPO CENTRALIZADO -->
+        <div class="cadastro-corpo">
+            <div class="cadastro-form-card">
+
+                <h1 class="cadastro-titulo">Crie sua conta</h1>
+                <p class="cadastro-subtitulo">
+                    Junte-se à arena e salve seu progresso na nuvem.
+                </p>
+
+                <form class="cadastro-form" action="#">
+
+                    <div class="campos-duplos">
+                        <div class="campo-grupo">
+                            <label class="campo-label" for="nome">Nome</label>
+                            <input class="campo-input" type="text" id="nome" placeholder="Lucas" required />
+                        </div>
+                        <div class="campo-grupo">
+                            <label class="campo-label" for="sobrenome">Sobrenome</label>
+                            <input class="campo-input" type="text" id="sobrenome" placeholder="Santos" required />
+                        </div>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label class="campo-label" for="email">E-mail</label>
+                        <input class="campo-input" type="email" id="email" placeholder="jogador@maxblock.com" required />
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label class="campo-label" for="senha">Senha</label>
+                        <input class="campo-input" type="password" id="senha" placeholder="Mínimo 8 caracteres" required />
+
+                        <!-- BARRA DE FORÇA DA SENHA -->
+                        <div class="barra-senha-container media">
+                            <div class="barra-senha-segmento"></div>
+                            <div class="barra-senha-segmento"></div>
+                            <div class="barra-senha-segmento"></div>
+                        </div>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label class="campo-label" for="confirmar">Confirmar senha</label>
+                        <input class="campo-input" type="password" id="confirmar" placeholder="Repita a senha" required />
+                    </div>
+
+                    <!-- Aceitação de Termos -->
+                    <div class="cadastro-termos">
+                        <input type="checkbox" id="termos" required />
+                        <label for="termos">
+                            Eu concordo com os <a href="#">Termos de Uso</a> e a
+                            <a href="#">Política de Privacidade</a> do MaxBlock.
+                        </label>
+                    </div>
+
+                    <!-- Botão de submissão -->
+                    <button class="btn-primario cadastro-btn-submit" type="submit">
+                        Iniciar Aventura <i class="fas fa-user-plus"></i>
+                    </button>
+
+                </form>
+
+                <p class="cadastro-login-link">
+                    Já tem uma conta? <a href="../login/login.html">Entrar</a>
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

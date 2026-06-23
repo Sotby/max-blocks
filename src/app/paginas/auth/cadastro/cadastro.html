@@ -1,0 +1,60 @@
+<main class="body">
+    <a href="Inicio" class="logo-cell">Max<Span>Block</Span></a>
+    <div class="painel-direita">
+        <div class="login-form-card card-brilho">
+            
+            <!-- Subtítulo -->
+            <p class="login-subtitulo">Bem-vindo a família, jogador!</p>
+            
+            <!-- Formulário de Cadastro -->
+          <form class="login-form" action="#">
+            
+            <!-- Campo E-mail -->
+            <div class="campo-grupo">
+                <label class="campo-label" for="email">E-mail</label>
+                <input
+                class="campo-input"
+                type="email"
+                id="email"
+                name="email"
+                placeholder="seu@email.com"
+                required
+              />
+            </div>
+            
+            <!-- Campo Senha -->
+            <div class="campo-grupo">
+                <label class="campo-label" for="senha">Senha</label>
+                <input
+                class="campo-input"
+                type="password"
+                id="senha"
+                name="senha"
+                placeholder="••••••••"
+                required
+              />
+              <label for="conf-senha" class="campo-label">Confirmar a senha</label>
+              <input
+                class="campo-input"
+                type="password"
+                id="senha"
+                name="c-senha"
+                placeholder="••••••••"
+                required
+              />
+            </div>
+            <!-- Botão de Login -->
+            <button class="btn-primario login-btn-submit" type="submit">
+                Criar conta <i class="fas fa-sign-in-alt"></i>
+            </button>
+        </form>
+        
+          <!-- Link para Cadastro -->
+          <p class="login-cadastro-link">
+              Já possui uma conta? <a routerLink="/Login">Entrar na conta</a>
+            </p>
+        </div>
+    </div>
+    <app-banner-lateral></app-banner-lateral>
+</main>
+

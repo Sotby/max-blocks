@@ -1,0 +1,206 @@
+/* ================================================================
+   [MAXBLOCK ONLINE GAMING PLATFORM]
+   cadastro.css — CSS ESPECÍFICO DA TELA DE CADASTRO
+   ================================================================ */
+
+/* ================================================================
+   1. LAYOUT — Centralizado com cabeçalho escuro no topo
+   ================================================================ */
+.cadastro-pagina {
+  min-height: 100vh;
+  background-color: var(--cor-fundo);
+  background-image: radial-gradient(circle at center, rgba(52, 90, 102, 0.05) 0%, transparent 70%);
+  display: flex;
+  flex-direction: column;
+}
+
+.cadastro-topo {
+  background-color: var(--cor-escuro);
+  padding: 24px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.cadastro-topo .logo {
+  color: var(--cor-texto);
+}
+
+.cadastro-topo-link {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--cor-terciaria);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: color var(--transicao);
+}
+
+.cadastro-topo-link:hover {
+  color: var(--cor-secundaria);
+}
+
+.cadastro-corpo {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+}
+
+.cadastro-form-card {
+  width: 100%;
+  max-width: 520px;
+  background-color: rgba(6, 10, 11, 0.4);
+  border: 1.5px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 48px;
+  box-shadow: var(--sombra-lg);
+  animation: subirFadeIn 0.5s ease both;
+}
+
+.cadastro-titulo {
+  font-family: var(--fonte-titulo);
+  font-size: 32px;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: var(--espaco-sm);
+  letter-spacing: -0.5px;
+}
+
+.cadastro-subtitulo {
+  font-size: 14.5px;
+  color: var(--cor-texto-suave);
+  margin-bottom: var(--espaco-xl);
+}
+
+/* ================================================================
+   2. GRID DE CAMPOS E DUPLOS
+   ================================================================ */
+.cadastro-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-md);
+}
+
+.campos-duplos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--espaco-md);
+}
+
+/* ================================================================
+   3. BARRA DE FORÇA DA SENHA
+   ================================================================ */
+.barra-senha-container {
+  display: flex;
+  gap: 4px;
+  margin-top: 6px;
+}
+
+.barra-senha-segmento {
+  flex: 1;
+  height: 4px;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.08);
+  transition: background-color 0.3s ease;
+}
+
+/* Força fraca: vermelho */
+.barra-senha-container.fraca .barra-senha-segmento:nth-child(1) {
+  background-color: var(--cor-erro);
+  box-shadow: 0 0 6px var(--cor-erro);
+}
+
+/* Força média: amarelo */
+.barra-senha-container.media .barra-senha-segmento:nth-child(1),
+.barra-senha-container.media .barra-senha-segmento:nth-child(2) {
+  background-color: var(--cor-aviso);
+  box-shadow: 0 0 6px var(--cor-aviso);
+}
+
+/* Força forte: verde */
+.barra-senha-container.forte .barra-senha-segmento {
+  background-color: var(--cor-sucesso);
+  box-shadow: 0 0 6px var(--cor-sucesso);
+}
+
+/* ================================================================
+   4. TERMOS E SUBMIT
+   ================================================================ */
+.cadastro-termos {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--cor-texto-suave);
+  margin-top: var(--espaco-sm);
+}
+
+.cadastro-termos input[type="checkbox"] {
+  margin-top: 3px;
+  accent-color: var(--cor-secundaria);
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+.cadastro-termos a {
+  color: var(--cor-secundaria);
+  font-weight: 600;
+  transition: color var(--transicao);
+}
+
+.cadastro-termos a:hover {
+  color: var(--cor-acento-hover);
+}
+
+.cadastro-btn-submit {
+  width: 100%;
+  padding: 15px;
+  font-size: 15px;
+  margin-top: var(--espaco-sm);
+}
+
+.cadastro-login-link {
+  text-align: center;
+  margin-top: var(--espaco-lg);
+  font-size: 14px;
+  color: var(--cor-texto-suave);
+}
+
+.cadastro-login-link a {
+  color: var(--cor-secundaria);
+  font-weight: 700;
+  transition: color var(--transicao);
+}
+
+.cadastro-login-link a:hover {
+  color: var(--cor-acento-hover);
+}
+
+/* ================================================================
+   5. RESPONSIVIDADE
+   ================================================================ */
+@media (max-width: 768px) {
+  .cadastro-topo {
+    padding: 20px;
+  }
+  
+  .cadastro-topo-link {
+    font-size: 12px;
+  }
+  
+  .cadastro-corpo {
+    padding: 30px 15px;
+  }
+  
+  .cadastro-form-card {
+    padding: 30px 20px;
+  }
+  
+  .campos-duplos {
+    grid-template-columns: 1fr;
+    gap: var(--espaco-md);
+  }
+}

@@ -2,9 +2,6 @@
     margin: 0;
     padding: 0;
 }
-section{
-    border-top:solid 5px #333;
-}
 #banner{
     display: flex;
     flex-direction: column;
