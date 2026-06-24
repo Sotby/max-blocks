@@ -5,6 +5,8 @@ import { Login } from './paginas/auth/login/login';
 import {ErrorPage} from './paginas/system/error-page/error-page';
 import {Jogos} from './paginas/jogos/jogos';
 import {SobreNos} from './paginas/sobre-nos/sobre-nos';
+import { Perfil } from './paginas/perfil/perfil';
+
 export const routes: Routes = [
     {path: 'Inicio', component: Inicio},
     {path: 'inicio', component: Inicio},
@@ -16,5 +18,6 @@ export const routes: Routes = [
     {path: 'jogos', redirectTo:'Categorias'},
     {path: 'Sobre-Nos',component:SobreNos},
     {path:'sobre-nos',redirectTo:'Sobre-Nos'},
-    {path: '**', pathMatch: 'full', component: ErrorPage}
+    {path: '**', pathMatch: 'full', component: ErrorPage},
+    {path: 'Perfil', component: Perfil}
 ];
