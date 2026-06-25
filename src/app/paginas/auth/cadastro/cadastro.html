@@ -1,60 +1,82 @@
 <main class="body">
-    <a href="Inicio" class="logo-cell">Max<Span>Block</Span></a>
-    <div class="painel-direita">
-        <div class="login-form-card card-brilho">
-            
-            <!-- Subtítulo -->
-            <p class="login-subtitulo">Bem-vindo a família, jogador!</p>
-            
-            <!-- Formulário de Cadastro -->
-          <form class="login-form" action="#">
-            
-            <!-- Campo E-mail -->
-            <div class="campo-grupo">
-                <label class="campo-label" for="email">E-mail</label>
-                <input
-                class="campo-input"
-                type="email"
-                id="email"
-                name="email"
-                placeholder="seu@email.com"
-                required
-              />
-            </div>
-            
-            <!-- Campo Senha -->
-            <div class="campo-grupo">
-                <label class="campo-label" for="senha">Senha</label>
-                <input
-                class="campo-input"
-                type="password"
-                id="senha"
-                name="senha"
-                placeholder="••••••••"
-                required
-              />
-              <label for="conf-senha" class="campo-label">Confirmar a senha</label>
-              <input
-                class="campo-input"
-                type="password"
-                id="senha"
-                name="c-senha"
-                placeholder="••••••••"
-                required
-              />
-            </div>
-            <!-- Botão de Login -->
-            <button class="btn-primario login-btn-submit" type="submit">
-                Criar conta <i class="fas fa-sign-in-alt"></i>
-            </button>
-        </form>
-        
-          <!-- Link para Cadastro -->
-          <p class="login-cadastro-link">
-              Já possui uma conta? <a routerLink="/Login">Entrar na conta</a>
-            </p>
+  <a href="Inicio" class="logo-cell">Max<Span>Block</Span></a>
+  <div class="painel-direita">
+    <div class="login-form-card card-brilho">
+      <!-- Subtítulo -->
+      <p class="login-subtitulo">Bem-vindo a família, jogador!</p>
+
+      <!-- Formulário de Cadastro -->
+      <form class="login-form" [formGroup]="cadastroForm">
+        <!-- Campo E-mail -->
+        <div class="campo-grupo">
+          <label class="campo-label" for="username">Nome de usuário</label>
+          <input
+            class="campo-input"
+            type="text"
+            id="username"
+            name="username"
+            formControlName="name"
+            required
+          />
         </div>
+        <div class="campo-grupo">
+          <label class="campo-label" for="email">E-mail</label>
+          <input
+            class="campo-input"
+            type="email"
+            id="email"
+            name="email"
+            placeholder="seu@email.com"
+            formControlName="email"
+            required
+          />
+        </div>
+
+        <!-- Campo Senha -->
+        <div class="campo-grupo">
+          <label class="campo-label" for="senha" >Senha</label>
+          <input
+            class="campo-input"
+            type="password"
+            id="senha"
+            name="senha"
+            placeholder="••••••••"
+            formControlName="password"
+            required
+          />
+          <label for="conf-senha" class="campo-label">Confirmar a senha</label>
+          <input
+            class="campo-input"
+            type="password"
+            id="c_senha"
+            name="c-senha"
+            placeholder="••••••••"
+            formControlName="c_password"
+            required
+          />
+        </div>
+        <div class="cadastro-termos">
+          <input type="checkbox" id="termos" required />
+          <label for="termos">
+            Eu concordo com os <a href="#">Termos de Uso</a> e a
+            <a href="#">Política de Privacidade</a> do MaxBlock.
+          </label>
+        </div>
+        <!-- Botão de Login -->
+        <button class="btn-primario login-btn-submit" type="submit" [disabled]="cadastroForm.invalid" [class.disabled]="cadastroForm.invalid">
+          Criar conta <i class="fas fa-sign-in-alt"></i>
+        </button>
+      </form>
+
+      <!-- Link para Cadastro -->
+      <p class="login-cadastro-link">
+        Já possui uma conta? <a routerLink="/Login">Entrar na conta</a>
+      </p>
     </div>
-    <app-banner-lateral></app-banner-lateral>
+  </div>
+  <app-banner-lateral></app-banner-lateral>
 </main>
 
+<!-- <div class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+  <div class="bg-white rounded-2xl shadow-xl w-full max-w-md"></div>
+</div> -->

@@ -9,7 +9,8 @@ import { Perfil } from './paginas/perfil/perfil';
 
 export const routes: Routes = [
     {path: 'Inicio', component: Inicio},
-    {path: 'inicio', component: Inicio},
+    {path: 'inicio', redirectTo: 'Inicio'},
+    {path: '', redirectTo:'Inicio', pathMatch:'full'},
     {path: 'Cadastro', component: Cadastro},
     {path: 'cadastro', redirectTo: 'Cadastro'},
     {path: 'Login', component: Login},
