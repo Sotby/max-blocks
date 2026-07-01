@@ -3,7 +3,7 @@ import { Inicio } from './paginas/inicio/inicio';
 import { Cadastro } from './paginas/auth/cadastro/cadastro';
 import { Login } from './paginas/auth/login/login';
 import {ErrorPage} from './paginas/system/error-page/error-page';
-import {Jogos} from './paginas/jogos/jogos';
+import {ListaJogos} from './paginas/jogos/lista-jogos/lista-jogos';
 import {SobreNos} from './paginas/sobre-nos/sobre-nos';
 import { Perfil } from './paginas/perfil/perfil';
 
@@ -15,10 +15,11 @@ export const routes: Routes = [
     {path: 'cadastro', redirectTo: 'Cadastro'},
     {path: 'Login', component: Login},
     {path: 'login', redirectTo:'Login'},
-    {path: 'Jogos',component:Jogos},
+    {path: 'Jogos',component:ListaJogos},
     {path: 'jogos', redirectTo:'Categorias'},
     {path: 'Sobre-Nos',component:SobreNos},
     {path:'sobre-nos',redirectTo:'Sobre-Nos'},
-    {path: '**', pathMatch: 'full', component: ErrorPage},
-    {path: 'Perfil', component: Perfil}
+    {path: 'Perfil', component: Perfil},
+    {path: 'perfil',redirectTo:'Perfil'},
+    {path: '**', pathMatch: 'full', component: ErrorPage}
 ];

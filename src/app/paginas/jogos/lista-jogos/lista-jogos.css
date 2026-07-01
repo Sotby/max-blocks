@@ -1,0 +1,76 @@
+main{
+    background:radial-gradient(var(--Cor-primaria),#333);
+    min-height: calc(100vh - 80px);
+    height: 100%;
+}
+#search-filters{
+    background: radial-gradient(rgb(60,60,60),rgb(40,40,40));
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+#search-filters .search{
+    width: 50%;
+}
+#search-filters .search input{
+    height: 30px;
+    width: 60%;
+    outline: none;
+    border: none;
+    border-radius: 10px 0 0 10px;
+    background-color: white;
+    padding: 15px;
+}
+#search-filters .search button{
+    background-color: var(--Cor-secundaria);
+    height: 30px;
+    width: 40px;
+    border-radius: 0 10px 10px 0;
+    cursor: pointer;
+    color: white;
+    outline: none;
+}
+#search-filters .search button:active{
+    opacity: 0.8;
+}
+#search-filters .filters{
+    display: flex;
+    gap: 28px;
+}
+#search-filters .filters button{
+    color: white;
+    min-width: fit-content;
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--Cor-primaria);
+    cursor: pointer;
+}
+#games{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,220px);
+    grid-auto-rows: 240px;
+    gap: 10px;
+    padding: 20px;
+}
+#games > div:first-of-type{
+    grid-column: span 2;
+    grid-row: span 2;
+}
+#games .jogo-card{
+    background-color: #333;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all ease .5s;
+}
+#games .jogo-card a{
+    outline: none;
+}
+#games .jogo-card:hover, #games .jogo-card:focus-within{
+    box-shadow: 0 5px 10px 0 var(--Cor-secundaria);
+    transform: translateY(-5px);
+}

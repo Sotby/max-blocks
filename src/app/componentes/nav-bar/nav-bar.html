@@ -1,18 +1,28 @@
-<header>
-    <a routerLink="/Inicio" id="logo">Max<span>Block</span></a>
-    <button (click)="tooglemenu()">
-        <div></div>
-        <div></div>
-        <div></div>
-    </button>
-    <div class="links" [class.escondido]="!menuaberto">
-        <nav>
-            <ul>
-                <li><a routerLink="/Inicio" routerLinkActive="ativo">Home</a></li>
-                <li><a routerLink="/Sobre-Nos" routerLinkActive="ativo">Sobre nos</a></li>
-                <li><a routerLink="/Jogos" routerLinkActive="ativo">Jogos</a></li>
-                <li><a routerLink="/Login" id="login">Login</a></li>
-            </ul>
-        </nav>
-    </div>
+<header class="logado">
+  <a routerLink="/Inicio" id="logo">Max<span>Block</span></a>
+  <button (click)="tooglemenu()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </button>
+  <div class="links" [class.escondido]="!menuaberto">
+    <nav>
+      <ul>
+        <li><a routerLink="/Inicio" routerLinkActive="ativo">Home</a></li>
+        <li><a routerLink="/Sobre-Nos" routerLinkActive="ativo">Sobre nos</a></li>
+        <li><a routerLink="/Jogos" routerLinkActive="ativo">Jogos</a></li>
+        @if (authService.isLoggedIn()) {
+          <li id="li-perfil">
+            <a routerLink="/Perfil" id="perfil"
+              ><img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvT4L1Y7FUT3vRpPLaUSNQs2KTh2Kp_Nc4aT6FGLriEA&s=10"
+                alt=""
+            /></a>
+          </li>
+        } @else {
+          <li><a routerLink="/Login" id="login">Login</a></li>
+        }
+      </ul>
+    </nav>
+  </div>
 </header>

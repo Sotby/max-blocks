@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from "@angular/router";
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -12,6 +13,8 @@ export class NavBar {
   tooglemenu(){
     this.menuaberto = !this.menuaberto;
   }
+  authService = inject(AuthService)
+  
 }
 
 

@@ -19,15 +19,27 @@ header button{
     text-decoration: none;
     font-family: sans-serif;
     margin-left: 20px;
+    outline: none;
+    transition: all ease .5s;
 }
 #logo span{
     color: var(--Cor-secundaria);
+}
+#logo:focus{
+    transform: scale(1.05);
+}
+#li-perfil{
+    display: none;
 }
 header nav ul{
     display: flex;
     list-style: none;
     gap: 48px;
     padding: 0 20px;
+}
+header nav ul li{
+    display: flex;
+    align-items: center;
 }
 header nav ul li a{
     color: white;
@@ -36,8 +48,9 @@ header nav ul li a{
     font-size: 24px;
     font-family: sans-serif;
     transition: all ease .25s;
+    outline: none;
 }
-header nav ul li a:hover{
+header nav ul li a:hover, header nav ul li a:focus{
     color: var(--Cor-secundaria);
 }
 
@@ -51,9 +64,21 @@ header nav ul li .ativo{
     background-color: var(--Cor-secundaria);
     color: #333;
 }
-#login:hover{
+#login:hover,#login:focus{
     background-color: var(--Cor-primaria);
     color: white;
+}
+#perfil img{
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    border: solid 2px var(--Cor-secundaria);
+}
+header.logado #li-login{
+    display: none;
+}
+header.logado #li-perfil{
+    display: inline;
 }
 @media (max-width: 900px){
     .escondido{

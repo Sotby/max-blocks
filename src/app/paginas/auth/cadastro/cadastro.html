@@ -6,7 +6,7 @@
       <p class="login-subtitulo">Bem-vindo a família, jogador!</p>
 
       <!-- Formulário de Cadastro -->
-      <form class="login-form" [formGroup]="cadastroForm">
+      <form class="login-form" [formGroup]="cadastroForm" (ngSubmit)="onSubmit()">
         <!-- Campo E-mail -->
         <div class="campo-grupo">
           <label class="campo-label" for="username">Nome de usuário</label>
@@ -15,6 +15,7 @@
             type="text"
             id="username"
             name="username"
+            placeholder="SeuNome"
             formControlName="name"
             required
           />

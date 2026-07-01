@@ -9,7 +9,7 @@
           <p class="login-subtitulo">Entre com sua conta, jogador!</p>
           
           <!-- Formulário de Login -->
-          <form class="login-form" action="#">
+          <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             
             <!-- Campo E-mail -->
             <div class="campo-grupo">
@@ -19,6 +19,7 @@
                 type="email"
                 id="email"
                 name="email"
+                formControlName="email"
                 placeholder="seu@email.com"
                 required
               />
@@ -32,13 +33,14 @@
                 type="password"
                 id="senha"
                 name="senha"
+                formControlName="password"
                 placeholder="••••••••"
                 required
               />
               <a href="#" class="login-esqueceu">Esqueceu a senha?</a>
             </div>
             <!-- Botão de Login -->
-            <button class="btn-primario login-btn-submit" type="submit">
+            <button class="btn-primario login-btn-submit" type="submit" [disabled]="loginForm.invalid">
               Entrar na conta <i class="fas fa-sign-in-alt"></i>
             </button>
           </form>
