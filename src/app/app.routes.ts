@@ -6,6 +6,7 @@ import {ErrorPage} from './paginas/system/error-page/error-page';
 import {ListaJogos} from './paginas/jogos/lista-jogos/lista-jogos';
 import {SobreNos} from './paginas/sobre-nos/sobre-nos';
 import { Perfil } from './paginas/perfil/perfil';
+import { authGuard } from './core/guards/auth-guard';
 
 export const routes: Routes = [
     {path: 'Inicio', component: Inicio},
@@ -19,7 +20,7 @@ export const routes: Routes = [
     {path: 'jogos', redirectTo:'Categorias'},
     {path: 'Sobre-Nos',component:SobreNos},
     {path:'sobre-nos',redirectTo:'Sobre-Nos'},
-    {path: 'Perfil', component: Perfil},
+    {path: 'Perfil', canActivate:[authGuard], component:Perfil},
     {path: 'perfil',redirectTo:'Perfil'},
     {path: '**', pathMatch: 'full', component: ErrorPage}
 ];

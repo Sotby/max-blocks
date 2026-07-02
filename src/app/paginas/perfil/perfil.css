@@ -1,4 +1,166 @@
+main{
+    background: radial-gradient(rgb(40,40,60),rgb(20,20,30));
+    min-height: 100vh;
+    height: 100%;
+    color: white;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+.hidden{
+    display: none;
+}
+.input-txt{
+    cursor: text;
+}
+.input-img{
+    cursor: pointer;
+}
+#profile{
+    border-bottom: solid 1px var(--Cor-secundaria);
+}
+#dashboard{
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+    grid-template-rows: 1fr;
+}
+#controls{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: solid 1px var(--Cor-secundaria);
+}
+#controls button{
+    border-top: solid 1px var(--Cor-secundaria);
+    width: 100%;
+    padding: 40px 0;
+    transition: all ease .5s;
+    cursor: pointer;
+}
+#controls button:last-of-type{
+    border-bottom: solid 1px var(--Cor-secundaria);
+}
+#controls button:hover, .active{
+    background-color: var(--Cor-secundaria);
+    color: black;
+}
+#cadastro-jogos form{
+    height: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 4px;
+}
+#cadastro-jogos .imagem-div input{
+    cursor: pointer;
+}
+#cadastro-jogos form .dados-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 20px;
+}
+#cadastro-jogos form .dados-div input{
+    outline: none;
+    border: solid 1px var(--Cor-secundaria);
+    border-radius: 10px;
+    padding: 10px 20px;
+    width: 100%;
+    height: 80px;
+}
+#cadastro-jogos form .dados-div button{
+    background:var(--Cor-secundaria);
+    color: #333;
+    padding: 10px 0;
+    border-radius: 100px;
+    width: 100%;
+    cursor: pointer;
+}
+#cadastro-jogos form .dados-div .select-div{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+}
+#cadastro-jogos form .dados-div .select-div .campo-grupo{
+    display: grid;
+    grid-template-rows: 1fr;
+    border: solid 1px var(--Cor-secundaria);
+    padding: 10px;
+    border-radius: 10px;
+}
+#cadastro-jogos form .dados-div .select-div .campo-grupo label{
+    text-decoration: underline;
+    text-decoration-color: var(--Cor-secundaria);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
+}
+#cadastro-jogos form .dados-div .select-div .campo-grupo select{
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+#cadastro-jogos form .dados-div .select-div .campo-grupo select option {
+    color: black;
+}
+#cadastro-categoria form{
+    display: grid;
+    grid-template-rows: 2fr 1fr 1fr;
+    height: 100%;   
+}
+#cadastro-categoria form input{
+    outline: none;
+    border-top: solid 1px var(--Cor-secundaria);
+    padding: 10px 20px;
+}
+#cadastro-categoria form button{
+    padding: 10px 20px;
+    background-color: #333;
+    border-top: solid 1px var(--Cor-secundaria);
+    cursor: pointer;
+}
+
+/*-----------------------------------------------------------------------------------------------------------------------------*/
 img{
+    width:110px;
+    align-items: center;
+    height: 110px;
+    border-radius: 100%;
+    border-width: 100%;
+}
+
+.U{
+    color: white;
+    font-size: 30px;
+    align-items: center;
+    align-content: center;
+    border-radius: 50px;
+    margin: 1%;
+    margin-right: 2%;
+    margin-left: 2%;
+    width: 100%;
+    height: 100%;
+    
+     
+}
+.usuario{
+    display: flex;
+    align-items: center;
+    margin-top: 2%;
+}
+
+.trofeus{
+    display: flex;
+    margin: 50px;
+    flex-direction: column; 
+    text-align: center;
+    overflow: scroll;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+
+/* img{
     width: 10%;
    margin: 1%;
    }
@@ -47,6 +209,4 @@ img{
     gap: 10px;
     
    }
-   
-   
-   
+*/
