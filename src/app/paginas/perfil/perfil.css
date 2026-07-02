@@ -160,6 +160,13 @@ img{
 
 }
 
+.vela{
+    border: 2px solid;
+    border-radius: 25px;
+    padding: 2px;
+  
+   
+}
 /* img{
     width: 10%;
    margin: 1%;
