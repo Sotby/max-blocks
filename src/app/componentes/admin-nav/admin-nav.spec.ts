@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CadastroJogos } from './cadastro-jogos';
+import { AdminNav } from './admin-nav';
 
-describe('CadastroJogos', () => {
-  let component: CadastroJogos;
-  let fixture: ComponentFixture<CadastroJogos>;
+describe('AdminNav', () => {
+  let component: AdminNav;
+  let fixture: ComponentFixture<AdminNav>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CadastroJogos],
+      imports: [AdminNav],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CadastroJogos);
+    fixture = TestBed.createComponent(AdminNav);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

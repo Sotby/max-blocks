@@ -1,86 +1,38 @@
 <main>
   <section id="profile">
-      <a href="h1"><h1>MaxBlock</h1></a>
+    <a href="h1"
+      ><h1>Max<span>Block</span></h1></a
+    >
 
-      <div class="usuario">
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvT4L1Y7FUT3vRpPLaUSNQs2KTh2Kp_Nc4aT6FGLriEA&s=10"
-          alt="Imagem do perfil"
-          width="50"
-        />
-        <span class="U">Usuário Ativo</span>
+    <div class="usuario">
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvT4L1Y7FUT3vRpPLaUSNQs2KTh2Kp_Nc4aT6FGLriEA&s=10"
+        alt="Imagem do perfil"
+        width="50"
+      />
+      <span class="U">Usuário Ativo</span>
+    </div>
+
+    <form>
+      <div class="trofeus">
+        <h4 class="vela">Total de Troféus:</h4>
+        <p class="p2">Nenhum troféu adquirido ainda.</p>
       </div>
-
-      <form>
-        <div class="trofeus">
-          <h4 class="vela">Total de Troféus:</h4> 
-          <p class="p2">Nenhum troféu adquirido ainda.</p>
-        </div>
-      </form>
-    <!-- <main>
-  <title>Perfil</title>
-  <h1>MaxBlock</h1>
-
-  <div class="imagem">
-    <span class="Usuario"
-      ><img class="ImgPerfil" alt="imagem" /> <span>Usuário</span> <span class="p1">Ativo</span>
-    </span>
-  </div>
-  <div class="interface-usuario.html"></div>
-
-  <div class="trofeus">
-    <h4>Total de Troféus:</h4>
-    <p class="p2">Nenhum troféu adquirido ainda.</p>
-  </div>
-</main> -->
+    </form>
   </section>
-  <section id="dashboard">
-    <div id="controls">
-      <button>Configurações da conta</button>
-      <button>Cadastrar um Jogo</button>
-      <button>Criar uma categoria</button>
-    </div>
-    <div id="configuracoes" class="hidden">
-      <button (click)="authService.logout()">Sair</button>
-    </div>
-    <div id="cadastro-jogos" class="hidden">
-      <form [formGroup]="JogoForm">
-        <div class="imagem-div">
-          <input type="file" accept=".png,.jpg,.jpeg" id="imagem-jogo" class="input-img" formControlName="image"/>
-        </div>
-        <div class="dados-div">
-          <input type="text" placeholder="Nome" required class="input-txt" formControlName="name"/>
-          <input type="text" placeholder="Descrição" required class="input-txt" formControlName="description"/>
-          <div class="select-div">
-            <div class="campo-grupo">
-              <label for="categoria">Categoria</label>
-              <select name="Categoria" id="categoria" required>
-                <option value="Jogo">Teste</option>
-              </select>
-            </div>
-            <div class="campo-grupo">
-              <label for="classificacao-indicativa">Classificação indicativa</label>
-              <select name="idade" id="age-rating" required></select>
-            </div>
-            <div class="campo-grupo">
-              <label for="controles">Controles do jogo</label>
-              <select name="controles-jogo" id="controles-jogo" required>
-                <option value="keyboard">Teclado</option>
-                <option value="keyboard-mouse">Teclado e mouse</option>
-                <option value="controller">Controle</option>
-              </select>
-            </div>
-          </div>
-          <button type="submit">Cadastrar</button>
-        </div>
-      </form>
-    </div>
-    <div id="cadastro-categoria" class="">
-      <form action=""[formGroup]="CategoriaForm" (ngSubmit)="onSubmit()">
-        <input type="file" accept=".png,.jpg,.jpeg,.icon" id="Icone-categoria" required class="input-img" formControlName="image"/>
-        <input type="text" required placeholder="Nome" class="input-txt" formControlName="name"/>
-        <button type="submit">Cadastrar</button>
-      </form>
-    </div>
+
+  <section>
+       <div>
+            
+              <h2 class="embl1">Emblemas </h2>
+              <p class="Nenhu1">Nenhum adquirido.</p>
+
+              <h2 class="embl2">Emblemas </h2>
+              <p class="Nenhu2">Nenhum adquirido.</p>
+
+              <h2 class="embl3">Emblemas </h2>
+              <p class="Nenhu3">Nenhum adquirido.</p>
+
+      </div>
   </section>
 </main>

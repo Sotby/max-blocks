@@ -1,0 +1,382 @@
+/* ================================================================
+   [MAXBLOCK ONLINE GAMING PLATFORM]
+   jogos.css — CSS ESPECÍFICO DA PÁGINA DE BIBLIOTECA
+   ================================================================ */
+
+/* ================================================================
+   1. HERO BANNER DA SEÇÃO
+   ================================================================ */
+.artigos-banner {
+  background-color: var(--cor-escuro);
+  background-image: radial-gradient(circle at 80% 50%, rgba(52, 90, 102, 0.15) 0%, transparent 60%);
+  padding: 80px 60px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1.5px solid var(--cor-borda);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.artigos-banner-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: rgba(117, 221, 221, 0.1);
+  color: var(--cor-secundaria);
+  padding: 4px 12px;
+  border-radius: var(--raio-pill);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: var(--fonte-titulo);
+  border: 1px solid var(--cor-borda);
+  margin-bottom: 16px;
+}
+
+.artigos-banner-titulo {
+  font-family: var(--fonte-titulo);
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 1.1;
+  color: #fff;
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
+  z-index: 2;
+}
+
+.artigos-banner-sub {
+  font-size: 15px;
+  color: var(--cor-texto-suave);
+  max-width: 500px;
+  line-height: 1.6;
+  z-index: 2;
+}
+
+.banner-numero-fundo {
+  position: absolute;
+  right: 60px;
+  bottom: -40px;
+  font-family: var(--fonte-titulo);
+  font-size: 200px;
+  font-weight: 900;
+  color: rgba(99, 179, 183, 0.05); /* Usando a cor terciária muito transparente */
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+}
+
+
+/* ================================================================
+   2. CONTROLES (BUSCA E FILTROS RÁPIDOS)
+   ================================================================ */
+.artigos-controles {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px 60px 0;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.busca-container {
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+}
+
+.busca-icone {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--cor-terciaria);
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.busca-input {
+  width: 100%;
+  padding: 14px 16px 14px 48px;
+  border: 1.5px solid var(--cor-terciaria);
+  border-radius: var(--raio-pill);
+  font-size: 15px;
+  color: #fff;
+  background-color: var(--cor-escuro);
+  transition: border-color var(--transicao), box-shadow var(--transicao);
+  outline: none;
+}
+
+.busca-input:focus {
+  border-color: var(--cor-secundaria);
+  box-shadow: 0 0 0 3px rgba(117, 221, 221, 0.2);
+}
+
+.busca-input::placeholder {
+  color: var(--cor-cinza);
+}
+
+.filtros-lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filtro-btn {
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--cor-borda);
+  color: var(--cor-texto-suave);
+  padding: 8px 18px;
+  border-radius: var(--raio-pill);
+  font-size: 13px;
+  font-weight: 600;
+  transition: background-color var(--transicao), border-color var(--transicao), color var(--transicao), box-shadow var(--transicao);
+  font-family: var(--fonte-titulo);
+}
+
+.filtro-btn:hover {
+  border-color: var(--cor-secundaria);
+  color: var(--cor-secundaria);
+}
+
+.filtro-btn.ativo {
+  background-color: var(--cor-secundaria);
+  color: var(--cor-escuro);
+  border-color: var(--cor-secundaria);
+  box-shadow: 0 4px 12px rgba(117, 221, 221, 0.25);
+  font-weight: 700;
+}
+
+
+/* ================================================================
+   3. GRADE DE JOGOS & LAYOUT DE DESTAQUE (span 2)
+   ================================================================ */
+.artigos-grid-container {
+  padding: 40px 60px 60px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.artigos-grid-titulo {
+  font-family: var(--fonte-titulo);
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--cor-cinza);
+  margin-bottom: 24px;
+}
+
+.artigos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+/* Jogo Card Base */
+.jogo-card {
+  background-color: rgba(6, 10, 11, 0.5);
+  border: 1.5px solid var(--cor-borda);
+  border-radius: var(--raio);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transicao), border-color var(--transicao), box-shadow var(--transicao);
+}
+
+.jogo-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--cor-secundaria);
+  box-shadow: 0 10px 30px rgba(117, 221, 221, 0.12);
+}
+
+.jogo-card-imagem {
+  height: 180px;
+  background: linear-gradient(135deg, var(--cor-primaria) 0%, var(--cor-escuro) 100%);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-bottom: 1.5px solid var(--cor-borda);
+}
+
+.jogo-card-placeholder {
+  font-family: var(--fonte-titulo);
+  font-size: 20px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.jogo-card-placeholder i {
+  font-size: 40px;
+  color: var(--cor-terciaria);
+}
+
+.jogo-card-corpo {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+}
+
+.jogo-card-badges {
+  display: flex;
+  gap: 8px;
+}
+
+.jogo-card-titulo {
+  font-family: var(--fonte-titulo);
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.2px;
+}
+
+.jogo-card-descricao {
+  font-size: 13.5px;
+  color: var(--cor-texto-suave);
+  line-height: 1.6;
+}
+
+.jogo-card-controles {
+  display: flex;
+  margin-top: auto;
+}
+
+.jogo-card-rodape {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.jogo-btn-play {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  background-color: var(--cor-secundaria);
+  color: var(--cor-escuro);
+  border-radius: var(--raio-pill);
+  font-family: var(--fonte-titulo);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: transform var(--transicao), background-color var(--transicao);
+}
+
+.jogo-btn-play:hover {
+  background-color: var(--cor-acento-hover);
+  transform: scale(1.05);
+}
+
+/* Regra Especial para o Card Destaque */
+.jogo-card.destaque {
+  grid-column: span 2;
+  flex-direction: row;
+}
+
+.jogo-card.destaque .jogo-card-imagem {
+  width: 45%;
+  height: 100%;
+  border-bottom: none;
+  border-right: 1.5px solid var(--cor-borda);
+}
+
+.jogo-card.destaque .jogo-card-corpo {
+  width: 55%;
+}
+
+
+/* ================================================================
+   4. PAGINAÇÃO (FLEXBOX CENTRALIZADO)
+   ================================================================ */
+.paginacao {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 80px;
+}
+
+.paginacao-btn {
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--cor-borda);
+  color: var(--cor-texto-suave);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  transition: border-color var(--transicao), color var(--transicao), background-color var(--transicao);
+}
+
+.paginacao-btn:hover {
+  border-color: var(--cor-secundaria);
+  color: var(--cor-secundaria);
+  background-color: rgba(117, 221, 221, 0.02);
+}
+
+.paginacao-btn.ativo {
+  background-color: var(--cor-secundaria);
+  color: var(--cor-escuro);
+  border-color: var(--cor-secundaria);
+  box-shadow: 0 4px 12px rgba(117, 221, 221, 0.2);
+}
+
+
+/* ================================================================
+   5. RESPONSIVIDADE
+   ================================================================ */
+@media (max-width: 1200px) {
+  .artigos-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .jogo-card.destaque {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 992px) {
+  .artigos-banner {
+    padding: 60px 30px;
+  }
+  .artigos-controles, .artigos-grid-container {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .banner-numero-fundo {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .artigos-grid {
+    grid-template-columns: 1fr;
+  }
+  .jogo-card.destaque {
+    grid-column: span 1;
+    flex-direction: column;
+  }
+  .jogo-card.destaque .jogo-card-imagem {
+    width: 100%;
+    height: 180px;
+    border-right: none;
+    border-bottom: 1.5px solid var(--cor-borda);
+  }
+  .jogo-card.destaque .jogo-card-corpo {
+    width: 100%;
+  }
+}

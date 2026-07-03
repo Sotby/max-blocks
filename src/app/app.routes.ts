@@ -7,6 +7,9 @@ import {ListaJogos} from './paginas/jogos/lista-jogos/lista-jogos';
 import {SobreNos} from './paginas/sobre-nos/sobre-nos';
 import { Perfil } from './paginas/perfil/perfil';
 import { authGuard } from './core/guards/auth-guard';
+import { Admin } from './paginas/admin/admin';
+import { Jogos } from './paginas/admin/jogos/jogos';
+import { Categorias } from './paginas/admin/categorias/categorias';
 
 export const routes: Routes = [
     {path: 'Inicio', component: Inicio},
@@ -21,6 +24,12 @@ export const routes: Routes = [
     {path: 'Sobre-Nos',component:SobreNos},
     {path:'sobre-nos',redirectTo:'Sobre-Nos'},
     {path: 'Perfil', canActivate:[authGuard], component:Perfil},
-    {path: 'perfil',redirectTo:'Perfil'},
+    {path: 'Admin',canActivate:[authGuard], children:[
+        {path: 'Jogos',component:Jogos},
+        {path: 'Categorias', component:Categorias},
+        {path: 'jogos', redirectTo:'Jogos'},
+        {path: 'categorias', redirectTo:'Categorias'},
+        {path: '', component: Admin}
+    ]},
     {path: '**', pathMatch: 'full', component: ErrorPage}
 ];

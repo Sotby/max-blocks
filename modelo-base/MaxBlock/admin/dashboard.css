@@ -1,0 +1,371 @@
+/* ================================================================
+   [MAXBLOCK ONLINE GAMING PLATFORM]
+   dashboard.css — CSS ESPECÍFICO DO DASHBOARD DE ADMIN
+   ================================================================ */
+
+/* ================================================================
+   1. LAYOUT — Sidebar fixa + área de conteúdo principal
+   ================================================================ */
+.dashboard-pagina {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  grid-template-rows: auto 1fr;
+  min-height: 100vh;
+}
+
+/* O cabecalho ocupa as 2 colunas */
+.dashboard-cabecalho {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  background-color: var(--cor-escuro);
+  border-bottom: 1.5px solid var(--cor-borda);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.dashboard-cabecalho-usuario {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--cor-texto-suave);
+  font-size: 14px;
+}
+
+.dashboard-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--cor-secundaria);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cor-escuro);
+  font-size: 14px;
+  font-weight: 700;
+  font-family: var(--fonte-titulo);
+  box-shadow: 0 0 10px rgba(117, 221, 221, 0.4);
+}
+
+/* ================================================================
+   2. SIDEBAR — Menu lateral de navegação
+   ================================================================ */
+.dashboard-sidebar {
+  background-color: var(--cor-escuro);
+  padding: 32px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-right: 1.5px solid var(--cor-borda);
+}
+
+.sidebar-secao-titulo {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--cor-cinza);
+  padding: 0 12px;
+  margin-top: 20px;
+  margin-bottom: 8px;
+  font-family: var(--fonte-titulo);
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+  border-radius: var(--raio-sm);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--cor-texto-suave);
+  transition: background-color var(--transicao), color var(--transicao);
+}
+
+.sidebar-link:hover {
+  background-color: rgba(117, 221, 221, 0.05);
+  color: var(--cor-secundaria);
+}
+
+.sidebar-link.ativo {
+  background-color: var(--cor-secundaria);
+  color: var(--cor-escuro);
+  box-shadow: 0 4px 12px rgba(117, 221, 221, 0.25);
+  font-weight: 700;
+}
+
+.sidebar-icone {
+  font-size: 16px;
+  width: 20px;
+  text-align: center;
+}
+
+/* ================================================================
+   3. CONTEÚDO PRINCIPAL DO DASHBOARD
+   ================================================================ */
+.dashboard-conteudo {
+  background-color: var(--cor-fundo);
+  background-image: radial-gradient(circle at center, rgba(52, 90, 102, 0.04) 0%, transparent 70%);
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  overflow-y: auto;
+}
+
+.dashboard-titulo-pagina {
+  font-family: var(--fonte-titulo);
+  font-size: 28px;
+  font-weight: 900;
+  color: #fff;
+}
+
+.dashboard-subtitulo {
+  font-size: 14px;
+  color: var(--cor-cinza);
+  margin-top: 4px;
+}
+
+/* ================================================================
+   4. CARDS DE ESTATÍSTICAS
+   ================================================================ */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.card-stat {
+  background-color: rgba(6, 10, 11, 0.5);
+  border: 1.5px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: subirFadeIn 0.5s ease both;
+  transition: box-shadow var(--transicao), transform var(--transicao), border-color var(--transicao);
+}
+
+.card-stat:hover {
+  border-color: var(--cor-secundaria);
+  box-shadow: 0 10px 30px rgba(117, 221, 221, 0.1);
+  transform: translateY(-3px);
+}
+
+.card-stat-icone {
+  font-size: 22px;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--raio-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Cores de Fundo dos Ícones dos Cards */
+.card-stat-icone.laranja { background-color: rgba(255, 120, 40, 0.1); color: #ff7828; }
+.card-stat-icone.verde   { background-color: rgba(45, 226, 128, 0.1); color: var(--cor-sucesso); }
+.card-stat-icone.azul    { background-color: rgba(117, 221, 221, 0.1); color: var(--cor-secundaria); }
+.card-stat-icone.roxo    { background-color: rgba(167, 139, 250, 0.1); color: #a78bfa; }
+
+.card-stat-valor {
+  font-family: var(--fonte-titulo);
+  font-size: 32px;
+  color: #fff;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.card-stat-label {
+  font-size: 13.5px;
+  color: var(--cor-texto-suave);
+}
+
+.card-stat-variacao {
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.card-stat-variacao.positivo { color: var(--cor-sucesso); }
+.card-stat-variacao.negativo { color: var(--cor-erro); }
+
+/* ================================================================
+   5. SEÇÕES DE DASHBOARD (GRAFICO & TABELA)
+   ================================================================ */
+.dashboard-secao {
+  background-color: rgba(6, 10, 11, 0.5);
+  border: 1.5px solid var(--cor-borda);
+  border-radius: var(--raio);
+  overflow: hidden;
+}
+
+.dashboard-secao-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1.5px solid var(--cor-borda);
+}
+
+.dashboard-secao-titulo {
+  font-family: var(--fonte-titulo);
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* ================================================================
+   6. TABELA DE JOGOS
+   ================================================================ */
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabela th {
+  text-align: left;
+  padding: 14px 24px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--cor-texto-suave);
+  border-bottom: 1.5px solid var(--cor-borda);
+  background-color: rgba(255, 255, 255, 0.01);
+  font-family: var(--fonte-titulo);
+}
+
+.tabela td {
+  padding: 16px 24px;
+  font-size: 14px;
+  color: #fff;
+  border-bottom: 1px solid rgba(99, 179, 183, 0.1);
+  vertical-align: middle;
+}
+
+.tabela tr:last-child td {
+  border-bottom: none;
+}
+
+.tabela tr:hover td {
+  background-color: rgba(117, 221, 221, 0.02);
+}
+
+.tabela-titulo-artigo {
+  font-weight: 600;
+  color: #fff;
+}
+
+.tabela-acoes {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-acao {
+  padding: 6px 14px;
+  border-radius: var(--raio-pill);
+  font-size: 12px;
+  font-weight: 600;
+  border: 1.5px solid var(--cor-terciaria);
+  background-color: transparent;
+  color: var(--cor-texto-suave);
+  transition: all var(--transicao);
+}
+
+.btn-acao:hover {
+  border-color: var(--cor-secundaria);
+  color: var(--cor-secundaria);
+  background-color: rgba(117, 221, 221, 0.02);
+}
+
+/* ================================================================
+   7. GRÁFICO DE BARRAS SÓ COM CSS
+   ================================================================ */
+.grafico-container {
+  padding: 24px;
+}
+
+.grafico-titulo {
+  font-family: var(--fonte-titulo);
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 24px;
+}
+
+.grafico-barras {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  height: 140px;
+  padding: 0 10px;
+}
+
+.barra-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.barra {
+  width: 100%;
+  background-color: rgba(99, 179, 183, 0.2);
+  border-radius: 4px 4px 0 0;
+  height: var(--altura, 50%);
+  transition: background-color var(--transicao), box-shadow var(--transicao);
+  position: relative;
+  border: 1px solid rgba(99, 179, 183, 0.1);
+}
+
+.barra:hover {
+  background-color: var(--cor-secundaria);
+  box-shadow: 0 0 12px var(--cor-secundaria);
+}
+
+.barra-rotulo {
+  font-size: 11px;
+  color: var(--cor-texto-suave);
+  font-weight: 500;
+  font-family: var(--fonte-titulo);
+}
+
+/* ================================================================
+   8. RESPONSIVIDADE
+   ================================================================ */
+@media (max-width: 992px) {
+  .dashboard-pagina {
+    grid-template-columns: 1fr;
+  }
+  
+  .dashboard-sidebar {
+    display: none; /* Em telas menores, a sidebar pode ser ocultada ou colapsada */
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .dashboard-conteudo {
+    padding: 20px;
+  }
+  
+  .tabela th:nth-child(3), .tabela td:nth-child(3),
+  .tabela th:nth-child(5), .tabela td:nth-child(5) {
+    display: none; /* Esconde colunas extras em telas muito pequenas */
+  }
+}

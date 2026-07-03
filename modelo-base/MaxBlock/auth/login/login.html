@@ -1,0 +1,96 @@
+<!doctype html>
+<!-- 
+  ========================================================================
+  [MAXBLOCK ONLINE GAMING PLATFORM]
+  ARQUIVO: auth/login/login.html (Página de Login)
+  ========================================================================
+-->
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MaxBlock — Login</title>
+    
+    <!-- Importação de fontes e biblioteca de ícones do Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+    <!-- CSS LINKINGS -->
+    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+
+    <div class="login-pagina">
+
+        <!-- PAINEL ESQUERDO — Decorativo Gamer -->
+        <div class="login-painel-esquerdo fundo-pontos">
+            <a href="../../index.html" class="logo">Max<span>Block</span></a>
+
+            <div>
+                <div class="linha-acento"></div>
+                <h2 class="login-frase">
+                    Jogue.<br>
+                    Conquiste.<br>
+                    <span>Evolua.</span>
+                </h2>
+            </div>
+
+            <p class="login-rodape-painel">
+                Plataforma de Jogos Online · 2026
+            </p>
+        </div>
+
+        <!-- PAINEL DIREITO — Formulário de Login -->
+        <div class="login-painel-direito">
+            <div class="login-form-card card-brilho">
+
+                <h1 class="login-titulo">Bem-vindo de volta</h1>
+                <p class="login-subtitulo">Faça login para salvar suas pontuações</p>
+
+                <form class="login-form" action="#">
+
+                    <div class="campo-grupo">
+                        <label class="campo-label" for="email">E-mail</label>
+                        <input
+                            class="campo-input"
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="jogador@maxblock.com"
+                            required
+                        />
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label class="campo-label" for="senha">Senha</label>
+                        <input
+                            class="campo-input"
+                            type="password"
+                            id="senha"
+                            name="senha"
+                            placeholder="••••••••"
+                            required
+                        />
+                        <a href="#" class="login-esqueceu">Esqueceu a senha?</a>
+                    </div>
+
+                    <button class="btn-primario login-btn-submit" type="submit">
+                        Entrar no Jogo <i class="fas fa-sign-in-alt"></i>
+                    </button>
+
+                </form>
+
+                <p class="login-cadastro-link">
+                    Ainda não é um jogador? <a href="../cadastro/cadastro.html">Criar conta grátis</a>
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+#dashboard{
+    min-height: 100vh;
+    background: radial-gradient(rgb(60,60,80),rgb(40,40,40));
+    display: grid;
+    grid-template-columns: 1fr 7fr;
+}

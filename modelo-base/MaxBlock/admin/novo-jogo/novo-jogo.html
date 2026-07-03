@@ -1,0 +1,202 @@
+<!doctype html>
+<!-- 
+  ========================================================================
+  [MAXBLOCK ONLINE GAMING PLATFORM]
+  ARQUIVO: admin/novo-jogo/novo-jogo.html (Cadastro de Jogos / Editor CMS)
+  ========================================================================
+-->
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MaxBlock — Cadastrar Novo Jogo</title>
+    
+    <!-- Importação de fontes e biblioteca de ícones do Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+    <!-- CSS LINKINGS -->
+    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="novo-jogo.css" />
+</head>
+<body>
+
+    <!-- CABEÇALHO DO EDITOR -->
+    <header class="cabecalho">
+        <a href="../../index.html" class="logo">Max<span>Block</span></a>
+        <nav class="navbar">
+            <a href="../dashboard.html" class="nav-link"><i class="fas fa-arrow-left"></i> Voltar ao painel</a>
+            <a href="../../auth/login/login.html" class="btn-sair">Sair</a>
+        </nav>
+    </header>
+
+    <!-- ÁREA DO EDITOR (Duas Colunas Assimétricas) -->
+    <div class="editor-pagina">
+
+        <!-- COLUNA PRINCIPAL: Dados textuais do jogo -->
+        <div class="editor-coluna-principal">
+
+            <!-- CARD 1: Nome do Jogo e Descrição Detalhada -->
+            <div class="editor-card">
+                <div class="campo-grupo">
+                    <label class="campo-label">Nome do Jogo</label>
+                    <textarea
+                        class="input-titulo-artigo"
+                        placeholder="Digite o nome do jogo..."
+                        rows="2"
+                    ></textarea>
+                </div>
+
+                <hr style="border: none; border-top: 1px solid var(--cor-borda); margin: 16px 0;" />
+
+                <!-- BARRA DE ATALHOS DE FORMATAÇÃO -->
+                <div class="editor-barra-ferramentas">
+                    <button class="editor-btn-ferramenta"><strong>N</strong></button>
+                    <button class="editor-btn-ferramenta"><em>I</em></button>
+                    <button class="editor-btn-ferramenta"><u>S</u></button>
+                    <button class="editor-btn-ferramenta">H1</button>
+                    <button class="editor-btn-ferramenta">H2</button>
+                    <button class="editor-btn-ferramenta"><i class="fas fa-list-ul"></i> Lista</button>
+                    <button class="editor-btn-ferramenta"><i class="fas fa-link"></i> Link</button>
+                    <button class="editor-btn-ferramenta"><i class="fas fa-code"></i> Código Embed</button>
+                </div>
+
+                <div class="campo-grupo">
+                    <label class="campo-label">Instruções ou Como Jogar</label>
+                    <textarea
+                        class="editor-textarea"
+                        placeholder="Escreva as regras, dicas ou história do seu jogo aqui..."
+                    ></textarea>
+                    <div class="contador-wrapper">
+                        <span class="contador-caracteres">0 / 5000 caracteres</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 2: Descrição Curta (Resumo) -->
+            <div class="editor-card">
+                <h2 class="editor-card-titulo">Descrição do Jogo</h2>
+                <div class="campo-grupo">
+                    <label class="campo-label">Breve resumo (exibido nos cards públicos da vitrine)</label>
+                    <textarea
+                        class="campo-input"
+                        rows="3"
+                        placeholder="Um parágrafo curto resumindo a premissa do jogo..."
+                        style="resize: vertical;"
+                    ></textarea>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- COLUNA LATERAL: Configurações de Publicação e Preview -->
+        <div class="editor-coluna-lateral">
+
+            <!-- CARD 1: Dados de Publicação -->
+            <div class="editor-card">
+                <h2 class="editor-card-titulo">Publicação</h2>
+
+                <div class="campo-grupo">
+                    <label class="campo-label" for="status">Status de Lançamento</label>
+                    <select class="campo-select" id="status">
+                        <option value="rascunho">Rascunho / Privado</option>
+                        <option value="publicado">Disponível / Público</option>
+                        <option value="manutencao">Em Manutenção</option>
+                    </select>
+                </div>
+
+                <div class="campo-grupo mt-md">
+                    <label class="campo-label" for="categoria">Categoria</label>
+                    <select class="campo-select" id="categoria">
+                        <option>Selecione...</option>
+                        <option>RPG</option>
+                        <option>Ação</option>
+                        <option>Puzzle</option>
+                        <option>Corrida</option>
+                        <option>Aventura</option>
+                        <option>Estratégia</option>
+                    </select>
+                </div>
+
+                <div class="campo-grupo mt-md">
+                    <label class="campo-label" for="classificacao">Classificação Indicativa</label>
+                    <select class="campo-select" id="classificacao">
+                        <option>Selecione...</option>
+                        <option>Livre</option>
+                        <option>+10</option>
+                        <option>+12</option>
+                        <option>+14</option>
+                        <option>+16</option>
+                        <option>+18</option>
+                    </select>
+                </div>
+
+                <div class="campo-grupo mt-md">
+                    <label class="campo-label" for="controles">Controles</label>
+                    <select class="campo-select" id="controles">
+                        <option>Selecione...</option>
+                        <option>Teclado e Mouse</option>
+                        <option>Apenas Mouse</option>
+                        <option>Apenas Teclado</option>
+                        <option>Controle Recomendado</option>
+                    </select>
+                </div>
+
+                <!-- TAG CHIPS -->
+                <div class="campo-grupo mt-md">
+                    <label class="campo-label">Tags do Jogo</label>
+                    <div class="tags-container">
+                        <span class="tag-chip">
+                            WebGL
+                            <button class="tag-chip-remover">×</button>
+                        </span>
+                        <span class="tag-chip">
+                            Beta
+                            <button class="tag-chip-remover">×</button>
+                        </span>
+                        <input class="tags-input-fantasma" type="text" placeholder="+ Adicionar tag" />
+                    </div>
+                </div>
+
+                <div class="editor-acoes mt-lg">
+                    <button class="btn-primario">Publicar Jogo <i class="fas fa-paper-plane"></i></button>
+                    <button class="btn-secundario">Salvar Rascunho</button>
+                </div>
+            </div>
+
+            <!-- CARD 2: Imagem do Jogo -->
+            <div class="editor-card">
+                <h2 class="editor-card-titulo">Capa do Jogo</h2>
+                <div class="upload-capa">
+                    <div class="upload-capa-icone"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <p class="upload-capa-texto">Clique para enviar imagem</p>
+                    <p class="upload-capa-sub">PNG, JPG, WEBP · Máx. 5MB</p>
+                </div>
+            </div>
+
+            <!-- CARD 3: Preview em tempo real da Vitrine -->
+            <div class="preview-card">
+                <div class="preview-capa-placeholder">Sem Imagem de Capa</div>
+                <div class="preview-corpo">
+                    <div class="preview-badges">
+                        <span class="badge badge-categoria">RPG</span>
+                        <span class="badge badge-indicativa">+18</span>
+                    </div>
+                    <h3 class="preview-titulo">Nome do Jogo</h3>
+                    
+                    <p class="preview-controles">Teclado e Mouse</p>
+                    
+                    <div class="preview-rodape">
+                        <span class="badge badge-likes"><i class="fas fa-heart"></i> 0</span>
+                        <span class="preview-btn-play"><i class="fas fa-gamepad"></i> Jogar</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
