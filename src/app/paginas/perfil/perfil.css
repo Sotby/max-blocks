@@ -16,28 +16,32 @@ main{
     cursor: pointer;
 }
 #profile{
-    border-bottom: solid 1px var(--Cor-secundaria);
+    border-bottom: solid 2px var(--Cor-secundaria);
 }
 #dashboard{
     display: grid;
     grid-template-columns: 1fr 6fr;
     grid-template-rows: 1fr;
+    background: linear-gradient(rgb(40,40,40),rgb(20,20,20));
 }
 #controls{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border-right: solid 1px var(--Cor-secundaria);
+    border-right: solid 2px var(--Cor-secundaria);
 }
 #controls button{
-    border-top: solid 1px var(--Cor-secundaria);
+    border-top: solid 2px var(--Cor-secundaria);
     width: 100%;
     padding: 40px 0;
     transition: all ease .5s;
     cursor: pointer;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: 700;
 }
 #controls button:last-of-type{
-    border-bottom: solid 1px var(--Cor-secundaria);
+    border-bottom: solid 2px var(--Cor-secundaria);
 }
 #controls button:hover, .active{
     background-color: var(--Cor-secundaria);
@@ -45,11 +49,13 @@ main{
 }
 #cadastro-jogos form{
     height: 100%;
-    padding: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
     gap: 4px;
+}
+#cadastro-jogos .imagem-div{
+    padding: 20px;
 }
 #cadastro-jogos .imagem-div input{
     cursor: pointer;
@@ -59,15 +65,20 @@ main{
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    gap: 20px;
+    padding: 20px;
+    border-left:solid 2px var(--Cor-secundaria);
 }
 #cadastro-jogos form .dados-div input{
     outline: none;
-    border: solid 1px var(--Cor-secundaria);
-    border-radius: 10px;
+    border: solid 2px var(--Cor-secundaria);
     padding: 10px 20px;
     width: 100%;
     height: 80px;
+    transition: all ease .5s;
+}
+#cadastro-jogos form .dados-div input:focus{
+    transform: translateY(-5px);
+    box-shadow: 0 5px 10px 0 var(--Cor-terciaria);
 }
 #cadastro-jogos form .dados-div button{
     background:var(--Cor-secundaria);
@@ -76,6 +87,10 @@ main{
     border-radius: 100px;
     width: 100%;
     cursor: pointer;
+    transition: all ease .25s;
+}
+#cadastro-jogos form .dados-div button:hover{
+    opacity: 0.8;
 }
 #cadastro-jogos form .dados-div .select-div{
     width: 100%;
@@ -86,7 +101,7 @@ main{
 #cadastro-jogos form .dados-div .select-div .campo-grupo{
     display: grid;
     grid-template-rows: 1fr;
-    border: solid 1px var(--Cor-secundaria);
+    border: solid 2px var(--Cor-secundaria);
     padding: 10px;
     border-radius: 10px;
 }
@@ -111,23 +126,34 @@ main{
 }
 #cadastro-categoria form input{
     outline: none;
-    border-top: solid 1px var(--Cor-secundaria);
+    border-top: solid 2px var(--Cor-secundaria);
     padding: 10px 20px;
 }
 #cadastro-categoria form button{
     padding: 10px 20px;
     background-color: #333;
-    border-top: solid 1px var(--Cor-secundaria);
+    border-top: solid 2px var(--Cor-secundaria);
     cursor: pointer;
 }
 
 /*-----------------------------------------------------------------------------------------------------------------------------*/
 img{
+    margin: 15px;
+    
+    margin-left: 20px;
+    transition: 0.3s ease;
+    opacity: 15%;
     width:110px;
     align-items: center;
     height: 110px;
+    border: 4px solid var(--Cor-terciaria);
     border-radius: 100%;
     border-width: 100%;
+}
+
+img:hover{
+  transform: translateY(-5px);
+  box-shadow: 0px 5px 11px 3px var(--Cor-primaria);
 }
 
 .U{
@@ -161,12 +187,24 @@ img{
 }
 
 .vela{
-    border: 2px solid;
+    border: 2px solid var(--Cor-terciaria);
+    border-left: -5px;
+    border-right: -5px;
     border-radius: 25px;
-    padding: 2px;
+    padding: 6px;
+    margin: 5%;
   
    
 }
+
+.p2{
+   
+    padding: 70px;
+    padding-inline: 50px;
+    
+}
+
+
 /* img{
     width: 10%;
    margin: 1%;

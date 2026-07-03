@@ -11,9 +11,18 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 })
 export class Perfil {
   authService = inject(AuthService)
-  cadastrarCategoriaForm = new FormGroup({
+  CategoriaForm = new FormGroup({
     name: new FormControl('',[Validators.required]),
     image: new FormControl('',[Validators.required])
+  })
+  JogoForm=new FormGroup({
+    name : new FormControl('',[Validators.required]),
+    description : new FormControl('',[Validators.required]),
+    categoryId: new FormControl('',[Validators.required]),
+    ageRating : new FormControl('',[Validators.required]),
+    controls : new FormControl('',[Validators.required]),
+    gameUrl : new FormControl('',[Validators.required]),
+    image: new FormControl('',[Validators.required]),
   })
   onSubmit(){
     

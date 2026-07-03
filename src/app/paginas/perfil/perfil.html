@@ -4,7 +4,7 @@
 
       <div class="usuario">
         <img
-          src="https://media.istockphoto.com/id/951316156/es/vector/vector-icono-de-usuario-persona-masculina-s%C3%ADmbolo-avatar-perfil-c%C3%ADrculo-se%C3%B1al-en-color-plano.jpg?s=170667a&w=0&k=20&c=tDzrFYzy72rqYp2BnpDplHW4jJ9fatXfBU4YZAGCD9M="
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvT4L1Y7FUT3vRpPLaUSNQs2KTh2Kp_Nc4aT6FGLriEA&s=10"
           alt="Imagem do perfil"
           width="50"
         />
@@ -13,8 +13,8 @@
 
       <form>
         <div class="trofeus">
-          <h4 class="vela">Total de Troféus:</h4> <br><br><br>
-          <br><br><br> <p class="p2">Nenhum troféu adquirido ainda.</p>
+          <h4 class="vela">Total de Troféus:</h4> 
+          <p class="p2">Nenhum troféu adquirido ainda.</p>
         </div>
       </form>
     <!-- <main>
@@ -40,17 +40,17 @@
       <button>Cadastrar um Jogo</button>
       <button>Criar uma categoria</button>
     </div>
-    <div id="configuracoes" class="">
+    <div id="configuracoes" class="hidden">
       <button (click)="authService.logout()">Sair</button>
     </div>
     <div id="cadastro-jogos" class="hidden">
-      <form action="#">
+      <form [formGroup]="JogoForm">
         <div class="imagem-div">
-          <input type="file" accept=".png,.jpg,.jpeg" id="imagem-jogo" class="input-img"/>
+          <input type="file" accept=".png,.jpg,.jpeg" id="imagem-jogo" class="input-img" formControlName="image"/>
         </div>
         <div class="dados-div">
-          <input type="text" placeholder="Nome" required class="input-txt"/>
-          <input type="text" placeholder="Descrição" required class="input-txt"/>
+          <input type="text" placeholder="Nome" required class="input-txt" formControlName="name"/>
+          <input type="text" placeholder="Descrição" required class="input-txt" formControlName="description"/>
           <div class="select-div">
             <div class="campo-grupo">
               <label for="categoria">Categoria</label>
@@ -75,8 +75,8 @@
         </div>
       </form>
     </div>
-    <div id="cadastro-categoria" class="hidden">
-      <form action=""[formGroup]="cadastrarCategoriaForm" (ngSubmit)="onSubmit()">
+    <div id="cadastro-categoria" class="">
+      <form action=""[formGroup]="CategoriaForm" (ngSubmit)="onSubmit()">
         <input type="file" accept=".png,.jpg,.jpeg,.icon" id="Icone-categoria" required class="input-img" formControlName="image"/>
         <input type="text" required placeholder="Nome" class="input-txt" formControlName="name"/>
         <button type="submit">Cadastrar</button>

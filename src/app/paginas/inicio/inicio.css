@@ -65,6 +65,8 @@ main{
 }
 #jogos-por-categoria{
     padding: 20px 0;
+    background: radial-gradient(rgb(60,60,60),rgb(20,20,20));
+    border-top: solid 5px var(--Cor-secundaria);
 }
 #jogos-por-categoria h1{
     text-align: center;
@@ -77,44 +79,29 @@ main{
     text-decoration-thickness:5px;
     text-underline-offset: 20px;
 }
-.categoria span{
-    font-size: 32px;
-    font-family: sans-serif;
-    font-weight: bold;
-    padding: 10px;
-    background-color: #333;
-    border-radius: 10px 10px 0 0;
-    color: var(--Cor-secundaria);
-    position: relative;
-    border: solid 1px var(--Cor-secundaria);
-    border-right: none;
-    border-bottom: none;
-    z-index: 2;
-}
 .categoria{
     margin-top: 25px;
 }
-.categoria span::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: calc(100% - 9px);
-    background-color: #333;
-    z-index: -1;  
-    border-right: solid 1px var(--Cor-secundaria);
-    border-radius: 10px 10px 0 0;
-
+.categoria .titulo span{
+    font-size: 24px;
+    font-family: sans-serif;
+    font-weight: 700;
+    color: var(--Cor-secundaria);
+    padding: 8px 20px;
+    border-radius: 0 10px 0 0;
+    background: linear-gradient(rgb(60,60,60),rgb(40,40,40));
+    width: fit-content;
+    position: relative;
+    z-index: 1;
 }
-.categoria .barra{
-    display: block;
-    bottom: 0;
-    width: 100vw;
-    height: 10px;
-    background-color: #333;
-    z-index: -1;  
-    border: solid 1px var(--Cor-secundaria);
+.categoria .titulo{
+    display: flex;
+    flex-direction: column;
+}
+.categoria .titulo .barra{
+     height: 20px;
+     background: linear-gradient(rgb(40,40,40),rgb(20,20,20));
+     box-shadow: 0 4px 10px 0 var(--Cor-secundaria);
 }
 .categoria .lista-jogos{
     display: flex;
