@@ -1,0 +1,406 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.btn-primario {
+  background: var(--primary);
+  color: #fff;
+  padding: 10px 18px;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-primario:hover {
+  background: var(--primary-hover);
+}
+
+.btn-secundario {
+  background: transparent;
+  color: var(--text);
+  padding: 10px 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+}
+/* ========================================================================
+     NEXOPLAY — styles/layout.css
+     Estrutura do shell administrativo: topbar + sidebar + área de conteúdo
+     (comum às 3 páginas: visão geral, jogos e categorias)
+     ======================================================================== */
+
+.adm-app {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  grid-template-rows: 68px 1fr;
+  min-height: 100vh;
+}
+
+.adm-topbar {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--border);
+}
+
+.adm-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.adm-logo span {
+  color: var(--primary);
+}
+
+.adm-topbar-user {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.adm-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--primary-soft);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  border: 1px solid var(--primary);
+}
+
+.adm-btn-sair {
+  padding: 7px 14px;
+  border: 1px solid var(--danger);
+  color: var(--danger);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+}
+
+/* SIDEBAR */
+.adm-sidebar {
+  background: var(--bg-alt);
+  border-right: 1px solid var(--border);
+  padding: 22px 14px;
+}
+
+.adm-sidebar-titulo {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-faint);
+  margin: 18px 10px 8px;
+}
+
+.adm-sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  color: var(--text-soft);
+  font-size: 14px;
+  margin-bottom: 2px;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+
+.adm-sidebar-link:hover {
+  background: var(--surface);
+  color: var(--text);
+}
+
+.adm-sidebar-link.ativo {
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.adm-sidebar-link i {
+  width: 18px;
+  text-align: center;
+}
+
+/* CONTEÚDO */
+.adm-conteudo {
+  padding: 28px 32px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.adm-titulo-pagina {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.adm-subtitulo {
+  color: var(--text-soft);
+  margin-top: 4px;
+}
+
+.adm-cabecalho-pagina {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+/* ========================================================================
+     NEXOPLAY — styles/componentes.css
+     Componentes reutilizáveis nas 3 páginas: seção, cards de estatística,
+     tabela e badges
+     ======================================================================== */
+
+.adm-secao {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 22px;
+}
+
+.adm-secao-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.adm-secao-titulo {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* CARDS DE ESTATÍSTICA */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: var(--shadow-card);
+}
+
+.stat-card-icone {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.stat-card-icone.roxo {
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+.stat-card-icone.verde {
+  background: var(--success-soft);
+  color: var(--success);
+}
+.stat-card-icone.ciano {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.stat-card-icone.amarelo {
+  background: var(--warning-soft);
+  color: var(--warning);
+}
+
+.stat-card-valor {
+  font-size: 26px;
+  font-weight: 700;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.stat-card-label {
+  color: var(--text-soft);
+  font-size: 13px;
+}
+
+.stat-card-variacao {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.stat-card-variacao.positivo {
+  color: var(--success);
+}
+.stat-card-variacao.negativo {
+  color: var(--danger);
+}
+
+/* TABELA */
+.adm-tabela {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.adm-tabela th {
+  text-align: left;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-faint);
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.adm-tabela td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+
+.adm-tabela tbody tr:hover {
+  background: var(--surface-2);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid transparent;
+}
+
+.badge-categoria {
+  background: var(--primary-soft);
+  color: var(--primary);
+  border-color: rgba(140, 92, 255, 0.25);
+}
+.badge-classificacao {
+  background: var(--surface-2);
+  color: var(--text-soft);
+  border-color: var(--border);
+}
+.badge-sucesso {
+  background: var(--success-soft);
+  color: var(--success);
+  border-color: rgba(52, 211, 153, 0.25);
+}
+.badge-aviso {
+  background: var(--warning-soft);
+  color: var(--warning);
+  border-color: rgba(251, 191, 36, 0.25);
+}
+.badge-cinza {
+  background: var(--surface-2);
+  color: var(--text-faint);
+  border-color: var(--border);
+}
+
+.tabela-acoes {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-acao,
+.btn-acao-perigo {
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+}
+
+.btn-acao-perigo {
+  border-color: rgba(251, 91, 125, 0.4);
+  color: var(--danger);
+}
+
+.aviso-vazio {
+  text-align: center;
+  padding: 40px 0;
+  color: var(--text-faint);
+}
+/* ========================================================================
+     NEXOPLAY — styles/grafico.css
+     Gráfico de barras em CSS puro (usado somente em visao-geral.html)
+     ======================================================================== */
+
+.grafico-barras {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  height: 180px;
+  padding-top: 10px;
+}
+
+.barra-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.barra {
+  width: 100%;
+  max-width: 34px;
+  height: var(--altura);
+  background: linear-gradient(180deg, var(--primary), var(--accent));
+  border-radius: 6px 6px 0 0;
+}
+
+.barra-rotulo {
+  font-size: 12px;
+  color: var(--text-soft);
+}

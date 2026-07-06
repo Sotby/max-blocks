@@ -1,15 +1,146 @@
-<app-admin-nav></app-admin-nav>
 <main id="dashboard">
-    <section id="controls"></section>
-    <section id="form">
-        <div id="cadastro-form">
-            <form>
-                
-            </form>
-        </div>
-        <div id="update-form">
+  <div class="adm-app">
+    <!-- SIDEBAR -->
+    <aside class="adm-sidebar">
+      <p class="adm-sidebar-titulo">Menu</p>
+      <a routerLink="/Admin/Geral" class="adm-sidebar-link ativo">
+        <i class="fas fa-chart-line"></i> Visão Geral
+      </a>
+      <a routerLink="/Admin/Jogos" routerLinkActive="ativo" class="adm-sidebar-link">
+        <i class="fas fa-gamepad"></i> Jogos
+      </a>
+      <a routerLink="/Admin/Categorias" routerLinkActive="ativo" class="adm-sidebar-link">
+        <i class="fas fa-tags"></i> Categorias
+      </a>
 
+      <p class="adm-sidebar-titulo">Conta</p>
+      <a routerLink="/Perfil" class="adm-sidebar-link">
+        <i class="fas fa-user-shield"></i> Perfil Admin
+      </a>
+      <button class="adm-sidebar-link" (click)="authservice.logout()">
+        <i class="fas fa-sign-out-alt"></i> Sair
+      </button>
+    </aside>
+
+    <!-- CONTEÚDO -->
+    <main class="adm-conteudo">
+      <div class="adm-cabecalho-pagina">
+        <div>
+          <h1 class="adm-titulo-pagina">Categorias</h1>
+          <p class="adm-subtitulo">Organize os gêneros de jogos da plataforma</p>
         </div>
-    </section>
+        <button class="btn-primario" id="btn-abrir-nova">
+          <i class="fas fa-plus"></i> Nova categoria
+        </button>
+      </div>
+
+      <!-- FILTROS -->
+      <div class="adm-secao">
+        <form class="filtros-barra" id="form-filtros">
+          <div class="filtro-grupo">
+            <label for="filtro-id">ID</label>
+            <input
+              class="filtro-input"
+              type="text"
+              id="filtro-id"
+              placeholder="Ex: 04"
+              style="min-width: 90px"
+            />
+          </div>
+          <div class="filtro-grupo">
+            <label for="filtro-nome">Nome da categoria</label>
+            <input
+              class="filtro-input"
+              type="text"
+              id="filtro-nome"
+              placeholder="Buscar por nome..."
+            />
+          </div>
+          <div class="filtro-grupo">
+            <button type="submit" class="btn-secundario">
+              <i class="fas fa-filter"></i> Filtrar
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- LISTAGEM -->
+      <div class="adm-secao">
+        <div class="adm-secao-header">
+          <h2 class="adm-secao-titulo">Categorias cadastradas</h2>
+        </div>
+
+        <table class="adm-tabela">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Jogos vinculados</th>
+              <th>Status</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              data-id="01"
+              data-nome="RPG"
+              data-descricao="Jogos de interpretação de personagem, com progressão e narrativa."
+              data-status="ativo"
+              data-icone="fa-hat-wizard"
+              data-cor="#8c5cff"
+            >
+              <td>01</td>
+              <td>RPG</td>
+              <td>9</td>
+              <td>
+                <span class="badge badge-sucesso"><i class="fas fa-check"></i> Ativa</span>
+              </td>
+              <td class="tabela-acoes">
+                <button class="btn-acao btn-editar-categoria">Editar</button>
+                <button class="btn-acao-perigo">Excluir</button>
+              </td>
+            </tr>
+            <tr
+              data-id="02"
+              data-nome="Corrida"
+              data-descricao="Jogos de velocidade e competição em pistas ou circuitos."
+              data-status="ativo"
+              data-icone="fa-flag-checkered"
+              data-cor="#22d3c5"
+            >
+              <td>02</td>
+              <td>Corrida</td>
+              <td>5</td>
+              <td>
+                <span class="badge badge-sucesso"><i class="fas fa-check"></i> Ativa</span>
+              </td>
+              <td class="tabela-acoes">
+                <button class="btn-acao btn-editar-categoria">Editar</button>
+                <button class="btn-acao-perigo">Excluir</button>
+              </td>
+            </tr>
+            <tr
+              data-id="03"
+              data-nome="Estratégia"
+              data-descricao="Jogos de planejamento e tomada de decisão tática."
+              data-status="inativo"
+              data-icone="fa-chess"
+              data-cor="#fbbf24"
+            >
+              <td>03</td>
+              <td>Estratégia</td>
+              <td>2</td>
+              <td>
+                <span class="badge badge-cinza"><i class="fas fa-pause"></i> Inativa</span>
+              </td>
+              <td class="tabela-acoes">
+                <button class="btn-acao btn-editar-categoria">Editar</button>
+                <button class="btn-acao-perigo">Excluir</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
 </main>
-

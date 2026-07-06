@@ -1,31 +1,211 @@
-<app-admin-nav></app-admin-nav>
-<main id="dashboard">
-    <section id="game-list">
-        
-    </section>
-    <section id="game-actions">
-        <div id="controls"></div>
-        <div id="form">
-            <div id="cadastro-form">
-                <form>
-                    <input type="file" name="" id="">
-                    <input type="text" placeholder="Nome">
-                    <input type="text" placeholder="Descrição">
-                    <select name="" id="">
-                        <option value="">Categoria</option>
-                    </select>
-                    <select name="" id="">
-                        <option value="">Age rating</option>
-                    </select>
-                    <select name="" id="">
-                        <option value="">Controls</option>
-                    </select>
-                </form>
-            </div>
-            <div id="update-form">
-    
-            </div>
+<div class="adm-app">
+  <!-- SIDEBAR -->
+  <aside class="adm-sidebar">
+    <p class="adm-sidebar-titulo">Menu</p>
+    <a routerLink="/Admin/Geral" routerLinkActive="ativo" class="adm-sidebar-link">
+      <i class="fas fa-chart-line"></i> Visão Geral
+    </a>
+    <a routerLink="/Admin/Jogos" routerLinkActive="ativo" class="adm-sidebar-link">
+      <i class="fas fa-gamepad"></i> Jogos
+    </a>
+    <a routerLink="/Admin/Categorias" routerLinkActive="ativo" class="adm-sidebar-link">
+      <i class="fas fa-tags"></i> Categorias
+    </a>
+
+    <p class="adm-sidebar-titulo">Conta</p>
+    <a routerLink="/Perfil" class="adm-sidebar-link">
+      <i class="fas fa-user-shield"></i> Perfil Admin
+    </a>
+    <button class="adm-sidebar-link" (click)="authservice.logout()">
+      <i class="fas fa-sign-out-alt"></i> Sair
+    </button>
+  </aside>
+
+  <!-- CONTEÚDO -->
+  <main class="adm-conteudo">
+    <div class="adm-cabecalho-pagina">
+      <div>
+        <h1 class="adm-titulo-pagina">Jogos</h1>
+        <p class="adm-subtitulo">Gerencie o catálogo de jogos da plataforma</p>
+      </div>
+      <button class="btn-primario" id="btn-abrir-novo">
+        <i class="fas fa-plus"></i> Novo jogo
+      </button>
+    </div>
+
+    <!-- LISTAGEM -->
+    <div class="adm-secao titulo">
+      <div class="adm-secao-header">
+        <h2 class="adm-secao-titulo">Catálogo de jogos</h2>
+      </div>
+      <!-- FILTROS -->
+      <div class="adm-secao tabela">
+        <form class="filtros-barra" id="form-filtros">
+          <div class="filtro-grupo">
+            <label for="filtro-id">ID</label>
+            <input
+              class="filtro-input"
+              type="text"
+              id="filtro-id"
+              placeholder="Ex: 021"
+              style="min-width: 90px"
+            />
+          </div>
+          <div class="filtro-grupo">
+            <label for="filtro-nome">Nome do jogo</label>
+            <input
+              class="filtro-input"
+              type="text"
+              id="filtro-nome"
+              placeholder="Buscar por nome..."
+            />
+          </div>
+          <div class="filtro-grupo">
+            <label for="filtro-categoria">Categoria</label>
+            <select class="filtro-select" id="filtro-categoria">
+              <option value="">Todas</option>
+              <option>RPG</option>
+              <option>Ação</option>
+              <option>Puzzle</option>
+              <option>Corrida</option>
+              <option>Aventura</option>
+              <option>Estratégia</option>
+            </select>
+          </div>
+          <div class="filtro-grupo">
+            <button type="submit" class="btn-secundario">
+              <i class="fas fa-filter"></i> Filtrar
+            </button>
+          </div>
+        </form>
+      </div>
+      <table class="adm-tabela">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Categoria</th>
+            <th>Classificação</th>
+            <th>Status</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            data-id="021"
+            data-nome="Void Runners"
+            data-categoria="Corrida"
+            data-classificacao="Livre"
+            data-status="publicado"
+            data-controles="Teclado e Mouse"
+            data-descricao="Corrida futurista em pistas geradas proceduralmente."
+          >
+            <td>021</td>
+            <td>Void Runners</td>
+            <td><span class="badge badge-categoria">Corrida</span></td>
+            <td><span class="badge badge-classificacao">Livre</span></td>
+            <td>
+              <span class="badge badge-sucesso"><i class="fas fa-check"></i> Disponível</span>
+            </td>
+            <td class="tabela-acoes">
+              <button class="btn-acao btn-editar-jogo">Editar</button>
+              <button class="btn-acao-perigo">Excluir</button>
+            </td>
+          </tr>
+          <tr
+            data-id="020"
+            data-nome="Pixel Kingdoms"
+            data-categoria="RPG"
+            data-classificacao="+12"
+            data-status="manutencao"
+            data-controles="Teclado e Mouse"
+            data-descricao="RPG tático em pixel art com batalhas por turno."
+          >
+            <td>020</td>
+            <td>Pixel Kingdoms</td>
+            <td><span class="badge badge-categoria">RPG</span></td>
+            <td><span class="badge badge-classificacao">+12</span></td>
+            <td>
+              <span class="badge badge-aviso"><i class="fas fa-wrench"></i> Manutenção</span>
+            </td>
+            <td class="tabela-acoes">
+              <button class="btn-acao btn-editar-jogo">Editar</button>
+              <button class="btn-acao-perigo">Excluir</button>
+            </td>
+          </tr>
+          <tr
+            data-id="019"
+            data-nome="Fracture Line"
+            data-categoria="Ação"
+            data-classificacao="+16"
+            data-status="rascunho"
+            data-controles="Controle Recomendado"
+            data-descricao="FPS arena com mecânicas de manipulação do tempo."
+          >
+            <td>019</td>
+            <td>Fracture Line</td>
+            <td><span class="badge badge-categoria">Ação</span></td>
+            <td><span class="badge badge-classificacao">+16</span></td>
+            <td>
+              <span class="badge badge-cinza"><i class="fas fa-file-alt"></i> Rascunho</span>
+            </td>
+            <td class="tabela-acoes">
+              <button class="btn-acao btn-editar-jogo">Editar</button>
+              <button class="btn-acao-perigo">Excluir</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="adm-secao form">
+      <h1 class="adm-titulo-pagina">Cadastrar um Jogo</h1>
+      <form [formGroup]="jogosForm" (ngSubmit)="onSubmit()">
+        <div class="input-group">
+          <label for="">Imagem</label>
+          <input type="file" accept=".png,.jpg,jpeg" (change)="onFileChange($event)"  class="input-image"/>
         </div>
-    </section>
-    
-</main>
+        <div class="input-group">
+          <label for="">Nome do Jogo</label>
+          <input type="text" placeholder="Nome" formControlName="name" class="textinput"/>
+        </div>
+        <div class="input-group">
+          <label for="">Descrição do Jogo</label>
+          <input type="text" id=""formControlName="description" class="textinput" placeholder="Descrição">
+        </div>
+        <div class="selects">
+          <div class="input-group">
+            <label for="">Categorias</label>
+            <select name="" id="categoria" formControlName="categoryId">
+              <option value="1">teste</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="">Classificação Indicativa</label>
+            <select name="" id="age" formControlName="ageRating">
+              <option value="Livre">Livre</option>
+              <option value="10+">10+</option>
+              <option value="12+">12+</option>
+              <option value="14+">14+</option>
+              <option value="16+">16+</option>
+              <option value="18+">18+</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="">Controles</label>
+            <select name="" id="controls" formControlName="controls">
+              <option value="Teclado">Teclado</option>
+              <option value="TecladoMouse">Teclado e mouse</option>
+              <option value="Mouse">Mouse</option>
+              <option value="Controle">Controle</option>
+            </select>
+          </div>
+        </div>
+        <div class="input-group">
+          <label for="">URL</label>
+          <input type="text" placeholder="url" formControlName="gameUrl" class="textinput"/>
+        </div>
+        <button type="submit">Cadastrar</button>
+      </form>
+    </div>
+  </main>
+</div>
