@@ -83,77 +83,19 @@
             <th>Nome</th>
             <th>Categoria</th>
             <th>Classificação</th>
-            <th>Status</th>
             <th>Ações</th>
           </tr>
         </thead>
         <tbody>
-          <tr
-            data-id="021"
-            data-nome="Void Runners"
-            data-categoria="Corrida"
-            data-classificacao="Livre"
-            data-status="publicado"
-            data-controles="Teclado e Mouse"
-            data-descricao="Corrida futurista em pistas geradas proceduralmente."
-          >
-            <td>021</td>
-            <td>Void Runners</td>
-            <td><span class="badge badge-categoria">Corrida</span></td>
-            <td><span class="badge badge-classificacao">Livre</span></td>
-            <td>
-              <span class="badge badge-sucesso"><i class="fas fa-check"></i> Disponível</span>
-            </td>
+          <tr *ngFor="let jogo of jogos()">
+            <td>{{jogo.id}}</td>
+            <td>{{jogo.name}}</td>
+            <td><span class="badge badge-categoria">{{jogo.category.name}}</span></td>
+            <td><span class="badge badge-classificacao">{{jogo.ageRating}}</span></td>
             <td class="tabela-acoes">
               <div class="acoes">
-                <button class="btn-acao btn-editar-jogo">Editar</button>
-                <button class="btn-acao-perigo">Excluir</button>
-              </div>
-            </td>
-          </tr>
-          <tr
-            data-id="020"
-            data-nome="Pixel Kingdoms"
-            data-categoria="RPG"
-            data-classificacao="+12"
-            data-status="manutencao"
-            data-controles="Teclado e Mouse"
-            data-descricao="RPG tático em pixel art com batalhas por turno."
-          >
-            <td>020</td>
-            <td>Pixel Kingdoms</td>
-            <td><span class="badge badge-categoria">RPG</span></td>
-            <td><span class="badge badge-classificacao">+12</span></td>
-            <td>
-              <span class="badge badge-aviso"><i class="fas fa-wrench"></i> Manutenção</span>
-            </td>
-            <td class="tabela-acoes">
-              <div class="acoes">
-                <button class="btn-acao btn-editar-jogo">Editar</button>
-                <button class="btn-acao-perigo">Excluir</button>
-              </div>
-            </td>
-          </tr>
-          <tr
-            data-id="019"
-            data-nome="Fracture Line"
-            data-categoria="Ação"
-            data-classificacao="+16"
-            data-status="rascunho"
-            data-controles="Controle Recomendado"
-            data-descricao="FPS arena com mecânicas de manipulação do tempo."
-          >
-            <td>019</td>
-            <td>Fracture Line</td>
-            <td><span class="badge badge-categoria">Ação</span></td>
-            <td><span class="badge badge-classificacao">+16</span></td>
-            <td>
-              <span class="badge badge-cinza"><i class="fas fa-file-alt"></i> Rascunho</span>
-            </td>
-            <td class="tabela-acoes">
-              <div class="acoes">
-                <button class="btn-acao btn-editar-jogo">Editar</button>
-                <button class="btn-acao-perigo">Excluir</button>
+                <button class="btn-acao btn-editar-jogo" (click)="this.editarJogo(jogo.id)">Editar</button>
+                <button class="btn-acao-perigo" (click)="this.deletarJogo(jogo.id)">Excluir</button>
               </div>
             </td>
           </tr>

@@ -110,50 +110,18 @@
             <th>#</th>
             <th>Nome</th>
             <th>Categoria</th>
-            <th>Status</th>
             <th>Ações</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>021</td>
-            <td>Void Runners</td>
-            <td><span class="badge badge-categoria">Corrida</span></td>
-            <td>
-              <span class="badge badge-sucesso"><i class="fas fa-check"></i> Disponível</span>
-            </td>
+          <tr *ngFor="let jogo of jogos()">
+            <td>{{jogo.id}}</td>
+            <td>{{jogo.name}}</td>
+            <td><span class="badge badge-categoria">{{jogo.category.name}}</span></td>
             <td class="tabela-acoes">
               <div class="acoes">
                 <button class="btn-editar-jogo">Editar</button>
-                <button class="btn-acao-perigo">Excluir</button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>020</td>
-            <td>Pixel Kingdoms</td>
-            <td><span class="badge badge-categoria">RPG</span></td>
-            <td>
-              <span class="badge badge-aviso"><i class="fas fa-wrench"></i> Manutenção</span>
-            </td>
-            <td class="tabela-acoes">
-              <div class="acoes">
-                <button class="btn-editar-jogo">Editar</button>
-                <button class="btn-acao-perigo">Excluir</button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>019</td>
-            <td>Fracture Line</td>
-            <td><span class="badge badge-categoria">Ação</span></td>
-            <td>
-              <span class="badge badge-cinza"><i class="fas fa-file-alt"></i> Rascunho</span>
-            </td>
-            <td class="tabela-acoes">
-              <div class="acoes">
-                <button class="btn-editar-jogo">Editar</button>
-                <button class="btn-acao-perigo">Excluir</button>
+                <button class="btn-acao-perigo" (click)="this.deletarJogo(jogo.id)">Excluir</button>
               </div>
             </td>
           </tr>

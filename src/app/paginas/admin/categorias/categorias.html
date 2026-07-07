@@ -37,7 +37,7 @@
             <label for="filtro-id">ID</label>
             <input
               class="filtro-input"
-              type="text"
+              type="number"
               id="filtro-id"
               placeholder="Ex: 04"
               style="min-width: 90px"
@@ -65,67 +65,18 @@
             <tr>
               <th>ID</th>
               <th>Nome</th>
-              <th>Jogos vinculados</th>
-              <th>Status</th>
               <th>Ações</th>
             </tr>
           </thead>
           <tbody>
-            <tr
-              data-id="01"
-              data-nome="RPG"
-              data-descricao="Jogos de interpretação de personagem, com progressão e narrativa."
-              data-status="ativo"
-              data-icone="fa-hat-wizard"
-              data-cor="#8c5cff"
-            >
-              <td>01</td>
-              <td>RPG</td>
-              <td>9</td>
-              <td>
-                <span class="badge badge-sucesso"><i class="fas fa-check"></i> Ativa</span>
-              </td>
+            <tr *ngFor="let categoria of categorias()">
+              <td>{{categoria.id}}</td>
+              <td>{{categoria.name}}</td>
               <td class="tabela-acoes">
-                <button class="btn-acao btn-editar-categoria">Editar</button>
-                <button class="btn-acao-perigo">Excluir</button>
-              </td>
-            </tr>
-            <tr
-              data-id="02"
-              data-nome="Corrida"
-              data-descricao="Jogos de velocidade e competição em pistas ou circuitos."
-              data-status="ativo"
-              data-icone="fa-flag-checkered"
-              data-cor="#22d3c5"
-            >
-              <td>02</td>
-              <td>Corrida</td>
-              <td>5</td>
-              <td>
-                <span class="badge badge-sucesso"><i class="fas fa-check"></i> Ativa</span>
-              </td>
-              <td class="tabela-acoes">
-                <button class="btn-acao btn-editar-categoria">Editar</button>
-                <button class="btn-acao-perigo">Excluir</button>
-              </td>
-            </tr>
-            <tr
-              data-id="03"
-              data-nome="Estratégia"
-              data-descricao="Jogos de planejamento e tomada de decisão tática."
-              data-status="inativo"
-              data-icone="fa-chess"
-              data-cor="#fbbf24"
-            >
-              <td>03</td>
-              <td>Estratégia</td>
-              <td>2</td>
-              <td>
-                <span class="badge badge-cinza"><i class="fas fa-pause"></i> Inativa</span>
-              </td>
-              <td class="tabela-acoes">
-                <button class="btn-acao btn-editar-categoria">Editar</button>
-                <button class="btn-acao-perigo">Excluir</button>
+                <div class="acoes">
+                  <button class="btn-acao btn-editar-categoria">Editar</button>
+                  <button class="btn-acao-perigo" (click)="this.deletarCategoria(categoria.id)">Excluir</button>
+                </div>
               </td>
             </tr>
           </tbody>

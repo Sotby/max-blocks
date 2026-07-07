@@ -338,7 +338,7 @@ th, td{
   color: black;
 }
 .adm-secao.form form .selects option{
-  color: white;
+  color: black;
 }
 .adm-secao.form form button {
   background-color: var(--Cor-secundaria);

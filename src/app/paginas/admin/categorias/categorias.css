@@ -302,7 +302,7 @@ th, td{
   font-weight: bold;
   transition: .3s;
 }
-.btn-editar-jogo{
+.btn-editar-categoria{
   background: rgb(200,100,0);
   color: white;
   border-radius:100px;
@@ -338,7 +338,7 @@ th, td{
   color: black;
 }
 .adm-secao.form form .selects option{
-  color: white;
+  color: black;
 }
 .adm-secao.form form button {
   background-color: var(--Cor-secundaria);
