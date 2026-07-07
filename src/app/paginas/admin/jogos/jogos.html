@@ -28,9 +28,6 @@
         <h1 class="adm-titulo-pagina">Jogos</h1>
         <p class="adm-subtitulo">Gerencie o catálogo de jogos da plataforma</p>
       </div>
-      <button class="btn-primario" id="btn-abrir-novo">
-        <i class="fas fa-plus"></i> Novo jogo
-      </button>
     </div>
 
     <!-- LISTAGEM -->
@@ -45,7 +42,7 @@
             <label for="filtro-id">ID</label>
             <input
               class="filtro-input"
-              type="text"
+              type="number"
               id="filtro-id"
               placeholder="Ex: 021"
               style="min-width: 90px"
@@ -108,8 +105,10 @@
               <span class="badge badge-sucesso"><i class="fas fa-check"></i> Disponível</span>
             </td>
             <td class="tabela-acoes">
-              <button class="btn-acao btn-editar-jogo">Editar</button>
-              <button class="btn-acao-perigo">Excluir</button>
+              <div class="acoes">
+                <button class="btn-acao btn-editar-jogo">Editar</button>
+                <button class="btn-acao-perigo">Excluir</button>
+              </div>
             </td>
           </tr>
           <tr
@@ -129,8 +128,10 @@
               <span class="badge badge-aviso"><i class="fas fa-wrench"></i> Manutenção</span>
             </td>
             <td class="tabela-acoes">
-              <button class="btn-acao btn-editar-jogo">Editar</button>
-              <button class="btn-acao-perigo">Excluir</button>
+              <div class="acoes">
+                <button class="btn-acao btn-editar-jogo">Editar</button>
+                <button class="btn-acao-perigo">Excluir</button>
+              </div>
             </td>
           </tr>
           <tr
@@ -150,8 +151,10 @@
               <span class="badge badge-cinza"><i class="fas fa-file-alt"></i> Rascunho</span>
             </td>
             <td class="tabela-acoes">
-              <button class="btn-acao btn-editar-jogo">Editar</button>
-              <button class="btn-acao-perigo">Excluir</button>
+              <div class="acoes">
+                <button class="btn-acao btn-editar-jogo">Editar</button>
+                <button class="btn-acao-perigo">Excluir</button>
+              </div>
             </td>
           </tr>
         </tbody>

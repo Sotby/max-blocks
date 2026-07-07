@@ -1,161 +1,164 @@
-<main>
-  <div class="adm-app">
-    <!-- SIDEBAR -->
-    <aside class="adm-sidebar">
-      <p class="adm-sidebar-titulo">Menu</p>
-      <a routerLink="/Admin/Geral" class="adm-sidebar-link ativo">
-        <i class="fas fa-chart-line"></i> Visão Geral
-      </a>
-      <a routerLink="/Admin/Jogos" routerLinkActive="ativo" class="adm-sidebar-link"> <i class="fas fa-gamepad"></i> Jogos </a>
-      <a routerLink="/Admin/Categorias" routerLinkActive="ativo" class="adm-sidebar-link">
-        <i class="fas fa-tags"></i> Categorias
-      </a>
+<div class="adm-app">
+  <!-- SIDEBAR -->
+  <aside class="adm-sidebar">
+    <p class="adm-sidebar-titulo">Menu</p>
+    <a routerLink="/Admin/Geral" routerLinkActive="ativo" class="adm-sidebar-link">
+      <i class="fas fa-chart-line"></i> Visão Geral
+    </a>
+    <a routerLink="/Admin/Jogos" routerLinkActive="ativo" class="adm-sidebar-link">
+      <i class="fas fa-gamepad"></i> Jogos
+    </a>
+    <a routerLink="/Admin/Categorias" routerLinkActive="ativo" class="adm-sidebar-link">
+      <i class="fas fa-tags"></i> Categorias
+    </a>
 
-      <p class="adm-sidebar-titulo">Conta</p>
-      <a routerLink="/Perfil" class="adm-sidebar-link"> <i class="fas fa-user-shield"></i> Perfil Admin </a>
-      <button class="adm-sidebar-link" (click)="authservice.logout()">
-        <i class="fas fa-sign-out-alt"></i> Sair
-      </button>
-    </aside>
+    <p class="adm-sidebar-titulo">Conta</p>
+    <a routerLink="/Perfil" class="adm-sidebar-link">
+      <i class="fas fa-user-shield"></i> Perfil Admin
+    </a>
+    <button class="adm-sidebar-link" (click)="authservice.logout()">
+      <i class="fas fa-sign-out-alt"></i> Sair
+    </button>
+  </aside>
 
-    <!-- CONTEÚDO -->
-    <main class="adm-conteudo">
-      <div class="adm-cabecalho-pagina">
-        <div>
-          <h1 class="adm-titulo-pagina">Visão Geral</h1>
-          <p class="adm-subtitulo">Resumo da plataforma hoje</p>
-        </div>
+  <!-- CONTEÚDO -->
+  <main class="adm-conteudo">
+    <div class="adm-cabecalho-pagina">
+      <div>
+        <h1 class="adm-titulo-pagina">Visão Geral</h1>
+        <p class="adm-subtitulo">Resumo da plataforma hoje</p>
+      </div>
+    </div>
+
+    <!-- CARDS DE ESTATÍSTICA -->
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-card-icone roxo"><i class="fas fa-gamepad"></i></div>
+        <span class="stat-card-valor">24</span>
+        <span class="stat-card-label">Jogos cadastrados</span>
+        <span class="stat-card-variacao positivo"><i class="fas fa-arrow-up"></i> +3 este mês</span>
       </div>
 
-      <!-- CARDS DE ESTATÍSTICA -->
-      <div class="stat-grid">
-        <div class="stat-card">
-          <div class="stat-card-icone roxo"><i class="fas fa-gamepad"></i></div>
-          <span class="stat-card-valor">24</span>
-          <span class="stat-card-label">Jogos cadastrados</span>
-          <span class="stat-card-variacao positivo"
-            ><i class="fas fa-arrow-up"></i> +3 este mês</span
-          >
-        </div>
-
-        <div class="stat-card">
-          <div class="stat-card-icone ciano"><i class="fas fa-tags"></i></div>
-          <span class="stat-card-valor">8</span>
-          <span class="stat-card-label">Categorias ativas</span>
-          <span class="stat-card-variacao positivo"
-            ><i class="fas fa-arrow-up"></i> +1 este mês</span
-          >
-        </div>
-
-        <div class="stat-card">
-          <div class="stat-card-icone verde"><i class="fas fa-users"></i></div>
-          <span class="stat-card-valor">3.2k</span>
-          <span class="stat-card-label">Jogadores ativos</span>
-          <span class="stat-card-variacao positivo"
-            ><i class="fas fa-arrow-up"></i> +6% na semana</span
-          >
-        </div>
-
-        <div class="stat-card">
-          <div class="stat-card-icone amarelo"><i class="fas fa-clock"></i></div>
-          <span class="stat-card-valor">9.7k</span>
-          <span class="stat-card-label">Horas jogadas</span>
-          <span class="stat-card-variacao negativo"
-            ><i class="fas fa-arrow-down"></i> -2% na semana</span
-          >
-        </div>
+      <div class="stat-card">
+        <div class="stat-card-icone ciano"><i class="fas fa-tags"></i></div>
+        <span class="stat-card-valor">8</span>
+        <span class="stat-card-label">Categorias ativas</span>
+        <span class="stat-card-variacao positivo"><i class="fas fa-arrow-up"></i> +1 este mês</span>
       </div>
 
-      <!-- GRÁFICO -->
-      <div class="adm-secao">
-        <div class="adm-secao-header">
-          <h2 class="adm-secao-titulo">Acessos por mês (milhares)</h2>
-        </div>
-        <div class="grafico-barras">
-          <div class="barra-item">
-            <div class="barra" style="--altura: 40%"></div>
-            <span class="barra-rotulo">Jan</span>
-          </div>
-          <div class="barra-item">
-            <div class="barra" style="--altura: 55%"></div>
-            <span class="barra-rotulo">Fev</span>
-          </div>
-          <div class="barra-item">
-            <div class="barra" style="--altura: 48%"></div>
-            <span class="barra-rotulo">Mar</span>
-          </div>
-          <div class="barra-item">
-            <div class="barra" style="--altura: 72%"></div>
-            <span class="barra-rotulo">Abr</span>
-          </div>
-          <div class="barra-item">
-            <div class="barra" style="--altura: 90%"></div>
-            <span class="barra-rotulo">Mai</span>
-          </div>
-          <div class="barra-item">
-            <div class="barra" style="--altura: 100%"></div>
-            <span class="barra-rotulo">Jun</span>
-          </div>
-        </div>
+      <div class="stat-card">
+        <div class="stat-card-icone verde"><i class="fas fa-users"></i></div>
+        <span class="stat-card-valor">3.2k</span>
+        <span class="stat-card-label">Jogadores ativos</span>
+        <span class="stat-card-variacao positivo"
+          ><i class="fas fa-arrow-up"></i> +6% na semana</span
+        >
       </div>
 
-      <!-- TABELA DE JOGOS RECENTES -->
-      <div class="adm-secao">
-        <div class="adm-secao-header">
-          <h2 class="adm-secao-titulo">Jogos adicionados recentemente</h2>
-          <a href="jogos.html" class="btn-primario"><i class="fas fa-plus"></i> Novo jogo</a>
-        </div>
+      <div class="stat-card">
+        <div class="stat-card-icone amarelo"><i class="fas fa-clock"></i></div>
+        <span class="stat-card-valor">9.7k</span>
+        <span class="stat-card-label">Horas jogadas</span>
+        <span class="stat-card-variacao negativo"
+          ><i class="fas fa-arrow-down"></i> -2% na semana</span
+        >
+      </div>
+    </div>
 
-        <table class="adm-tabela">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Nome</th>
-              <th>Categoria</th>
-              <th>Status</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>021</td>
-              <td>Void Runners</td>
-              <td><span class="badge badge-categoria">Corrida</span></td>
-              <td>
-                <span class="badge badge-sucesso"><i class="fas fa-check"></i> Disponível</span>
-              </td>
-              <td class="tabela-acoes">
-                <button class="btn-acao">Editar</button>
+    <!-- GRÁFICO -->
+    <div class="adm-secao">
+      <div class="adm-secao-header">
+        <h2 class="adm-secao-titulo">Acessos por mês (milhares)</h2>
+      </div>
+      <div class="grafico-barras">
+        <div class="barra-item">
+          <div class="barra" style="--altura: 40%"></div>
+          <span class="barra-rotulo">Jan</span>
+        </div>
+        <div class="barra-item">
+          <div class="barra" style="--altura: 55%"></div>
+          <span class="barra-rotulo">Fev</span>
+        </div>
+        <div class="barra-item">
+          <div class="barra" style="--altura: 48%"></div>
+          <span class="barra-rotulo">Mar</span>
+        </div>
+        <div class="barra-item">
+          <div class="barra" style="--altura: 72%"></div>
+          <span class="barra-rotulo">Abr</span>
+        </div>
+        <div class="barra-item">
+          <div class="barra" style="--altura: 90%"></div>
+          <span class="barra-rotulo">Mai</span>
+        </div>
+        <div class="barra-item">
+          <div class="barra" style="--altura: 100%"></div>
+          <span class="barra-rotulo">Jun</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TABELA DE JOGOS RECENTES -->
+    <div class="adm-secao">
+      <div class="adm-secao-header">
+        <h2 class="adm-secao-titulo">Jogos adicionados recentemente</h2>
+      </div>
+
+      <table class="adm-tabela">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nome</th>
+            <th>Categoria</th>
+            <th>Status</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>021</td>
+            <td>Void Runners</td>
+            <td><span class="badge badge-categoria">Corrida</span></td>
+            <td>
+              <span class="badge badge-sucesso"><i class="fas fa-check"></i> Disponível</span>
+            </td>
+            <td class="tabela-acoes">
+              <div class="acoes">
+                <button class="btn-editar-jogo">Editar</button>
                 <button class="btn-acao-perigo">Excluir</button>
-              </td>
-            </tr>
-            <tr>
-              <td>020</td>
-              <td>Pixel Kingdoms</td>
-              <td><span class="badge badge-categoria">RPG</span></td>
-              <td>
-                <span class="badge badge-aviso"><i class="fas fa-wrench"></i> Manutenção</span>
-              </td>
-              <td class="tabela-acoes">
-                <button class="btn-acao">Editar</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>020</td>
+            <td>Pixel Kingdoms</td>
+            <td><span class="badge badge-categoria">RPG</span></td>
+            <td>
+              <span class="badge badge-aviso"><i class="fas fa-wrench"></i> Manutenção</span>
+            </td>
+            <td class="tabela-acoes">
+              <div class="acoes">
+                <button class="btn-editar-jogo">Editar</button>
                 <button class="btn-acao-perigo">Excluir</button>
-              </td>
-            </tr>
-            <tr>
-              <td>019</td>
-              <td>Fracture Line</td>
-              <td><span class="badge badge-categoria">Ação</span></td>
-              <td>
-                <span class="badge badge-cinza"><i class="fas fa-file-alt"></i> Rascunho</span>
-              </td>
-              <td class="tabela-acoes">
-                <button class="btn-acao">Editar</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>019</td>
+            <td>Fracture Line</td>
+            <td><span class="badge badge-categoria">Ação</span></td>
+            <td>
+              <span class="badge badge-cinza"><i class="fas fa-file-alt"></i> Rascunho</span>
+            </td>
+            <td class="tabela-acoes">
+              <div class="acoes">
+                <button class="btn-editar-jogo">Editar</button>
                 <button class="btn-acao-perigo">Excluir</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </main>
-  </div>
-</main>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>

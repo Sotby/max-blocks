@@ -2,10 +2,11 @@ import { Component, inject } from '@angular/core';
 import { AuthService } from '../../core/services/auth.service';
 import { NavBar } from "../../componentes/nav-bar/nav-bar";
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-perfil',
-  imports: [NavBar, ReactiveFormsModule],
+  imports: [NavBar, ReactiveFormsModule, RouterLink],
   templateUrl: './perfil.html',
   styleUrl: './perfil.css',
 })

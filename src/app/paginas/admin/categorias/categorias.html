@@ -1,39 +1,35 @@
-<main id="dashboard">
-  <div class="adm-app">
-    <!-- SIDEBAR -->
-    <aside class="adm-sidebar">
-      <p class="adm-sidebar-titulo">Menu</p>
-      <a routerLink="/Admin/Geral" class="adm-sidebar-link ativo">
-        <i class="fas fa-chart-line"></i> Visão Geral
-      </a>
-      <a routerLink="/Admin/Jogos" routerLinkActive="ativo" class="adm-sidebar-link">
-        <i class="fas fa-gamepad"></i> Jogos
-      </a>
-      <a routerLink="/Admin/Categorias" routerLinkActive="ativo" class="adm-sidebar-link">
-        <i class="fas fa-tags"></i> Categorias
-      </a>
+<div class="adm-app">
+  <!-- SIDEBAR -->
+  <aside class="adm-sidebar">
+    <p class="adm-sidebar-titulo">Menu</p>
+    <a routerLink="/Admin/Geral" routerLinkActive="ativo" class="adm-sidebar-link">
+      <i class="fas fa-chart-line"></i> Visão Geral
+    </a>
+    <a routerLink="/Admin/Jogos" routerLinkActive="ativo" class="adm-sidebar-link">
+      <i class="fas fa-gamepad"></i> Jogos
+    </a>
+    <a routerLink="/Admin/Categorias" routerLinkActive="ativo" class="adm-sidebar-link">
+      <i class="fas fa-tags"></i> Categorias
+    </a>
 
-      <p class="adm-sidebar-titulo">Conta</p>
-      <a routerLink="/Perfil" class="adm-sidebar-link">
-        <i class="fas fa-user-shield"></i> Perfil Admin
-      </a>
-      <button class="adm-sidebar-link" (click)="authservice.logout()">
-        <i class="fas fa-sign-out-alt"></i> Sair
-      </button>
-    </aside>
+    <p class="adm-sidebar-titulo">Conta</p>
+    <a routerLink="/Perfil" class="adm-sidebar-link">
+      <i class="fas fa-user-shield"></i> Perfil Admin
+    </a>
+    <button class="adm-sidebar-link" (click)="authservice.logout()">
+      <i class="fas fa-sign-out-alt"></i> Sair
+    </button>
+  </aside>
 
-    <!-- CONTEÚDO -->
-    <main class="adm-conteudo">
-      <div class="adm-cabecalho-pagina">
-        <div>
-          <h1 class="adm-titulo-pagina">Categorias</h1>
-          <p class="adm-subtitulo">Organize os gêneros de jogos da plataforma</p>
-        </div>
-        <button class="btn-primario" id="btn-abrir-nova">
-          <i class="fas fa-plus"></i> Nova categoria
-        </button>
+  <!-- CONTEÚDO -->
+  <main class="adm-conteudo">
+    <div class="adm-cabecalho-pagina">
+      <div>
+        <h1 class="adm-titulo-pagina">Categorias</h1>
+        <p class="adm-subtitulo">Organize os gêneros de jogos da plataforma</p>
       </div>
-
+    </div>
+    <div class="tabela">
       <!-- FILTROS -->
       <div class="adm-secao">
         <form class="filtros-barra" id="form-filtros">
@@ -63,13 +59,7 @@
           </div>
         </form>
       </div>
-
-      <!-- LISTAGEM -->
       <div class="adm-secao">
-        <div class="adm-secao-header">
-          <h2 class="adm-secao-titulo">Categorias cadastradas</h2>
-        </div>
-
         <table class="adm-tabela">
           <thead>
             <tr>
@@ -141,6 +131,36 @@
           </tbody>
         </table>
       </div>
-    </main>
-  </div>
-</main>
+    </div>
+
+    <!-- LISTAGEM -->
+
+    <div class="adm-secao form">
+      <h1 class="adm-titulo-pagina">Cadastrar Categoria</h1>
+
+      <form [formGroup]="categoriaform" (ngSubmit)="onSubmit()">
+        <div class="input-group">
+          <label>Imagem da Categoria</label>
+          <input
+            type="file"
+            accept=".png,.jpg,.jpeg"
+            class="input-image"
+            (change)="onFileChange($event)"
+          />
+        </div>
+
+        <div class="input-group">
+          <label>Nome da Categoria</label>
+          <input
+            type="text"
+            class="textinput"
+            formControlName="name"
+            placeholder="Nome da categoria"
+          />
+        </div>
+
+        <button type="submit">Cadastrar</button>
+      </form>
+    </div>
+  </main>
+</div>
