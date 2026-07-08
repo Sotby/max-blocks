@@ -48,29 +48,96 @@ main{
     background: var(--Cor-primaria);
     cursor: pointer;
 }
-#games{
-    display: grid;
-    grid-template-columns: repeat(auto-fill,220px);
-    grid-auto-rows: 240px;
-    gap: 10px;
-    padding: 20px;
+.game-container{
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    color: white;
 }
-#games > div:first-of-type{
-    grid-column: span 2;
-    grid-row: span 2;
-}
-#games .jogo-card{
-    background-color: #333;
-    border-radius: 10px;
+.game{
+    background: radial-gradient(rgb(60,60,60),rgb(20,20,20));
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 10px 2px var(--Cor-terciaria);
+    border: solid 1px var(--Cor-primaria);
+    border-radius: 10px;
+    width: 500px;
     transition: all ease .5s;
+    overflow: hidden;
 }
-#games .jogo-card a{
-    outline: none;
-}
-#games .jogo-card:hover, #games .jogo-card:focus-within{
-    box-shadow: 0 5px 10px 0 var(--Cor-secundaria);
+.game:hover{
     transform: translateY(-5px);
+    box-shadow: 0 4px 10px 8px var(--Cor-terciaria);
+}
+.game-image{
+    height: 300px;
+}
+.game-image-container{
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.game-ageRating{
+    position: absolute;
+    background-color: rgba(20,20,20,0.5);
+    padding: 8px 10px;
+    border-radius: 0 0 10px 10px;
+    color: var(--Cor-secundaria);
+    top: 0;
+    right: 20px;
+}
+.game-text-container{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.game-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 20px;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.game-name{
+    width: 50%;
+    text-align: left;
+}
+.game-like-icon{
+    color: var(--Cor-secundaria);
+}
+.game-data-container{
+    background-color: var(--Cor-primaria);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+}
+.game-category{
+    background-color:#333;
+    border-radius: 100px;
+    padding: 8px 20px;
+}
+.game-mapping{
+    background-color: #333;
+    border-radius: 100px;
+    padding: 8px 20px;
+    color: var(--Cor-secundaria);
+    text-transform: uppercase;
+}
+.game-mapping-data{
+    color: white;
+}
+
+.game-play{
+    background-color: var(--Cor-primaria);
+    padding: 10px 0;
+    cursor: pointer;
+    font-weight: 700;
 }

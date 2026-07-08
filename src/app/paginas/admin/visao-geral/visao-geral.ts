@@ -3,10 +3,11 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 import { DashboardJogosService } from '../../../core/services/dashboard.jogos.service';
 import { CommonModule } from '@angular/common';
+import { AdminSidebar } from "../../../componentes/admin-sidebar/admin-sidebar";
 
 @Component({
   selector: 'app-visao-geral',
-  imports: [RouterLink, RouterLinkActive, CommonModule],
+  imports: [RouterLink, RouterLinkActive, CommonModule, AdminSidebar],
   templateUrl: './visao-geral.html',
   styleUrl: './visao-geral.css',
 })
@@ -20,7 +21,7 @@ export class VisaoGeral implements OnInit {
   getJogos() {
     this.jogosService.getALL().subscribe({
       next: (dados) => {
-        this.jogos.set(dados.data);
+        this.jogos.set(dados.data.sort((a: any,b: any) => a.id - b.id));
         console.log('Dados Recebidos:', dados);
       },
       error: (erro) => {

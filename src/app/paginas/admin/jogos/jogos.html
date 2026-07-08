@@ -1,26 +1,5 @@
 <div class="adm-app">
-  <!-- SIDEBAR -->
-  <aside class="adm-sidebar">
-    <p class="adm-sidebar-titulo">Menu</p>
-    <a routerLink="/Admin/Geral" routerLinkActive="ativo" class="adm-sidebar-link">
-      <i class="fas fa-chart-line"></i> Visão Geral
-    </a>
-    <a routerLink="/Admin/Jogos" routerLinkActive="ativo" class="adm-sidebar-link">
-      <i class="fas fa-gamepad"></i> Jogos
-    </a>
-    <a routerLink="/Admin/Categorias" routerLinkActive="ativo" class="adm-sidebar-link">
-      <i class="fas fa-tags"></i> Categorias
-    </a>
-
-    <p class="adm-sidebar-titulo">Conta</p>
-    <a routerLink="/Perfil" class="adm-sidebar-link">
-      <i class="fas fa-user-shield"></i> Perfil Admin
-    </a>
-    <button class="adm-sidebar-link" (click)="authservice.logout()">
-      <i class="fas fa-sign-out-alt"></i> Sair
-    </button>
-  </aside>
-
+  <app-admin-sidebar></app-admin-sidebar>
   <!-- CONTEÚDO -->
   <main class="adm-conteudo">
     <div class="adm-cabecalho-pagina">
@@ -76,31 +55,33 @@
           </div>
         </form>
       </div>
-      <table class="adm-tabela">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Categoria</th>
-            <th>Classificação</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let jogo of jogos()">
-            <td>{{jogo.id}}</td>
-            <td>{{jogo.name}}</td>
-            <td><span class="badge badge-categoria">{{jogo.category.name}}</span></td>
-            <td><span class="badge badge-classificacao">{{jogo.ageRating}}</span></td>
-            <td class="tabela-acoes">
-              <div class="acoes">
-                <button class="btn-acao btn-editar-jogo" (click)="this.editarJogo(jogo.id)">Editar</button>
-                <button class="btn-acao-perigo" (click)="this.deletarJogo(jogo.id)">Excluir</button>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="container-tabela">
+        <table class="adm-tabela">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Categoria</th>
+              <th>Classificação</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let jogo of jogos()">
+              <td>{{jogo.id}}</td>
+              <td>{{jogo.name}}</td>
+              <td><span class="badge badge-categoria">{{jogo.category.name}}</span></td>
+              <td><span class="badge badge-classificacao">{{jogo.ageRating}}</span></td>
+              <td class="tabela-acoes">
+                <div class="acoes">
+                  <button class="btn-acao btn-editar-jogo" (click)="this.editarJogo(jogo.id)">Editar</button>
+                  <button class="btn-acao-perigo" (click)="this.deletarJogo(jogo.id)">Excluir</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     <div class="adm-secao form">
       <h1 class="adm-titulo-pagina">Cadastrar um Jogo</h1>
@@ -119,9 +100,9 @@
         </div>
         <div class="selects">
           <div class="input-group">
-            <label for="">Categorias</label>
+            <label for="">Categorias</label> 
             <select name="" id="categoria" formControlName="categoryId">
-              <option value="1">teste</option>
+              <option *ngFor="let categoria of categorias()" value="{{categoria.id}}">{{categoria.name}}</option>
             </select>
           </div>
           <div class="input-group">

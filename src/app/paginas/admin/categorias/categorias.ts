@@ -4,10 +4,11 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DashboardCategoriasService } from '../../../core/services/dashboard.categorias.service';
 import { CommonModule } from '@angular/common';
+import { AdminSidebar } from "../../../componentes/admin-sidebar/admin-sidebar";
 
 @Component({
   selector: 'app-categorias',
-  imports: [RouterLink, ReactiveFormsModule, RouterLinkActive, CommonModule],
+  imports: [RouterLink, ReactiveFormsModule, RouterLinkActive, CommonModule, AdminSidebar],
   templateUrl: './categorias.html',
   styleUrl: './categorias.css',
 })
@@ -22,7 +23,7 @@ export class Categorias implements OnInit{
   getCategorias(){
     this.categoriasService.getALL().subscribe({
       next: (dados) => {
-        this.categorias.set(dados.data)
+        this.categorias.set(dados.data.sort((a:any,b:any) => a.id - b.id))
         console.log('Dados Recebidos:',dados)
       },
       error: (erro) => {

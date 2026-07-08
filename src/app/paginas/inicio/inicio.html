@@ -1,184 +1,83 @@
 <app-nav-bar></app-nav-bar>
 <main>
-    <section id="banner">
+  <section id="banner">
+    <div class="title">
         <h1>Jogos populares da semana</h1>
         <div class="divisoria"></div>
-        <div class="lista-jogos-slider">
-            <a href="#">
-                <div class="jogo">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfJRN0wDxC-XXrwj_ppCsndY12HlwyKmED3T3ndff76w-SADcWH7STFEvo&s=10" alt="Jogo 1">
-                    <h3>Jogo 1</h3>
-                </div>
-            </a>
-            <a href="#">
-                <div class="jogo">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfJRN0wDxC-XXrwj_ppCsndY12HlwyKmED3T3ndff76w-SADcWH7STFEvo&s=10" alt="Jogo 1">
-                    <h3>Jogo 2</h3>
-                </div>
-            </a>
-            <a href="#">
-                <div class="jogo">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfJRN0wDxC-XXrwj_ppCsndY12HlwyKmED3T3ndff76w-SADcWH7STFEvo&s=10" alt="Jogo 1">
-                    <h3>Jogo 3</h3>
-                </div>
-            </a>
+    </div>
+    <div class="game-container">
+      <div class="game" *ngFor="let jogo of topjogos()">
+        <div class="game-image-container">
+            <img [src]="jogo.image_url" alt="" class="game-image" />
+            <span class="game-ageRating">{{jogo.ageRating}}</span>
         </div>
-    </section>
-    <section id="jogos-por-categoria">
-        <h1>Categorias Populares</h1>
-        <div class="categoria">
-            <div class="titulo">
-                <span>FPS</span>
-                <div class="barra"></div>
-            </div>
-            <div class="lista-jogos">
-                <a href="#">
-                    <div class="jogo">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfJRN0wDxC-XXrwj_ppCsndY12HlwyKmED3T3ndff76w-SADcWH7STFEvo&s=10" alt="" {Jogo 1}="">
-                        <h3>Jogo 1</h3>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="jogo">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfJRN0wDxC-XXrwj_ppCsndY12HlwyKmED3T3ndff76w-SADcWH7STFEvo&s=10" alt="" {Jogo 2}="">
-                        <h3>Jogo 2</h3>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="jogo">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfJRN0wDxC-XXrwj_ppCsndY12HlwyKmED3T3ndff76w-SADcWH7STFEvo&s=10" alt="" {Jogo 3}="">
-                        <h3>Jogo 3</h3>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="jogo">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfJRN0wDxC-XXrwj_ppCsndY12HlwyKmED3T3ndff76w-SADcWH7STFEvo&s=10" alt="" {Jogo 4}="">
-                        <h3>Jogo 4</h3>
-                    </div>
-                </a>
-            </div>
+        <div class="game-text-container">
+            <div class="game-title">
+                <span class="game-name">{{jogo.name}}</span>
+                <span class="game-likes">
+                  <button class="game-like-icon">
+                    <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                  </button>
+                  {{jogo.likesCount}}
+                </span>
+              </div>
+              <div class="game-data-container">
+                <span class="game-category">
+                    {{jogo.category.name}}
+                </span>
+                <span class="game-mapping">
+                    Controles:
+                    <span class="game-mapping-data">{{jogo.controls}}</span>
+                </span>
+              </div>
+              <p class="game-descricao">
+                {{jogo.description}}
+              </p>
         </div>
-        <div class="categoria">
-            <div class="titulo">
-                <span>Plataforma</span>
-                <div class="barra"></div>
+        <button class="game-play">Jogar</button>
+      </div>
+    </div>
+  </section>
+  <section id="jogos-por-categoria">
+    <div class="categoria" *ngFor="let categoria of categorias()">
+      <div class="titulo">
+        <span>{{categoria.name}}</span>
+        <div class="barra"></div>
+      </div>
+      <div class="lista-jogos">
+        <div class="game-container">
+          <div class="game" *ngFor="let jogo of getGamesPerCategory(categoria.id)">
+            <div class="game-image-container">
+                <img [src]="jogo.image_url" alt="" class="game-image" />
+                <span class="game-ageRating">{{jogo.ageRating}}</span>
             </div>
-            <div class="lista-jogos">
-                <a href="#">
-                    <div class="jogo">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfJRN0wDxC-XXrwj_ppCsndY12HlwyKmED3T3ndff76w-SADcWH7STFEvo&s=10" alt="" {Jogo 1}="">
-                        <h3>Jogo 1</h3>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="jogo">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfJRN0wDxC-XXrwj_ppCsndY12HlwyKmED3T3ndff76w-SADcWH7STFEvo&s=10" alt="" {Jogo 2}="">
-                        <h3>Jogo 2</h3>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="jogo">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfJRN0wDxC-XXrwj_ppCsndY12HlwyKmED3T3ndff76w-SADcWH7STFEvo&s=10" alt="" {Jogo 3}="">
-                        <h3>Jogo 3</h3>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="jogo">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfJRN0wDxC-XXrwj_ppCsndY12HlwyKmED3T3ndff76w-SADcWH7STFEvo&s=10" alt="" {Jogo 4}="">
-                        <h3>Jogo 4</h3>
-                    </div>
-                </a>
+            <div class="game-text-container">
+                <div class="game-title">
+                    <span class="game-name">{{jogo.name}}</span>
+                    <span class="game-likes">
+                      <button class="game-like-icon">
+                        <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                      </button>
+                      {{jogo.likesCount}}
+                    </span>
+                  </div>
+                  <div class="game-data-container">
+                    <span class="game-category">
+                        {{jogo.category.name}}
+                    </span>
+                    <span class="game-mapping">
+                        Controles:
+                        <span class="game-mapping-data">{{jogo.controls}}</span>
+                    </span>
+                  </div>
+                  <p class="game-descricao">
+                    {{jogo.description}}
+                  </p>
             </div>
+            <button class="game-play">Jogar</button>
+          </div>
         </div>
-        <div class="categoria">
-            <div class="titulo">
-                <span>Estratégia</span>
-                <div class="barra"></div>
-            </div>
-            <div class="lista-jogos">
-                <a href="#">
-                    <div class="jogo">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfJRN0wDxC-XXrwj_ppCsndY12HlwyKmED3T3ndff76w-SADcWH7STFEvo&s=10" alt="" {Jogo 1}="">
-                        <h3>Jogo 1</h3>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="jogo">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfJRN0wDxC-XXrwj_ppCsndY12HlwyKmED3T3ndff76w-SADcWH7STFEvo&s=10" alt="" {Jogo 2}="">
-                        <h3>Jogo 2</h3>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="jogo">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfJRN0wDxC-XXrwj_ppCsndY12HlwyKmED3T3ndff76w-SADcWH7STFEvo&s=10" alt="" {Jogo 3}="">
-                        <h3>Jogo 3</h3>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="categoria">
-            <div class="titulo">
-                <span>Sobrevivência</span>
-                <div class="barra"></div>
-            </div>
-            <div class="lista-jogos">
-                <a href="#">
-                    <div class="jogo">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfJRN0wDxC-XXrwj_ppCsndY12HlwyKmED3T3ndff76w-SADcWH7STFEvo&s=10" alt="" {Jogo 1}="">
-                        <h3>Jogo 1</h3>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="jogo">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfJRN0wDxC-XXrwj_ppCsndY12HlwyKmED3T3ndff76w-SADcWH7STFEvo&s=10" alt="" {Jogo 2}="">
-                        <h3>Jogo 2</h3>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="jogo">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfJRN0wDxC-XXrwj_ppCsndY12HlwyKmED3T3ndff76w-SADcWH7STFEvo&s=10" alt="" {Jogo 3}="">
-                        <h3>Jogo 3</h3>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="jogo">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfJRN0wDxC-XXrwj_ppCsndY12HlwyKmED3T3ndff76w-SADcWH7STFEvo&s=10" alt="" {Jogo 4}="">
-                        <h3>Jogo 4</h3>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="categoria">
-            <div class="titulo">
-                <span>Puzzles</span>
-                <div class="barra"></div>
-            </div>
-            <div class="lista-jogos">
-                <a href="#">
-                    <div class="jogo">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfJRN0wDxC-XXrwj_ppCsndY12HlwyKmED3T3ndff76w-SADcWH7STFEvo&s=10" alt="" {Jogo 1}="">
-                        <h3>Jogo 1</h3>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="jogo">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfJRN0wDxC-XXrwj_ppCsndY12HlwyKmED3T3ndff76w-SADcWH7STFEvo&s=10" alt="" {Jogo 2}="">
-                        <h3>Jogo 2</h3>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="jogo">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfJRN0wDxC-XXrwj_ppCsndY12HlwyKmED3T3ndff76w-SADcWH7STFEvo&s=10" alt="" {Jogo 3}="">
-                        <h3>Jogo 3</h3>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="jogo">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfJRN0wDxC-XXrwj_ppCsndY12HlwyKmED3T3ndff76w-SADcWH7STFEvo&s=10" alt="" {Jogo 4}="">
-                        <h3>Jogo 4</h3>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
+      </div>
+    </div>
+  </section>
 </main>

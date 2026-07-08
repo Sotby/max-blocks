@@ -8,103 +8,43 @@
             </button>
         </div>
         <div class="filters">
-            <button>Ação</button>
-            <button>Aventura</button>
-            <button>FPS</button>
-            <button>Puzzles</button>
-            <button>Plataforma</button>
+            <select name="" id="">
+                <option *ngFor="let categoria of categorias()" value="{{categoria.id}}">{{categoria.name}}</option>
+            </select>
         </div>
     </section>
     <section id="games">
-        <div class="jogo-card">
-            <a href="#">
-                <img src="" alt="">
-                <p>Jogo000</p>
-            </a>
-        </div>
-        <div class="jogo-card">
-            <a href="#">
-                <img src="" alt="">
-                <p>Jogo1</p>
-            </a>
-        </div>
-        <div class="jogo-card">
-            <a href="#">
-                <img src="" alt="">
-                <p>Jogo1</p>
-            </a>
-        </div>
-        <div class="jogo-card">
-            <a href="#">
-                <img src="" alt="">
-                <p>Jogo1</p>
-            </a>
-        </div>
-        <div class="jogo-card">
-            <a href="#">
-                <img src="" alt="">
-                <p>Jogo1</p>
-            </a>
-        </div>
-        <div class="jogo-card">
-            <a href="#">
-                <img src="" alt="">
-                <p>Jogo1</p>
-            </a>
-        </div>
-        <div class="jogo-card">
-            <a href="#">
-                <img src="" alt="">
-                <p>Jogo1</p>
-            </a>
-        </div>
-        <div class="jogo-card">
-            <a href="#">
-                <img src="" alt="">
-                <p>Jogo1</p>
-            </a>
-        </div>
-        <div class="jogo-card">
-            <a href="#">
-                <img src="" alt="">
-                <p>Jogo1</p>
-            </a>
-        </div>
-        <div class="jogo-card">
-            <a href="#">
-                <img src="" alt="">
-                <p>Jogo1</p>
-            </a>
-        </div>
-        <div class="jogo-card">
-            <a href="#">
-                <img src="" alt="">
-                <p>Jogo1</p>
-            </a>
-        </div>
-        <div class="jogo-card">
-            <a href="#">
-                <img src="" alt="">
-                <p>Jogo1</p>
-            </a>
-        </div>
-        <div class="jogo-card">
-            <a href="#">
-                <img src="" alt="">
-                <p>Jogo1</p>
-            </a>
-        </div>
-        <div class="jogo-card">
-            <a href="#">
-                <img src="" alt="">
-                <p>Jogo1</p>
-            </a>
-        </div>
-        <div class="jogo-card">
-            <a href="#">
-                <img src="" alt="">
-                <p>Jogo1</p>
-            </a>
-        </div>
+        <div class="game-container">
+            <div class="game" *ngFor="let jogo of jogos()">
+              <div class="game-image-container">
+                  <img [src]="jogo.image_url" alt="" class="game-image" />
+                  <span class="game-ageRating">{{jogo.ageRating}}</span>
+              </div>
+              <div class="game-text-container">
+                  <div class="game-title">
+                      <span class="game-name">{{jogo.name}}</span>
+                      <span class="game-likes">
+                        <button class="game-like-icon">
+                          <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                        </button>
+                        {{jogo.likesCount}}
+                      </span>
+                    </div>
+                    <div class="game-data-container">
+                      <span class="game-category">
+                          {{jogo.category.name}}
+                      </span>
+                      <span class="game-mapping">
+                          Controles:
+                          <span class="game-mapping-data">{{jogo.controls}}</span>
+                      </span>
+                    </div>
+                    <p class="game-descricao">
+                      {{jogo.description}}
+                    </p>
+              </div>
+              <button class="game-play">Jogar</button>
+            </div>
+          </div>
     </section>
 </main>

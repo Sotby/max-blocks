@@ -1,0 +1,21 @@
+<aside class="adm-sidebar">
+  <a routerLink="/Inicio" class="logo">Max<span class="logo-block">Block</span></a>
+  <p class="adm-sidebar-titulo">Menu</p>
+  <a routerLink="/Admin/Geral" routerLinkActive="ativo" class="adm-sidebar-link">
+    <i class="fas fa-chart-line"></i> Visão Geral
+  </a>
+  <a routerLink="/Admin/Jogos" routerLinkActive="ativo" class="adm-sidebar-link">
+    <i class="fas fa-gamepad"></i> Jogos
+  </a>
+  <a routerLink="/Admin/Categorias" routerLinkActive="ativo" class="adm-sidebar-link">
+    <i class="fas fa-tags"></i> Categorias
+  </a>
+
+  <p class="adm-sidebar-titulo">Conta</p>
+  <a routerLink="/Perfil" class="adm-sidebar-link">
+    <i class="fas fa-user-shield"></i> Perfil Admin
+  </a>
+  <button class="adm-sidebar-link" (click)="authservice.logout()">
+    <i class="fas fa-sign-out-alt"></i> Sair
+  </button>
+</aside>

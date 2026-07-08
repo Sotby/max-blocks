@@ -4,21 +4,26 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DashboardJogosService } from '../../../core/services/dashboard.jogos.service';
 import { CommonModule } from '@angular/common';
+import { AdminSidebar } from "../../../componentes/admin-sidebar/admin-sidebar";
+import { DashboardCategoriasService } from '../../../core/services/dashboard.categorias.service';
 
 @Component({
   selector: 'app-jogos',
-  imports: [RouterLink, RouterLinkActive, ReactiveFormsModule, CommonModule],
+  imports: [RouterLink, RouterLinkActive, ReactiveFormsModule, CommonModule, AdminSidebar],
   templateUrl: './jogos.html',
   styleUrl: './jogos.css',
 })
 export class Jogos implements OnInit{
   authservice = inject(AuthService)
   jogoservice = inject(DashboardJogosService)
+  categoryservice = inject(DashboardCategoriasService)
   imagemselecionada: File | null = null
   idEditando: number | null = null
-  jogos = signal<Jogo[]>([])
+  jogos = signal<any[]>([])
+  categorias = signal<any[]>([])
   ngOnInit(): void {
     this.getJogos();
+    this.getCategory()
   }
   jogosForm = new FormGroup({
     name: new FormControl('',[Validators.required]),
@@ -43,25 +48,16 @@ export class Jogos implements OnInit{
     if(this.imagemselecionada) {
       formData.append("image", this.imagemselecionada)
     }
-    if(this.idEditando !== null){
-      this.jogoservice.cadastrar(formData).subscribe({
+    this.jogoservice.cadastrar(formData).subscribe({
         next: () => {
           alert("Publicado com sucesso!")
         }
-      })
-    }
-    else{
-      this.jogoservice.updateGame(formData, this.idEditando).subscribe({
-        next: () => {
-          alert("Jogo alterado com sucesso!")
-        }
-      })
-    }
+    })
   }
   getJogos() {
     this.jogoservice.getALL().subscribe({
       next: (dados) => {
-        this.jogos.set(dados.data);
+        this.jogos.set(dados.data.sort((a:any,b:any) => a.id - b.id));
         console.log('Dados Recebidos:', dados);
       },
       error: (erro) => {
@@ -102,15 +98,13 @@ export class Jogos implements OnInit{
       }
     })
   }
+  getCategory(){
+    this.categoryservice.getALL().subscribe({
+      next: (dados) =>{
+        this.categorias.set(dados.data)
+        console.log("Dados das categorias recebidos:", dados)
+      }
+    })
+  }
 }
-export interface Jogo {
-  id: number;
-  name: string;
-  ageRating: string;
-  controls:string;
-  gameURl: URL;
-  category: {
-    id: number
-    name: string;
-  };
-}
+
