@@ -4,6 +4,7 @@
 }
 main{
     background: radial-gradient(var(--Cor-primaria),rgb(20,20,20));
+    min-height: 100vh;
 }
 #banner{
     display: flex;
@@ -93,6 +94,7 @@ main{
     background: radial-gradient(rgb(60,60,60),rgb(20,20,20));
     display: flex;
     flex-direction: column;
+    justify-content: end;
     gap: 8px;
     box-shadow: 0 4px 10px 2px var(--Cor-terciaria);
     border: solid 1px var(--Cor-primaria);
@@ -144,6 +146,13 @@ main{
     text-align: left;
 }
 .game-like-icon{
+    color: var(--Cor-primaria);
+    cursor: pointer;
+}
+.game-like-icon:active{
+    opacity: 0.8;
+}
+.curtido{
     color: var(--Cor-secundaria);
 }
 .game-data-container{

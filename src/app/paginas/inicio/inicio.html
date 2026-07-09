@@ -15,7 +15,7 @@
             <div class="game-title">
                 <span class="game-name">{{jogo.name}}</span>
                 <span class="game-likes">
-                  <button class="game-like-icon">
+                  <button class="game-like-icon" [class.curtido]="isLiked(jogo.id)" (click)="gameFeedback(jogo.id)">
                     <i class="fa fa-thumbs-up" aria-hidden="true"></i>
                   </button>
                   {{jogo.likesCount}}
@@ -55,7 +55,7 @@
                 <div class="game-title">
                     <span class="game-name">{{jogo.name}}</span>
                     <span class="game-likes">
-                      <button class="game-like-icon">
+                      <button class="game-like-icon" [class.curtido]="isLiked(jogo.id)" (click)="gameFeedback(jogo.id)">
                         <i class="fa fa-thumbs-up" aria-hidden="true"></i>
                       </button>
                       {{jogo.likesCount}}

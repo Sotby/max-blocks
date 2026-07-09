@@ -7,7 +7,7 @@ import { AdminSidebar } from "../../../componentes/admin-sidebar/admin-sidebar";
 
 @Component({
   selector: 'app-visao-geral',
-  imports: [RouterLink, RouterLinkActive, CommonModule, AdminSidebar],
+  imports: [CommonModule, AdminSidebar, RouterLink],
   templateUrl: './visao-geral.html',
   styleUrl: './visao-geral.css',
 })
@@ -21,7 +21,7 @@ export class VisaoGeral implements OnInit {
   getJogos() {
     this.jogosService.getALL().subscribe({
       next: (dados) => {
-        this.jogos.set(dados.data.sort((a: any,b: any) => a.id - b.id));
+        this.jogos.set(dados.data.sort((a: any,b: any) => a.updatedAt - b.updatedAt));
         console.log('Dados Recebidos:', dados);
       },
       error: (erro) => {

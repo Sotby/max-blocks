@@ -1,29 +1,52 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { AuthService } from '../../../core/services/auth.service';
-import { RouterLink, RouterLinkActive } from '@angular/router';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ActivatedRoute, Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { FormControl, FormControlName, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DashboardCategoriasService } from '../../../core/services/dashboard.categorias.service';
 import { CommonModule } from '@angular/common';
 import { AdminSidebar } from "../../../componentes/admin-sidebar/admin-sidebar";
 
 @Component({
   selector: 'app-categorias',
-  imports: [RouterLink, ReactiveFormsModule, RouterLinkActive, CommonModule, AdminSidebar],
+  imports: [ReactiveFormsModule, CommonModule, AdminSidebar, RouterLink],
   templateUrl: './categorias.html',
   styleUrl: './categorias.css',
 })
 export class Categorias implements OnInit{
   authservice = inject(AuthService)
-  imagemselecionada: File | null = null
   categoriasService  = inject(DashboardCategoriasService)
-  categorias = signal<Cat[]>([])
+  activatedRoute = inject(ActivatedRoute)
+  router = inject(Router)
+  imagemselecionada: File | null = null
+  id: any
+  categorias = signal<any[]>([])
+  categoriasFiltradas = signal<any[]>([])
+  filterForm = new FormGroup({
+    categoryId : new FormControl(''),
+    categoryName: new FormControl('')
+  })
   ngOnInit(): void {
     this.getCategorias()
+    this.filterForm.valueChanges.subscribe(() => {
+      this.filtarCategoria();
+    });
+    this.id = this.activatedRoute.snapshot.paramMap.get('id');
+    if(this.id){
+      this.categoriasService.getID(this.id).subscribe({
+        next: (res) => {
+          this.categoriaform.patchValue({
+            name: res.data.name
+          })
+        }
+      })
+    }
+    
   }
   getCategorias(){
     this.categoriasService.getALL().subscribe({
       next: (dados) => {
         this.categorias.set(dados.data.sort((a:any,b:any) => a.id - b.id))
+        this.categoriasFiltradas.set(this.categorias())
         console.log('Dados Recebidos:',dados)
       },
       error: (erro) => {
@@ -60,15 +83,33 @@ export class Categorias implements OnInit{
     if(this.imagemselecionada) {
       formData.append("image", this.imagemselecionada)
     }
-
-    this.categoriasService.cadastrarCategoria(formData).subscribe({
-      next: () => {
-        alert("Publicado com sucesso!")
-      }
-    })
+    if(this.id){
+      this.categoriasService.atualizarCategoria(formData, this.id).subscribe({
+        next: (res) => {
+          alert('Atualização Realizada')
+          this.router.navigate(['/Admin/Categorias'])
+        }
+      })
+    } else{
+      this.categoriasService.cadastrarCategoria(formData).subscribe({
+        next: () => {
+          alert("Publicado com sucesso!")
+          this.categoriaform.reset();
+          this.imagemselecionada = null;
+          this.getCategorias();
+        }
+      })
+    }
   }
-}
-export interface Cat{
-  id: number
-  name: string
+  filtarCategoria(){
+    const {categoryId, categoryName} = this.filterForm.value
+    let categorias = this.categorias()
+    if(categoryId){
+      categorias = categorias.filter(categoria => categoria.id == categoryId)
+    }
+    if(categoryName?.trim()){
+      categorias = categorias.filter(categoria => categoria.name.toLowerCase().includes(categoryName.toLowerCase()))
+    }
+    this.categoriasFiltradas.set(categorias)
+  }
 }

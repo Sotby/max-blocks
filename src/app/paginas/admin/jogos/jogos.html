@@ -16,7 +16,7 @@
       </div>
       <!-- FILTROS -->
       <div class="adm-secao tabela">
-        <form class="filtros-barra" id="form-filtros">
+        <form class="filtros-barra" id="form-filtros" [formGroup]="filterForm">
           <div class="filtro-grupo">
             <label for="filtro-id">ID</label>
             <input
@@ -25,6 +25,7 @@
               id="filtro-id"
               placeholder="Ex: 021"
               style="min-width: 90px"
+              formControlName="gameId"
             />
           </div>
           <div class="filtro-grupo">
@@ -34,18 +35,14 @@
               type="text"
               id="filtro-nome"
               placeholder="Buscar por nome..."
+              formControlName="gameName"
             />
           </div>
           <div class="filtro-grupo">
             <label for="filtro-categoria">Categoria</label>
-            <select class="filtro-select" id="filtro-categoria">
+            <select class="filtro-select" id="filtro-categoria" formControlName="categoryId">
               <option value="">Todas</option>
-              <option>RPG</option>
-              <option>Ação</option>
-              <option>Puzzle</option>
-              <option>Corrida</option>
-              <option>Aventura</option>
-              <option>Estratégia</option>
+              <option value="{{categoria.id}}" *ngFor="let categoria of categorias()">{{categoria.name}}</option>
             </select>
           </div>
           <div class="filtro-grupo">
@@ -67,14 +64,14 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let jogo of jogos()">
+            <tr *ngFor="let jogo of jogosFiltrados()">
               <td>{{jogo.id}}</td>
               <td>{{jogo.name}}</td>
               <td><span class="badge badge-categoria">{{jogo.category.name}}</span></td>
               <td><span class="badge badge-classificacao">{{jogo.ageRating}}</span></td>
               <td class="tabela-acoes">
                 <div class="acoes">
-                  <button class="btn-acao btn-editar-jogo" (click)="this.editarJogo(jogo.id)">Editar</button>
+                  <a class="btn-acao btn-editar-jogo" routerLink="/Admin/Jogos/Editar/{{jogo.id}}">Editar</a>
                   <button class="btn-acao-perigo" (click)="this.deletarJogo(jogo.id)">Excluir</button>
                 </div>
               </td>
@@ -84,7 +81,7 @@
       </div>
     </div>
     <div class="adm-secao form">
-      <h1 class="adm-titulo-pagina">Cadastrar um Jogo</h1>
+      <h1 class="adm-titulo-pagina">{{id ? "Atualizar Jogo" : "Cadastrar um Jogo"}}</h1>
       <form [formGroup]="jogosForm" (ngSubmit)="onSubmit()">
         <div class="input-group">
           <label for="">Imagem</label>
@@ -96,7 +93,7 @@
         </div>
         <div class="input-group">
           <label for="">Descrição do Jogo</label>
-          <input type="text" id=""formControlName="description" class="textinput" placeholder="Descrição">
+          <input type="text" id="" formControlName="description" class="textinput" placeholder="Descrição">
         </div>
         <div class="selects">
           <div class="input-group">

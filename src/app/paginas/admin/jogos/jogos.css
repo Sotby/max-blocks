@@ -267,6 +267,8 @@ th, td{
   border-radius:100px;
   padding: 8px 20px;
   font-weight: 700;
+  text-align: center;
+  outline: none;
 }
 .btn-acao-perigo {
   font-weight: 700;

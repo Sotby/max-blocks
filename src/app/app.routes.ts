@@ -28,6 +28,8 @@ export const routes: Routes = [
         {path: 'Jogos',component:Jogos},
         {path: 'Categorias', component:Categorias},
         {path: 'jogos', redirectTo:'Jogos'},
+        {path: 'Jogos/Editar/:id', component:Jogos},
+        {path: 'Categorias/Editar/:id', component:Categorias},
         {path: 'categorias', redirectTo:'Categorias'},
         {path: 'Geral', component: VisaoGeral},
         {path: 'geral', redirectTo:'Geral'},

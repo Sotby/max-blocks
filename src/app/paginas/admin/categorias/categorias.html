@@ -12,7 +12,7 @@
     <div class="tabela">
       <!-- FILTROS -->
       <div class="adm-secao">
-        <form class="filtros-barra" id="form-filtros">
+        <form class="filtros-barra" id="form-filtros" [formGroup]="filterForm">
           <div class="filtro-grupo">
             <label for="filtro-id">ID</label>
             <input
@@ -21,6 +21,7 @@
               id="filtro-id"
               placeholder="Ex: 04"
               style="min-width: 90px"
+              formControlName="categoryId"
             />
           </div>
           <div class="filtro-grupo">
@@ -30,12 +31,8 @@
               type="text"
               id="filtro-nome"
               placeholder="Buscar por nome..."
+              formControlName="categoryName"
             />
-          </div>
-          <div class="filtro-grupo">
-            <button type="submit" class="btn-secundario">
-              <i class="fas fa-filter"></i> Filtrar
-            </button>
           </div>
         </form>
       </div>
@@ -50,12 +47,12 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let categoria of categorias()">
+              <tr *ngFor="let categoria of categoriasFiltradas()">
                 <td>{{categoria.id}}</td>
                 <td>{{categoria.name}}</td>
                 <td class="tabela-acoes">
                   <div class="acoes">
-                    <button class="btn-acao btn-editar-categoria">Editar</button>
+                    <a class="btn-acao btn-editar-categoria" routerLink="/Admin/Categorias/Editar/{{categoria.id}}">Editar</a>
                     <button class="btn-acao-perigo" (click)="this.deletarCategoria(categoria.id)">Excluir</button>
                   </div>
                 </td>

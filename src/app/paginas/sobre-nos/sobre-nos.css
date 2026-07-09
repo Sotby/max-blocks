@@ -1,20 +1,22 @@
 .beneficios-secao {
     padding: 80px 20px;
-    background: var(--Cor-primaria);
-    color: #ffffff;
+    background:#000000;
+    color: #d9eef5;
     text-align: center;
-    min-height: 10vh;
+    min-height: 100vh;
+    
 }
 
 .secao-header {
     max-width: 750px;
     margin: 0 auto 60px;
+    padding: 20px;
+    text-align: center;
 }
 
 .secao-tag {
     display: inline-block;
-    margin-bottom: 12px;
-    font-size: 1rem;
+    margin-bottom: 50px;
     font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -23,7 +25,7 @@
 
 .secao-titulo {
     font-size: clamp(2rem, 5vw, 3rem);
-    font-weight: 700;
+    font-weight: 600;
     margin-bottom: 15px;
     color: #fff;
 }
@@ -37,7 +39,7 @@
 .beneficios-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(270px,1fr));
-    gap: 30px;
+    gap: 35px;
     justify-items: center;
 }
 
@@ -46,23 +48,21 @@
     max-width: 450px;
     min-height: 300px;
     padding: 35px 25px;
-    background: #0f0808;
-    border: 1px solid rgba(84,235,255,.15);
-    border-radius: 16px;
+    background: #000000;
+    border: 1px solid rgba(40, 164, 180, 0.664);
+    border-radius: 18px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     gap: 18px;
-    text-align: center;
     transition: .35s;
     box-shadow: 0 10px 25px rgba(29, 23, 23, 0.08);
 }
 
 .beneficio-card:hover {
-    transform: translateY(-12px);
+    transform: translateY(-10px);
     border-color: rgb(78,205,212);
-    box-shadow: 0 15px 35px rgba(78,205,212,.25);
+    box-shadow: 0 15px 35px rgba(54, 195, 202, 0.25);
 }
 
 .beneficio-icone {
@@ -73,7 +73,7 @@
     align-items: center;
     font-size: 32px;
     color: rgb(109,245,255);
-    background: rgba(78,205,212,.08);
+    background: rgba(0, 0, 0, 0.041);
     border: 1px solid rgba(78,205,212,.20);
     border-radius: 50%;
     box-shadow: 0 0 18px rgba(78,205,212,.15);
@@ -100,7 +100,8 @@
 
 
 .rodape {
-    margin-top: 80px;
+    margin-top:0 ;
+    padding: 80px;
     background: linear-gradient(180deg,#000000,#0b0b0b);
     border-top: 1px solid rgba(255,255,255,.08);
     
@@ -159,9 +160,9 @@
 
 .rodape-redes a:hover {
     background: var(--cor-secundaria);
-    color: #000;
+    color: rgb(12, 5, 5);
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(78,205,212,.35);
+    box-shadow: 0 10px 20px rgba(78, 205, 212, 0.548);
 }
 
 .rodape-links h4 {

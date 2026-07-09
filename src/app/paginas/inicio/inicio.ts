@@ -22,13 +22,17 @@ export class Inicio implements OnInit {
   }
   getGames(){
     this.isLoading.set(true)
+  
     this.jogosService.getALL().subscribe({
       next: (dados) => {
-        let sortedData = dados.data.sort((a: any, b: any) => b.likesCount - a.likesCount)
-        sortedData.length = 3
-        this.topjogos.set(sortedData)
+        const sortedData = [...dados.data]
+          .sort((a: any, b: any) => b.likesCount - a.likesCount)
+  
+        this.topjogos.set(sortedData.slice(0, 3))
         this.jogos.set(dados.data)
-        console.log("Dados dos jogos obtidos:",dados)
+  
+        console.log("Dados dos jogos obtidos:", dados)
+  
         this.isLoading.set(false)
       }
     })
@@ -44,5 +48,52 @@ export class Inicio implements OnInit {
   getGamesPerCategory(id: number){
     return this.jogos().filter(jogos => jogos.categoryId === id)
   }
-
+  private getLikedGames(){
+    const likes = localStorage.getItem('likedGames')
+    return likes ? JSON.parse(likes) : []
+  }
+  private saveLikedGames(likes: number[]) {
+    localStorage.setItem('likedGames', JSON.stringify(likes));
+  }
+  isLiked(id: number): boolean{
+    return this.getLikedGames().includes(id)
+  }
+  gameFeedback(id: number){
+    const likedGames = this.getLikedGames();
+    const jogo = this.jogos().find(j => j.id === id);
+  
+    if(!jogo) return;
+  
+    if(likedGames.includes(id)){
+      this.jogosService.descurtirJogo(id).subscribe({
+        next: () => {
+          const novosLikes = likedGames.filter(
+            (jogoId: number) => jogoId !== id
+          );
+  
+          this.saveLikedGames(novosLikes);
+  
+          jogo.likesCount--;
+  
+          this.atualizarJogos();
+        }
+      });
+  
+    } else {
+      this.jogosService.curtirJogo(id).subscribe({
+        next: () => {
+          likedGames.push(id);
+  
+          this.saveLikedGames(likedGames);
+  
+          jogo.likesCount++;
+  
+          this.atualizarJogos();
+        }
+      });
+    }
+  }
+  private atualizarJogos(){
+    this.jogos.set([...this.jogos()]);
+  }
 }

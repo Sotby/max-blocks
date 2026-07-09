@@ -27,4 +27,10 @@ export class DashboardJogosService {
   deletarjogo(id: any): Observable<any>{
     return this.http.delete(`${this.apiURL}/${id}`)
   }
+  curtirJogo(id: any): Observable<any>{
+    return this.http.post(`${this.apiURL}/${id}/like`, null)
+  }
+  descurtirJogo(id: any): Observable<any>{
+    return this.http.delete(`${this.apiURL}/${id}/like`)
+  }
 }
