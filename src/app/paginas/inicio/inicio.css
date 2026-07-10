@@ -81,11 +81,11 @@ main{
     padding: 0 20px;
     flex-wrap: wrap;
 }
-
 /*Games CSS*/
 
 .game-container{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     gap: 20px;
     color: white;
@@ -178,7 +178,9 @@ main{
 .game-mapping-data{
     color: white;
 }
-
+.game-descricao{
+    text-align: center;
+}
 .game-play{
     background-color: var(--Cor-primaria);
     padding: 10px 0;

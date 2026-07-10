@@ -1,6 +1,8 @@
 /* SIDEBAR */
 .adm-sidebar {
     padding: 22px 0px;
+    border-right: solid 1px var(--Cor-secundaria);
+    height: 100%;
   }
   
   .adm-sidebar-titulo {
@@ -48,4 +50,6 @@
   .logo-block{
     color: var(--Cor-secundaria);
   }
-  
+  .exit-button{
+    cursor: pointer;
+  }

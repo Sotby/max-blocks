@@ -37,7 +37,6 @@ export class Cadastro {
     const{name,email,password} = this.cadastroForm.getRawValue();
     this.authService.cadastro(name!,email!,password!).subscribe({
       next: () =>{
-        alert("Cadastro realizado com sucesso!")
         this.router.navigate(['/Inicio'])
       },
       error: (err) =>{

@@ -2,7 +2,7 @@
 <main>
   <section id="banner">
     <div class="title">
-        <h1>Jogos populares da semana</h1>
+        <h1>Jogos mais populares</h1>
         <div class="divisoria"></div>
     </div>
     <div class="game-container">
@@ -34,7 +34,7 @@
                 {{jogo.description}}
               </p>
         </div>
-        <button class="game-play">Jogar</button>
+        <a class="game-play" routerLink="/jogos/game/{{jogo.id}}">Jogar</a>
       </div>
     </div>
   </section>
@@ -74,7 +74,7 @@
                     {{jogo.description}}
                   </p>
             </div>
-            <button class="game-play">Jogar</button>
+            <button class="game-play" routerLink="/jogos/game/{{jogo.id}}">Jogar</button>
           </div>
         </div>
       </div>

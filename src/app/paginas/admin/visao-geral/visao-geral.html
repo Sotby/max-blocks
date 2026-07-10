@@ -1,112 +1,112 @@
-<div class="adm-app">
-  <app-admin-sidebar></app-admin-sidebar>
-  <!-- CONTEÚDO -->
-  <main class="adm-conteudo">
-    <div class="adm-cabecalho-pagina">
-      <div>
-        <h1 class="adm-titulo-pagina">Visão Geral</h1>
-        <p class="adm-subtitulo">Resumo da plataforma hoje</p>
-      </div>
-    </div>
-
-    <!-- CARDS DE ESTATÍSTICA -->
-    <div class="stat-grid">
-      <div class="stat-card">
-        <div class="stat-card-icone roxo"><i class="fas fa-gamepad"></i></div>
-        <span class="stat-card-valor">24</span>
-        <span class="stat-card-label">Jogos cadastrados</span>
-        <span class="stat-card-variacao positivo"><i class="fas fa-arrow-up"></i> +3 este mês</span>
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-card-icone ciano"><i class="fas fa-tags"></i></div>
-        <span class="stat-card-valor">8</span>
-        <span class="stat-card-label">Categorias ativas</span>
-        <span class="stat-card-variacao positivo"><i class="fas fa-arrow-up"></i> +1 este mês</span>
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-card-icone verde"><i class="fas fa-users"></i></div>
-        <span class="stat-card-valor">3.2k</span>
-        <span class="stat-card-label">Jogadores ativos</span>
-        <span class="stat-card-variacao positivo"
-          ><i class="fas fa-arrow-up"></i> +6% na semana</span
-        >
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-card-icone amarelo"><i class="fas fa-clock"></i></div>
-        <span class="stat-card-valor">9.7k</span>
-        <span class="stat-card-label">Horas jogadas</span>
-        <span class="stat-card-variacao negativo"
-          ><i class="fas fa-arrow-down"></i> -2% na semana</span
-        >
-      </div>
-    </div>
-
-    <!-- GRÁFICO -->
-    <div class="adm-secao">
-      <div class="adm-secao-header">
-        <h2 class="adm-secao-titulo">Acessos por mês (milhares)</h2>
-      </div>
-      <div class="grafico-barras">
-        <div class="barra-item">
-          <div class="barra" style="--altura: 40%"></div>
-          <span class="barra-rotulo">Jan</span>
-        </div>
-        <div class="barra-item">
-          <div class="barra" style="--altura: 55%"></div>
-          <span class="barra-rotulo">Fev</span>
-        </div>
-        <div class="barra-item">
-          <div class="barra" style="--altura: 48%"></div>
-          <span class="barra-rotulo">Mar</span>
-        </div>
-        <div class="barra-item">
-          <div class="barra" style="--altura: 72%"></div>
-          <span class="barra-rotulo">Abr</span>
-        </div>
-        <div class="barra-item">
-          <div class="barra" style="--altura: 90%"></div>
-          <span class="barra-rotulo">Mai</span>
-        </div>
-        <div class="barra-item">
-          <div class="barra" style="--altura: 100%"></div>
-          <span class="barra-rotulo">Jun</span>
+  <div class="adm-app">
+    <app-admin-sidebar></app-admin-sidebar>
+    <!-- CONTEÚDO -->
+    <main class="adm-conteudo">
+      <div class="adm-cabecalho-pagina">
+        <div>
+          <h1 class="adm-titulo-pagina">Visão Geral</h1>
+          <p class="adm-subtitulo">Resumo da plataforma hoje</p>
         </div>
       </div>
-    </div>
 
-    <!-- TABELA DE JOGOS RECENTES -->
-    <div class="adm-secao">
-      <div class="adm-secao-header">
-        <h2 class="adm-secao-titulo">Jogos adicionados recentemente</h2>
+      <!-- CARDS DE ESTATÍSTICA -->
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-card-icone roxo"><i class="fas fa-gamepad"></i></div>
+          <span class="stat-card-valor">{{jogos().length}}</span>
+          <span class="stat-card-label">Jogos cadastrados</span>
+          <span class="stat-card-variacao positivo"><i class="fas fa-arrow-up"></i> +{{filtrarJogosMes()}} este mês</span>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card-icone ciano"><i class="fas fa-tags"></i></div>
+          <span class="stat-card-valor">{{categorias().length}}</span>
+          <span class="stat-card-label">Categorias ativas</span>
+          <span class="stat-card-variacao positivo"><i class="fas fa-arrow-up"></i> +{{filtrarCategoriasMes()}} este mês</span>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card-icone verde"><i class="fas fa-users"></i></div>
+          <span class="stat-card-valor">3.2k</span>
+          <span class="stat-card-label">Jogadores ativos</span>
+          <span class="stat-card-variacao positivo"
+            ><i class="fas fa-arrow-up"></i> +6% na semana</span
+          >
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card-icone amarelo"><i class="fas fa-clock"></i></div>
+          <span class="stat-card-valor">9.7k</span>
+          <span class="stat-card-label">Horas jogadas</span>
+          <span class="stat-card-variacao negativo"
+            ><i class="fas fa-arrow-down"></i> -2% na semana</span
+          >
+        </div>
       </div>
-      <div class="container-tabela">
-        <table class="adm-tabela">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Nome</th>
-              <th>Categoria</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let jogo of jogos()">
-              <td>{{jogo.id}}</td>
-              <td>{{jogo.name}}</td>
-              <td><span class="badge badge-categoria">{{jogo.category.name}}</span></td>
-              <td class="tabela-acoes">
-                <div class="acoes">
-                  <a class="btn-editar-jogo" routerLink="/Admin/Jogos/Editar/{{jogo.id}}">Editar</a>
-                  <button class="btn-acao-perigo" (click)="this.deletarJogo(jogo.id)">Excluir</button>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+
+      <!-- GRÁFICO -->
+      <div class="adm-secao">
+        <div class="adm-secao-header">
+          <h2 class="adm-secao-titulo">Acessos por mês (milhares)</h2>
+        </div>
+        <div class="grafico-barras">
+          <div class="barra-item">
+            <div class="barra" style="--altura: 40%"></div>
+            <span class="barra-rotulo">Jan</span>
+          </div>
+          <div class="barra-item">
+            <div class="barra" style="--altura: 55%"></div>
+            <span class="barra-rotulo">Fev</span>
+          </div>
+          <div class="barra-item">
+            <div class="barra" style="--altura: 48%"></div>
+            <span class="barra-rotulo">Mar</span>
+          </div>
+          <div class="barra-item">
+            <div class="barra" style="--altura: 72%"></div>
+            <span class="barra-rotulo">Abr</span>
+          </div>
+          <div class="barra-item">
+            <div class="barra" style="--altura: 90%"></div>
+            <span class="barra-rotulo">Mai</span>
+          </div>
+          <div class="barra-item">
+            <div class="barra" style="--altura: 100%"></div>
+            <span class="barra-rotulo">Jun</span>
+          </div>
+        </div>
       </div>
-    </div>
-  </main>
-</div>
+
+      <!-- TABELA DE JOGOS RECENTES -->
+      <div class="adm-secao">
+        <div class="adm-secao-header">
+          <h2 class="adm-secao-titulo">Jogos adicionados recentemente</h2>
+        </div>
+        <div class="container-tabela">
+          <table class="adm-tabela">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nome</th>
+                <th>Categoria</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let jogo of jogos()">
+                <td>{{jogo.id}}</td>
+                <td>{{jogo.name}}</td>
+                <td><span class="badge badge-categoria">{{jogo.category.name}}</span></td>
+                <td class="tabela-acoes">
+                  <div class="acoes">
+                    <a class="btn-editar-jogo" routerLink="/Admin/Jogos/Editar/{{jogo.id}}">Editar</a>
+                    <button class="btn-acao-perigo" (click)="this.deletarJogo(jogo.id)">Excluir</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>

@@ -21,7 +21,6 @@ export class Login {
     const{email,password} = this.loginForm.getRawValue();
     this.authService.login(email!,password!).subscribe({
       next: () =>{
-        alert("Login realizado com sucesso")
         this.router.navigate(['/Inicio'])
       },
       error: (err) =>{

@@ -1,10 +1,10 @@
-main{
-    background: radial-gradient(rgb(40,40,60),rgb(20,20,30));
+.profile-screen{
+    background: radial-gradient(rgb(60, 60, 60), rgb(20, 20, 20));
     min-height: 100vh;
     height: fit-content;
     color: white;
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 240px 1fr;
 }
 body{
     min-height: 100vh;
@@ -21,125 +21,7 @@ body{
 #profile{
     border-bottom: solid 2px var(--Cor-secundaria);
 }
-#dashboard{
-    display: grid;
-    grid-template-columns: 1fr 6fr;
-    grid-template-rows: 1fr;
-    background: linear-gradient(rgb(40,40,40),rgb(20,20,20));
-}
-#controls{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-right: solid 2px var(--Cor-secundaria);
-}
-#controls button{
-    border-top: solid 2px var(--Cor-secundaria);
-    width: 100%;
-    padding: 40px 0;
-    transition: all ease .5s;
-    cursor: pointer;
-    font-size: 18px;
-    text-transform: uppercase;
-    font-weight: 700;
-}
-#controls button:last-of-type{
-    border-bottom: solid 2px var(--Cor-secundaria);
-}
-#controls button:hover, .active{
-    background-color: var(--Cor-secundaria);
-    color: black;
-}
-#cadastro-jogos form{
-    height: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
-    gap: 4px;
-}
-#cadastro-jogos .imagem-div{
-    padding: 20px;
-}
-#cadastro-jogos .imagem-div input{
-    cursor: pointer;
-}
-#cadastro-jogos form .dados-div{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    padding: 20px;
-    border-left:solid 2px var(--Cor-secundaria);
-}
-#cadastro-jogos form .dados-div input{
-    outline: none;
-    border: solid 2px var(--Cor-secundaria);
-    padding: 10px 20px;
-    width: 100%;
-    height: 80px;
-    transition: all ease .5s;
-}
-#cadastro-jogos form .dados-div input:focus{
-    transform: translateY(-5px);
-    box-shadow: 0 5px 10px 0 var(--Cor-terciaria);
-}
-#cadastro-jogos form .dados-div button{
-    background:var(--Cor-secundaria);
-    color: #333;
-    padding: 10px 0;
-    border-radius: 100px;
-    width: 100%;
-    cursor: pointer;
-    transition: all ease .25s;
-}
-#cadastro-jogos form .dados-div button:hover{
-    opacity: 0.8;
-}
-#cadastro-jogos form .dados-div .select-div{
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 15px;
-}
-#cadastro-jogos form .dados-div .select-div .campo-grupo{
-    display: grid;
-    grid-template-rows: 1fr;
-    border: solid 2px var(--Cor-secundaria);
-    padding: 10px;
-    border-radius: 10px;
-}
-#cadastro-jogos form .dados-div .select-div .campo-grupo label{
-    text-decoration: underline;
-    text-decoration-color: var(--Cor-secundaria);
-    text-decoration-thickness: 2px;
-    text-underline-offset: 2px;
-}
-#cadastro-jogos form .dados-div .select-div .campo-grupo select{
-    margin-top: 10px;
-    cursor: pointer;
-}
 
-#cadastro-jogos form .dados-div .select-div .campo-grupo select option {
-    color: black;
-}
-#cadastro-categoria form{
-    display: grid;
-    grid-template-rows: 2fr 1fr 1fr;
-    height: 100%;   
-}
-#cadastro-categoria form input{
-    outline: none;
-    border-top: solid 2px var(--Cor-secundaria);
-    padding: 10px 20px;
-}
-#cadastro-categoria form button{
-    padding: 10px 20px;
-    background-color: #333;
-    border-top: solid 2px var(--Cor-secundaria);
-    cursor: pointer;
-}
-
-/*-----------------------------------------------------------------------------------------------------------------------------*/
 img{
     margin: 15px;
     margin-right: 15px;
@@ -221,7 +103,7 @@ a span{
 }
 
 
-.div1{
+.emblemas-div{
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
     border-radius: 15px;
     text-align: center;
@@ -238,84 +120,12 @@ a span{
     
 }
 
-.div2{
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    margin: 41px;
-    border: 1px solid var(--Cor-terciaria);
-    padding: 16px;
-    display: inline-block;
-    transition: all 0.3s ease;
-    user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    -moz-user-select: none;
-}
-
-.div3{
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-    margin: 41px;
-    padding: 16px;
-    border: 1px solid  var(--Cor-terciaria);
-    display: inline-block;
-    transition: all 0.3s ease;
-    user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    -moz-user-select: none;
-}
-
-.div4{
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-    margin: 41px;
-    padding: 16px;
-    border: 1px solid  var(--Cor-terciaria);
-    display: inline-block;
-    transition: all 0.3s ease;
-    user-select: none;
-    -webkit-user-select: none; /* Chrome, Safari */
-    -ms-user-select: none; /* FireFox */
-    -moz-user-select: none; /* Edge antigo, Internet Explore*/
-}
-
-.div5{
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-    margin: 41px;
-    padding: 16px;
-    border: 1px solid  var(--Cor-terciaria);
-    display: inline-block;
-    transition: all 0.3s ease;
-    user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    -moz-user-select: none;
-}
-
-
-.div1 .Nenhu1{
+.emblemas-div .desc{
    background-color: #63B3B7 ;
-    margin:30px;
+    margin:41px;
     border: 1px solid;
     border-radius: 15px;
-    padding: 30px;
+    padding: 41px;
     padding-top: 150px;
     padding-block-end: 150px;
     text-align: center;
@@ -325,135 +135,21 @@ a span{
     -moz-user-select: none;
 }
 
-.div2 .Nenhu2{
-    background-color: #63B3B7 ;
-    margin:30px;
-    border: 1px solid;
-    border-radius: 15px;
-    padding: 30px;
-    padding-top: 150px;
-    padding-block-end: 150px;
-    text-align: center;
-    user-select: none;
-    -webkit-user-select: none ;
-    -ms-user-select: none;
-    -moz-user-select: none;
-}
-
-
-.div3 .Nenhu3{
-    background-color: #63B3B7 ;
-    margin:30px;
-    border: 1px solid;
-    border-radius: 15px;
-    padding: 30px;
-    padding-top: 150px;
-    padding-block-end: 150px;
-    text-align: center;
-    user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    -moz-user-select:none;
-}
-
-
-
-.div4 .Nenhu4{
-    background-color: #63B3B7 ;
-    margin:30px;
-    border: 1px solid;
-    border-radius: 15px;
-    padding: 30px;
-    padding-top: 150px;
-    padding-block-end: 150px;
-    text-align: center;
-    user-select: none;
-    -webkit-user-select:none;
-    -ms-user-selec:none;
-    -moz-user-select:none;
-}
-
-
-
-.div5 .Nenhu5{
-    background-color: #63B3B7 ;
-    margin:30px;
-    border: 1px solid;
-    border-radius: 15px;
-    padding: 30px;
-    padding-top: 150px;
-    padding-block-end: 150px;
-    text-align: center;
-    user-select: none;
-    -webkit-user-select: none;
-    -ms-user-seelct:none;
-    -moz-user-selcet: none;
-
-}
-
-.div1:hover{
+.emblemas-div:hover{
     transform: translateY(-3px);
    box-shadow: 0px 0px 15px 15px var(--Cor-primaria);
 }
 
-.div2:hover{
-    transform: translateY(-3px);
-    box-shadow: 0px 0px 15px 15px var(--Cor-primaria);
-}
-
-.div3:hover{
-    transform: translateY(-3px);
-    box-shadow: 0px 0px 15px 15px var(--Cor-primaria);
-}
-
-.div4:hover{
-    transform: translateY(-3px);
-    box-shadow: 0px 0px 15px 15px var(--Cor-primaria);
-}
-
-.div5:hover{
-    transform: translateY(-3px);
-    box-shadow: 0px 0px 15px 15px var(--Cor-primaria);
-}
-
-.Dashboard45-1{
-    text-align: end;
-    translate: -47px;
-}
-
-.Dashboard45-2{
-    font-size: 22px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-align: right;
-    translate: -55px;
-    border: 2px solid;
-    border-radius: 45px;
-    padding: 7px;
-    background-color: var(--Cor-terciaria);
-    color:white;
-   
-}
-
-
-.Dashboard45-2:hover{
-    transition: all .4s ease;
-    background-color: white;
-    color: var(--Cor-terciaria);
-
-}
-
-.Linha-sep1{
-    width: 100%;
-    height: 2px;
-    background-color: var(--Cor-secundaria);
-
+.emblemas-section{
+    border-bottom: solid 2px var(--Cor-secundaria);
 }
 
 .Ja-nome{
     font-size: 26px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     border: 2px solid var(--Cor-secundaria);
     border-radius: 25px;
-    padding: 5px;
+    padding: 4px;
     user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
@@ -461,12 +157,74 @@ a span{
      
 }
 
-.jogo001{
-   text-align: start; 
+.game-div{
+   text-align: center; 
    translate: 55px;
    margin: 16px;
+   padding: 10px;
+   border: 3px solid var(--Cor-terciaria);
+   border-radius: 30px;
+   width: 23%;
+   height: 500px;
+   overflow: hidden;
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.jogo01{
-    
+.game-title{
+  font-size: 33px;
+  margin: 2%;
+  padding: 5px;
 }
+
+.profile-container{
+    height: fit-content;
+}
+
+.game-name{
+    text-align: center;
+    padding-top: 18% ;
+    font-size: 45px;
+    user-select: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-wrap:50px;
+    border: 1px solid var(--Cor-primaria) ;
+    border-radius: 30px;
+    background-color: black;
+    width: 100%;
+    height: 200px;
+
+}
+
+.game-name-block{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: var(--Cor-secundaria);
+}
+
+.game-text-div{
+    text-align: center;
+    font-size: 25px; 
+   
+}
+.game-text-lasPlayed{
+    align-items: center;
+    padding-top: 10px;
+
+}
+
+.lado{
+   display: grid;
+    gap: 50px;
+  
+}
+.lado .lado-text{
+    display: flex;
+    justify-content: space-between;
+}
+
+.game-hours-div{
+    align-items: center;
+    display: flex;
+    padding-top: 50px;
+    justify-content: space-between;
+}
+

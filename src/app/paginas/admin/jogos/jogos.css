@@ -64,7 +64,6 @@ th, td{
   display: flex;
   flex-direction: column;
   gap: 24px;
-  border-left: solid 2px var(--Cor-secundaria);
 }
 
 .adm-titulo-pagina {

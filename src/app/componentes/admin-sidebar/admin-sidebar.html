@@ -12,10 +12,10 @@
   </a>
 
   <p class="adm-sidebar-titulo">Conta</p>
-  <a routerLink="/Perfil" class="adm-sidebar-link">
+  <a routerLink="/Perfil" routerLinkActive="ativo" class="adm-sidebar-link">
     <i class="fas fa-user-shield"></i> Perfil Admin
   </a>
-  <button class="adm-sidebar-link" (click)="authservice.logout()">
+  <button class="adm-sidebar-link exit-button" (click)="authservice.logout()">
     <i class="fas fa-sign-out-alt"></i> Sair
   </button>
 </aside>

@@ -18,8 +18,7 @@
       </select>
     </form>
   </section>
-  <section id="games">
-    <div class="game-container">
+  <section class="game-container">
       <div class="game" *ngFor="let jogo of jogosFiltrados()">
         <div class="game-image-container">
           <img [src]="jogo.image_url" alt="" class="game-image" />
@@ -48,8 +47,7 @@
             {{ jogo.description }}
           </p>
         </div>
-        <button class="game-play">Jogar</button>
+        <a class="game-play" routerLink="/jogos/game/{{jogo.id}}">Jogar</a>
       </div>
-    </div>
   </section>
 </main>
