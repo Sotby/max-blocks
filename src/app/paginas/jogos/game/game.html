@@ -1,108 +1,110 @@
 <app-nav-bar></app-nav-bar>
-
-<main class="game-screen">
-
-  <!-- PLAYER -->
-  <section class="game-player-section">
-    <div class="game-window">
-      <img
-        src=""
-        class="game-image"
-      />
-
-      <div class="scanline"></div>
-
-      <div class="game-overlay top">
-        <div class="connection-status good">
-          <span class="signal-dot"></span>
-          Excelente conexão
-        </div>
-        <button class="icon-btn" title="Configurações">⚙</button>
-      </div>
-
-      <div class="game-overlay bottom">
-        <div class="playback-controls">
-          <button class="icon-btn" title="Pausar">❚❚</button>
-          <button class="icon-btn" title="Volume">🔊</button>
-        </div>
-        <button class="fullscreen">
-          <span>⛶</span> Tela cheia
-        </button>
-      </div>
-    </div>
+<main class="jogo-page">
+  <!-- VOLTAR -->
+  <section class="jogo-topo">
+    <a class="voltar-link" routerLink="/Jogos">
+      <i class="fa fa-arrow-left" aria-hidden="true"></i>
+      Voltar para os jogos
+    </a>
   </section>
-
-  <!-- INFO -->
-  <section class="game-info">
-    <div class="title-section">
-      <div class="title-block">
-        <h1></h1>
-        <div class="tags">
-          <span class="tag">Ação</span>
-          <span class="tag">Mundo Aberto</span>
-          <span class="tag">Aventura</span>
+  <!-- PLAYER + INFORMAÇÕES -->
+  <section class="jogo-player-container">
+    <div class="jogo-frame-wrapper">
+      <div class="jogo-frame">
+        <div class="jogo-frame-placeholder">
+          <i class="fa fa-gamepad" aria-hidden="true"></i>
+          <span>{{this.game_data().name}}</span>
         </div>
       </div>
-      <button class="play-btn">
-        <span class="play-icon">▶</span>
-        Continuar Jogando
-      </button>
+
+      <div class="jogo-frame-acoes">
+        <div class="jogo-frame-acoes-container left">
+          <span class="game-ageRating">{{this.game_data().ageRating}}</span>
+        </div>
+        <div class="jogo-frame-acoes-container right">
+          <button class="btn-fullscreen">
+            <i class="fa fa-expand" aria-hidden="true"></i>
+            Tela cheia
+          </button>
+          <button class="btn-fullscreen">
+            <i class="fa fa-rotate-right" aria-hidden="true"></i>
+            Reiniciar
+          </button>
+        </div>
+      </div>
     </div>
 
-    <div class="details">
-      <div class="card">
-        <small>Controles</small>
-        <strong>Mouse + Teclado</strong>
+    <aside class="jogo-info-lateral">
+      <div class="jogo-info-header">
+        <h1 class="jogo-nome">{{this.game_data().name}}</h1>
+        <div class="like-container">
+          <button class="game-like-icon" (click)="gameFeedback(game_data().id)">
+            <i class="fa fa-thumbs-up" aria-hidden="true" [class.curtido]="isLiked(game_data().id)" ></i>
+          </button>
+          <span>{{this.game_data().likesCount}}</span>
+        </div>
       </div>
-      <div class="card">
-        <small>Resolução</small>
-        <strong>1920 × 1080</strong>
+
+      <div class="game-data-container jogo-data-container">
+        <span class="game-category">{{this.game_data().category.name}}</span>
+        <span class="game-mapping">
+          Controles:
+          <span class="game-mapping-data">{{this.game_data().controls}}</span>
+        </span>
       </div>
-      <div class="card">
-        <small>FPS</small>
-        <strong>60 FPS</strong>
+
+      <p class="jogo-descricao">
+        {{this.game_data().description}}
+      </p>
+      <div class="jogo-meta">
+        <span>
+          Criado em :
+          {{this.game_data().createdAt | date:' dd/MM/yy'}}
+        </span>
+        <span>
+          Atualizado em :
+          {{this.game_data().updatedAt | date: 'dd/MM/yy'}}
+        </span>
       </div>
-      <div class="card">
-        <small>Latência</small>
-        <strong>21 ms</strong>
-      </div>
-      <div class="card">
-        <small>Servidor</small>
-        <strong>São Paulo</strong>
+    </aside>
+  </section>
+  <!-- JOGOS PARECIDOS -->
+  <section class="jogos-parecidos">
+    <div class="titulo">
+      <span>Jogos da mesma categoria</span>
+      <div class="barra"></div>
+    </div>
+    <div class="game-container">
+      <div class="game" *ngFor="let jogo of filterGames()">
+        <div class="game-image-container">
+            <img [src]="jogo.image_url" alt="" class="game-image" />
+            <span class="game-ageRating">{{jogo.ageRating}}</span>  
+        </div>
+        <div class="game-text-container">
+            <div class="game-title">
+                <span class="game-name">{{jogo.name}}</span>
+                <span class="game-likes">
+                  <button class="game-like-icon" (click)="gameFeedback(jogo.id)">
+                    <i class="fa fa-thumbs-up" aria-hidden="true" [class.curtido]="isLiked(jogo.id)"></i>
+                  </button>
+                  {{jogo.likesCount}}
+                </span>
+              </div>
+              <div class="game-data-container">
+                <span class="game-category">
+                    {{jogo.category.name}}
+                </span>
+                <span class="game-mapping">
+                    Controles:
+                    <span class="game-mapping-data">{{jogo.controls}}</span>
+                </span>
+              </div>
+              <p class="game-descricao">
+                {{jogo.description}}
+              </p>
+        </div>
+        <button class="game-play" routerLink="/jogos/game/{{jogo.id}}">Jogar</button>
       </div>
     </div>
   </section>
-
-  <!-- DESCRIÇÃO -->
-  <section class="game-description">
-    <h2>Sobre o jogo</h2>
-    <p>
-      Torne-se Edward Kenway, um capitão pirata treinado por Assassinos, explorando um gigantesco
-      mundo aberto repleto de batalhas navais, cidades coloniais e ilhas paradisíacas.
-    </p>
-  </section>
-
-  <!-- CONQUISTAS -->
-  <section class="achievements">
-    <h2>Conquistas</h2>
-    <div class="achievement-list">
-      <div class="achievement">
-        <span class="achievement-seal">🏆</span>
-        <span class="achievement-label">Mestre dos Mares</span>
-      </div>
-      <div class="achievement">
-        <span class="achievement-seal">⚔</span>
-        <span class="achievement-label">Capitão Lendário</span>
-      </div>
-      <div class="achievement">
-        <span class="achievement-seal">💰</span>
-        <span class="achievement-label">Milionário</span>
-      </div>
-      <div class="achievement">
-        <span class="achievement-seal">☠</span>
-        <span class="achievement-label">Caçador de Piratas</span>
-      </div>
-    </div>
-  </section>
-
 </main>

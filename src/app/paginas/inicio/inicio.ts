@@ -28,8 +28,8 @@ export class Inicio implements OnInit {
         const sortedData = [...dados.data].sort((a: any, b: any) => b.likesCount - a.likesCount);
         this.topjogos.set(sortedData.slice(0, 3));
         this.jogos.set(dados.data);
-        this.getCategory()
         this.isLoading.set(false);
+        this.getCategory()
       },
     });
   }

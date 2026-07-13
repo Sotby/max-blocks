@@ -104,6 +104,7 @@ a span{
 
 
 .emblemas-div{
+    background-color: #333;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
     border-radius: 15px;
     text-align: center;
@@ -111,7 +112,7 @@ a span{
     border: 1px solid var(--Cor-terciaria);
     padding: 16px;
     display: inline-block;
-    box-shadow: all 0.3 ease;
+    box-shadow: all 0.3s ease;
     transition: all 0.3s ease;
     user-select: none;
     -webkit-user-select: none;
@@ -158,6 +159,7 @@ a span{
 }
 
 .game-div{
+   background-color:#333;
    text-align: center; 
    translate: 55px;
    margin: 16px;
@@ -168,6 +170,12 @@ a span{
    height: 500px;
    overflow: hidden;
    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   transition: all .6s ease;
+}
+
+.game-div:hover{
+    box-shadow:  0px 6px 11px 5px var(--Cor-terciaria);
+    transition: all .6s ease;
 }
 
 .game-title{
@@ -195,6 +203,7 @@ a span{
 
 }
 
+
 .game-name-block{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: var(--Cor-secundaria);
@@ -213,18 +222,18 @@ a span{
 
 .lado{
    display: grid;
-    gap: 50px;
+   gap: 50px;
   
 }
 .lado .lado-text{
-    display: flex;
-    justify-content: space-between;
+   display: flex;
+   justify-content: space-between;
 }
 
 .game-hours-div{
-    align-items: center;
-    display: flex;
-    padding-top: 50px;
-    justify-content: space-between;
+   align-items: center;
+   display: flex;
+   padding-top: 50px;
+   justify-content: space-between;
 }
 

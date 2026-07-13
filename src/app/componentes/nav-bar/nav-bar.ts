@@ -9,12 +9,7 @@ import { AuthService } from '../../core/services/auth.service';
   styleUrl: './nav-bar.css',
 })
 export class NavBar {
-  menuaberto = false;
-  tooglemenu(){
-    this.menuaberto = !this.menuaberto;
-  }
   authService = inject(AuthService)
-  
 }
 
 
