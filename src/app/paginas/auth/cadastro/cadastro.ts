@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { BannerLateral } from '../../../componentes/banner-lateral/banner-lateral';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
@@ -19,6 +19,7 @@ import {
 export class Cadastro {
   private authService = inject(AuthService);
   private router = inject(Router);
+  enviando = signal(false)
   private passwordMathValidator(group: AbstractControl): { [key: string]: boolean } | null {
     const password = group.get(`password`)?.value;
     const c_password = group.get(`c_password`)?.value;
@@ -34,13 +35,16 @@ export class Cadastro {
     { validators: this.passwordMathValidator.bind(this) },
   );
   onSubmit(): void{
+    this.enviando.set(true)
     const{name,email,password} = this.cadastroForm.getRawValue();
     this.authService.cadastro(name!,email!,password!).subscribe({
       next: () =>{
+        this.enviando.set(false)
         this.router.navigate(['/Inicio'])
       },
       error: (err) =>{
         alert(err.error.error)
+        this.enviando.set(false)
       }
     })
   }

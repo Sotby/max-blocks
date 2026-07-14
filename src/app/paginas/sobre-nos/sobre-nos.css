@@ -28,6 +28,7 @@
     font-weight: 600;
     margin-bottom: 15px;
     color: #fff;
+    text-shadow: 0 0 20px rgba(78,205,212,.3);
 }
 
 .secao-subtitulo {
@@ -46,9 +47,9 @@
 .beneficio-card {
     width: 100%;
     max-width: 450px;
-    min-height: 300px;
+    min-height: 330px;
     padding: 35px 25px;
-    background: #000000;
+    background: linear-gradient(180deg,#0d0d0d,#050505);
     border: 1px solid rgba(40, 164, 180, 0.664);
     border-radius: 18px;
     display: flex;
@@ -60,18 +61,18 @@
 }
 
 .beneficio-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-10px) scale(1.03);
     border-color: rgb(78,205,212);
     box-shadow: 0 15px 35px rgba(54, 195, 202, 0.25);
 }
 
 .beneficio-icone {
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 32px;
+    font-size: 36px;
     color: rgb(109,245,255);
     background: rgba(0, 0, 0, 0.041);
     border: 1px solid rgba(78,205,212,.20);
@@ -142,6 +143,7 @@
     display: flex;
     gap: 15px;
     margin-top: 10px;
+    backdrop-filter: blur(8px);
 }
 
 .rodape-redes a {

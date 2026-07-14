@@ -225,15 +225,6 @@ th, td{
   flex-direction: column;
   gap: 8px;
 }
-.adm-secao.form form .input-group label::after{
-  content: "";
-  display: block;
-  width: 100px;
-  height: 5px;
-  border-radius: 100px;
-  background: linear-gradient(to right, var(--Cor-secundaria),#333);
-  margin-top: 10px;
-}
 .adm-secao.form form .textinput{
   width: 100%;
   background-color: rgb(220,220,220);

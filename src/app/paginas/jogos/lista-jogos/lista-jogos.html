@@ -1,22 +1,85 @@
 <app-nav-bar></app-nav-bar>
 <main>
   <section class="filter-container">
-    <form action="" class="filter-form" [formGroup]="filterForm">
+
+    <div class="filter-header">
+      <i class="fa fa-filter"></i>
+      <h2>Filtros</h2>
+    </div>
+  
+    <form class="filter-form" [formGroup]="filterForm">
+  
+      <label class="filter-label">
+        Procurar jogo
+      </label>
+  
       <div class="search-container">
-        <input type="text" placeholder="Busque um jogo" class="search-input" formControlName="name"/>
+        <i class="fa fa-search"></i>
+        <input 
+          type="text" 
+          placeholder="Busque um jogo" 
+          class="search-input" 
+          formControlName="name"
+        />
       </div>
-      <select name="" id="" class="category-select" formControlName="categoryId">
-        <option value="0" disabled selected hidden>Filtre por categorias</option>
-        <option value="">Todas as categorias</option>
+  
+  
+      <label class="filter-label">
+        Categoria
+      </label>
+  
+      <select class="category-select" formControlName="categoryId">
+        <option value="" selected>
+          Todas as categorias
+        </option>
+  
         <option
           *ngFor="let categoria of categorias()"
-          value="{{ categoria.id }}"
-          class="category-option"
-        >
-          {{ categoria.name }}
+          value="{{categoria.id}}">
+          {{categoria.name}}
         </option>
       </select>
+  
+  
+      <label class="filter-label">
+        Ordenar por
+      </label>
+  
+      <select class="category-select" formControlName="ordenator">
+        <option value="3">
+          Ordem alfabética
+        </option>
+        <option value="1">
+          Mais curtidos
+        </option>
+        <option value="2">
+          Mais recentes
+        </option>
+      </select>
+  
+  
+      <button 
+        type="button" 
+        class="clear-filter"
+        (click)="limparFiltros()"
+        >
+        Limpar filtros
+      </button>
+  
     </form>
+  
+  
+    <div class="filter-info">
+      <i class="fa fa-gamepad"></i>
+  
+      <div>
+        <strong>Explore jogos</strong>
+        <p>
+          Encontre novos jogos por categoria e popularidade.
+        </p>
+      </div>
+    </div>
+  
   </section>
   <section class="game-container">
       <div class="game" *ngFor="let jogo of jogosFiltrados()">

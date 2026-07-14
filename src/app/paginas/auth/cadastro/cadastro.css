@@ -35,7 +35,7 @@ main {
   color: white;
   font-family: sans-serif;
   text-align: center;
-  margin-top: 60px;
+  margin-top: 20px;
 }
 .login-subtitulo::after {
   content: '';

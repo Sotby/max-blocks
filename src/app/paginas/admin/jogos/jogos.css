@@ -209,7 +209,7 @@ th, td{
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 20px;
   background-color: #333;
   border: solid 2px var(--Cor-secundaria);
   padding: 20px;
@@ -224,15 +224,6 @@ th, td{
   display: flex;
   flex-direction: column;
   gap: 8px;
-}
-.adm-secao.form form .input-group label::after{
-  content: "";
-  display: block;
-  width: 100px;
-  height: 5px;
-  border-radius: 100px;
-  background: linear-gradient(to right, var(--Cor-secundaria),#333);
-  margin-top: 10px;
 }
 .adm-secao.form form .textinput{
   width: 100%;
@@ -305,7 +296,7 @@ th, td{
   color: var(--Cor-primaria);
   padding: 20px 40px;
   border-radius: 100px;
-  width: fit-content;
+  width: 200px;
   margin: auto;
   font-weight: 700;
 }

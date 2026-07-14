@@ -21,9 +21,11 @@ export class Jogos implements OnInit {
   activatedRoute = inject(ActivatedRoute);
   router = inject(Router);
   imagemselecionada: File | null = null;
+  imagemPreview: string | null = null;
   jogos = signal<any[]>([]);
   jogosFiltrados = signal<any[]>([])
   categorias = signal<any[]>([]);
+  isLoading = signal(false)
   id: any;
   jogosForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -60,11 +62,32 @@ export class Jogos implements OnInit {
       this.filtarJogos();
     });
   }
-  onFileChange(event: Event) {
+  onFileChange(event: Event): void {
     const input = event.target as HTMLInputElement;
-    this.imagemselecionada = input.files?.[0] ?? null;
+  
+    if (!input.files?.length) {
+      this.imagemselecionada = null;
+      this.imagemPreview = null;
+      return;
+    }
+  
+    const file = input.files[0];
+  
+    if (!file.type.startsWith('image/')) {
+      alert('Selecione apenas imagens.');
+      return;
+    }
+  
+    // Remove a URL anterior da memória
+    if (this.imagemPreview) {
+      URL.revokeObjectURL(this.imagemPreview);
+    }
+  
+    this.imagemselecionada = file;
+    this.imagemPreview = URL.createObjectURL(file);
   }
   onSubmit(): void {
+    this.isLoading.set(true)
     const formData = new FormData();
     const values = this.jogosForm.value;
 
@@ -79,16 +102,19 @@ export class Jogos implements OnInit {
       this.jogoservice.updateGame(formData, this.id).subscribe({
         next: (res) => {
           alert('Atualização realizada');
+          this.isLoading.set(false)
           this.router.navigate(['/Admin/Jogos']);
         },
         error: (err) => {
           alert(err.error.error);
+          this.isLoading.set(false)
         },
       });
     } else {
       this.jogoservice.cadastrar(formData).subscribe({
         next: () => {
           alert('Publicado com sucesso!');
+          this.isLoading.set(false)
         },
       });
     }

@@ -18,9 +18,11 @@ export class Categorias implements OnInit{
   activatedRoute = inject(ActivatedRoute)
   router = inject(Router)
   imagemselecionada: File | null = null
+  imagemPreview: string | null = null;
   id: any
   categorias = signal<any[]>([])
   categoriasFiltradas = signal<any[]>([])
+  isLoading = signal(false)
   filterForm = new FormGroup({
     categoryId : new FormControl(''),
     categoryName: new FormControl('')
@@ -68,11 +70,32 @@ export class Categorias implements OnInit{
   categoriaform = new FormGroup({
     name: new FormControl('',[Validators.required])
   })
-  onFileChange(event: Event) {
-    const input = event.target as HTMLInputElement
-    this.imagemselecionada = input.files?.[0] ?? null
+  onFileChange(event: Event): void {
+    const input = event.target as HTMLInputElement;
+  
+    if (!input.files?.length) {
+      this.imagemselecionada = null;
+      this.imagemPreview = null;
+      return;
+    }
+  
+    const file = input.files[0];
+  
+    if (!file.type.startsWith('image/')) {
+      alert('Selecione apenas imagens.');
+      return;
+    }
+  
+    // Remove a URL anterior da memória
+    if (this.imagemPreview) {
+      URL.revokeObjectURL(this.imagemPreview);
+    }
+  
+    this.imagemselecionada = file;
+    this.imagemPreview = URL.createObjectURL(file);
   }
   onSubmit(): void {
+    this.isLoading.set(true)
     const formData = new FormData()
     const values = this.categoriaform.value
 
@@ -87,16 +110,27 @@ export class Categorias implements OnInit{
       this.categoriasService.atualizarCategoria(formData, this.id).subscribe({
         next: (res) => {
           alert('Atualização Realizada')
+          this.isLoading.set(false)
           this.router.navigate(['/Admin/Categorias'])
+          
+        },
+        error: (err) =>{
+          console.error(err)
+          this.isLoading.set(false)
         }
       })
     } else{
       this.categoriasService.cadastrarCategoria(formData).subscribe({
         next: () => {
           alert("Publicado com sucesso!")
+          this.isLoading.set(false)
           this.categoriaform.reset();
           this.imagemselecionada = null;
           this.getCategorias();
+        },
+        error: (err) =>{
+          console.error(err)
+          this.isLoading.set(false)
         }
       })
     }

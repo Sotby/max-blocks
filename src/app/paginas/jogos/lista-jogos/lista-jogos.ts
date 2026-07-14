@@ -21,12 +21,14 @@ export class ListaJogos implements OnInit {
   filterForm = new FormGroup({
     name: new FormControl(''),
     categoryId: new FormControl(''),
+    ordenator: new FormControl('3')
   });
   ngOnInit(): void {
     this.getJogos();
     this.getCategory();
     this.filterForm.valueChanges.subscribe(() => {
       this.filtrarJogos();
+      this.ordenarJogos()
     });
   }
   getCategory() {
@@ -45,7 +47,7 @@ export class ListaJogos implements OnInit {
     });
   }
   filtrarJogos() {
-    const { name, categoryId } = this.filterForm.value;
+    const { name, categoryId} = this.filterForm.value;
     let jogos = this.jogos();
 
     if (name?.trim()) {
@@ -57,6 +59,38 @@ export class ListaJogos implements OnInit {
     }
     this.jogosFiltrados.set(jogos);
   }
+  ordenarJogos(){
+    const ordenador = Number(this.filterForm.value.ordenator)
+    let jogos = this.jogosFiltrados();
+    switch(ordenador){
+      case 1:{
+        jogos.sort((a: any, b: any)=> b.likesCount - a.likesCount)
+        break
+      }
+      case 2: {
+        jogos.sort((a: any, b: any) =>
+          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        );
+        break;
+      }
+      case 3: {
+        jogos.sort((a: any, b: any) => 
+          a.name.localeCompare(b.name)
+        );
+        break;
+      }
+    }
+    this.jogosFiltrados.set(jogos)
+  }
+  limparFiltros() {
+    this.filterForm.reset({
+      name: '',
+      categoryId: '',
+      ordenator: '3'
+    });
+  }
+
+  // FEEDBACK LOGIC
   private getLikedGames() {
     const likes = localStorage.getItem('likedGames');
     return likes ? JSON.parse(likes) : [];
