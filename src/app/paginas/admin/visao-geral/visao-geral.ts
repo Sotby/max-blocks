@@ -1,4 +1,5 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Chart } from 'chart.js/auto';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 import { DashboardJogosService } from '../../../core/services/dashboard.jogos.service';
@@ -12,23 +13,82 @@ import { DashboardCategoriasService } from '../../../core/services/dashboard.cat
   templateUrl: './visao-geral.html',
   styleUrl: './visao-geral.css',
 })
-export class VisaoGeral implements OnInit {
+export class VisaoGeral implements OnInit, AfterViewInit {
   authservice = inject(AuthService);
   jogosService = inject(DashboardJogosService);
   categoriasService = inject(DashboardCategoriasService)
   jogos = signal<any[]>([]);
   categorias = signal<any[]>([])
+  dadosCarregados = signal(false)
+  chart!: Chart;
+  @ViewChild('grafico') grafico!: ElementRef<HTMLCanvasElement>;
   ngOnInit(): void {
     this.getJogos();
     this.getCategorias();
   }
+  ngAfterViewInit(): void {
+    if (this.dadosCarregados()) {
+      this.criarGrafico();
+    }
+  }
+  criarGrafico() {
+    this.chart = new Chart(this.grafico.nativeElement, {
+      type: 'bar',
+      data: {
+        labels: [
+          'Janeiro',
+          'Fevereiro',
+          'Março',
+          'Abril',
+          'Maio',
+          'Junho',
+          'Julho',
+          'Agosto',
+          'Setembro',
+          'Outubro',
+          'Novembro',
+          'Dezembro'
+        ],
+        datasets: [
+          {
+            label: 'Jogos lançados',
+            data: this.quantidadeJogosPorMes(),
+            backgroundColor: [
+              '#ef4444', // Janeiro
+              '#f97316', // Fevereiro
+              '#eab308', // Março
+              '#22c55e', // Abril
+              '#06b6d4', // Maio
+              '#3b82f6', // Junho
+              '#6366f1', // Julho
+              '#8b5cf6', // Agosto
+              '#ec4899', // Setembro
+              '#f43f5e', // Outubro
+              '#14b8a6', // Novembro
+              '#84cc16'  // Dezembro
+            ]
+          }
+        ]
+      },
+      options: {
+        responsive: true
+      }
+    });
+  }
   getJogos() {
     this.jogosService.getALL().subscribe({
       next: (dados) => {
-        this.jogos.set(dados.data.sort((a: any,b: any) => a.updatedAt - b.updatedAt));
-        this.filtrarJogosMes()
+        this.jogos.set(dados.data);
+  
+        this.dadosCarregados.set(true);
+  
+        setTimeout(() => {
+          if (this.grafico) {
+            this.criarGrafico();
+          }
+        });
       },
-      error: (erro) => {
+      error: () => {
         alert('Erro ao buscar os dados');
       },
     });
@@ -36,8 +96,7 @@ export class VisaoGeral implements OnInit {
   getCategorias(){
     this.categoriasService.getALL().subscribe({
       next: (dados) => {
-        this.categorias.set(dados.data)
-        this.filtrarCategoriasMes()
+        this.categorias.set(dados.data);
       }
     })
   }
@@ -58,6 +117,18 @@ export class VisaoGeral implements OnInit {
       return this.dataCompare(jogo.createdAt)
     })
     return(jogosMes.length)
+  }
+  quantidadeJogosPorMes() {
+    const meses = Array(12).fill(0);
+  
+    this.jogos().forEach(jogo => {
+      const data = new Date(jogo.createdAt);
+      const mes = data.getMonth(); // Janeiro = 0, Fevereiro = 1...
+  
+      meses[mes]++;
+    });
+    console.log(meses);
+    return meses;
   }
   filtrarCategoriasMes(){
     const categoriasMes = this.categorias().filter(categoria => {

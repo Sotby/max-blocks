@@ -24,56 +24,15 @@
           <span class="stat-card-label">Categorias ativas</span>
           <span class="stat-card-variacao positivo"><i class="fas fa-arrow-up"></i> +{{filtrarCategoriasMes()}} este mês</span>
         </div>
-
-        <div class="stat-card">
-          <div class="stat-card-icone verde"><i class="fas fa-users"></i></div>
-          <span class="stat-card-valor">3.2k</span>
-          <span class="stat-card-label">Jogadores ativos</span>
-          <span class="stat-card-variacao positivo"
-            ><i class="fas fa-arrow-up"></i> +6% na semana</span
-          >
-        </div>
-
-        <div class="stat-card">
-          <div class="stat-card-icone amarelo"><i class="fas fa-clock"></i></div>
-          <span class="stat-card-valor">9.7k</span>
-          <span class="stat-card-label">Horas jogadas</span>
-          <span class="stat-card-variacao negativo"
-            ><i class="fas fa-arrow-down"></i> -2% na semana</span
-          >
-        </div>
       </div>
 
       <!-- GRÁFICO -->
       <div class="adm-secao">
         <div class="adm-secao-header">
-          <h2 class="adm-secao-titulo">Acessos por mês (milhares)</h2>
+          <h2 class="adm-secao-titulo">Jogos Adicionados por Mes</h2>
         </div>
         <div class="grafico-barras">
-          <div class="barra-item">
-            <div class="barra" style="--altura: 40%"></div>
-            <span class="barra-rotulo">Jan</span>
-          </div>
-          <div class="barra-item">
-            <div class="barra" style="--altura: 55%"></div>
-            <span class="barra-rotulo">Fev</span>
-          </div>
-          <div class="barra-item">
-            <div class="barra" style="--altura: 48%"></div>
-            <span class="barra-rotulo">Mar</span>
-          </div>
-          <div class="barra-item">
-            <div class="barra" style="--altura: 72%"></div>
-            <span class="barra-rotulo">Abr</span>
-          </div>
-          <div class="barra-item">
-            <div class="barra" style="--altura: 90%"></div>
-            <span class="barra-rotulo">Mai</span>
-          </div>
-          <div class="barra-item">
-            <div class="barra" style="--altura: 100%"></div>
-            <span class="barra-rotulo">Jun</span>
-          </div>
+          <canvas #grafico></canvas>
         </div>
       </div>
 
