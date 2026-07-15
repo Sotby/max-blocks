@@ -56,6 +56,7 @@ th, td{
   min-height: 100vh;
   background: radial-gradient(rgb(60, 60, 60), rgb(20, 20, 20));
   color: white;
+  position: relative;
 }
 
 /* CONTEÚDO */

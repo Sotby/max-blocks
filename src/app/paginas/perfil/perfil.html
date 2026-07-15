@@ -7,59 +7,78 @@
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvT4L1Y7FUT3vRpPLaUSNQs2KTh2Kp_Nc4aT6FGLriEA&s=10"
           alt="Imagem do perfil"
           width="50"
+          class="profile-image"
         />
         <span class="U">Usuário Ativo</span>
       </div>
-  
-      <form>
+      <div>
         <div class="trofeus">
           <h4 class="vela">Total de Troféus:</h4>
           <p class="p2">Nenhum troféu adquirido ainda.</p>
         </div>
-      </form>
+      </div>
     </section>
-  
     <section class="emblemas-section">
       <div class="emblemas-div">
         <h2 class="emblema">Emblemas</h2>
         <p class="desc">Nenhum adquirido.</p>
       </div>
-  
       <div class="emblemas-div">
         <h2 class="emblema">Emblemas</h2>
         <p class="desc">Nenhum adquirido.</p>
       </div>
-  
       <div class="emblemas-div">
         <h2 class="emblema">Emblemas</h2>
         <p class="desc">Nenhum adquirido.</p>
       </div>
-  
       <div class="emblemas-div">
         <h2 class="emblema">Emblemas</h2>
         <p class="desc">Nenhum adquirido</p>
       </div>
   
-     
     </section>
   
-    <section>
-      <div>
-        <h2 class="Ja-titulo"><span class="Ja-nome">Jogado anteriormente</span></h2>
+    <section class="liked-games-section">
+      <div class="liked-games-container">
+        @if(jogosCurtidos().length>0){
+          <h1 class="liked-games-title">Jogos Curtidos</h1>
+        }
+        <div class="game-container">
+          <div class="game" *ngFor="let jogo of jogosCurtidos()">
+        <div class="game-image-container">
+            <img [src]="jogo.image_url" alt="" class="game-image" />
+            <span class="game-ageRating">{{jogo.ageRating}}</span>
+        </div>
+        <div class="game-text-container">
+            <div class="game-title">
+                <span class="game-name">{{jogo.name}}</span>
+                <span class="game-likes">
+                  <button class="game-like-icon" [class.curtido]="isLiked(jogo.id)" (click)="gameFeedback(jogo.id)">
+                    <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                  </button>
+                  {{jogo.likesCount}}
+                </span>
+              </div>
+              <div class="game-data-container">
+                <span class="game-category">
+                    {{jogo.category.name}}
+                </span>
+                <span class="game-mapping">
+                    Controles:
+                    <span class="game-mapping-data">{{jogo.controls}}</span>
+                </span>
+              </div>
+              <p class="game-descricao">
+                {{jogo.description}}
+              </p>
+        </div>
+        <a class="game-play" routerLink="/jogos/game/{{jogo.id}}">Jogar</a>
       </div>
-  
-      <div class="game-div">
-        <h2 class="game-title">Jogo</h2>
-        <div class="game-name">Max<span class="game-name-block">Block</span></div>
-        <div class="game-text-div">
-          <h2 class="game-text-lasPlayed">Nada jogado anteriormente</h2>
-          <div class="game-hours-div">
-            <p class="lado">Horas jogadas:</p>
-            <p class="lado-text">0h 🎮</p>
-          </div>
         </div>
       </div>
-
     </section>
   </div>
+  <app-loading [isLoading]="isLoading()"></app-loading>
 </main>
+
+

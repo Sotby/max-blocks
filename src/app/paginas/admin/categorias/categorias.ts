@@ -5,10 +5,11 @@ import { FormControl, FormControlName, FormGroup, ReactiveFormsModule, Validator
 import { DashboardCategoriasService } from '../../../core/services/dashboard.categorias.service';
 import { CommonModule } from '@angular/common';
 import { AdminSidebar } from "../../../componentes/admin-sidebar/admin-sidebar";
+import { Loading } from "../../../componentes/loading/loading";
 
 @Component({
   selector: 'app-categorias',
-  imports: [ReactiveFormsModule, CommonModule, AdminSidebar, RouterLink],
+  imports: [ReactiveFormsModule, CommonModule, AdminSidebar, RouterLink, Loading],
   templateUrl: './categorias.html',
   styleUrl: './categorias.css',
 })
@@ -32,38 +33,45 @@ export class Categorias implements OnInit{
     this.filterForm.valueChanges.subscribe(() => {
       this.filtarCategoria();
     });
-    this.id = this.activatedRoute.snapshot.paramMap.get('id');
-    if(this.id){
+    this.activatedRoute.paramMap.subscribe(params => {
+      this.id = Number(params.get('id'))
+      if(this.id){
       this.categoriasService.getID(this.id).subscribe({
         next: (res) => {
+          console.log("Dados: ",res)
           this.categoriaform.patchValue({
             name: res.data.name
           })
+          this.imagemPreview = res.data.image_url
         }
       })
     }
-    
+    })
   }
   getCategorias(){
+    this.isLoading.set(true)
     this.categoriasService.getALL().subscribe({
       next: (dados) => {
         this.categorias.set(dados.data.sort((a:any,b:any) => a.id - b.id))
         this.categoriasFiltradas.set(this.categorias())
-        console.log('Dados Recebidos:',dados)
+        this.isLoading.set(false)
       },
       error: (erro) => {
         alert('Erro ao buscar os dados')
+        this.isLoading.set(false)
       }
     })
   }
   deletarCategoria(id: number){
+    this.isLoading.set(true)
     this.categoriasService.deletarCategoria(id).subscribe({
       next: () => {
-        window.location.reload()
+        this.isLoading.set(false)
+        this.categoriasFiltradas.set(this.categoriasFiltradas().filter((category:any)=> category.id !== id))
       },
       error: (erro) => {
         alert('Não foi possivel excluir a categoria')
-        console.error('Erro ao deletar:', erro)
+        this.isLoading.set(false)
       }
     })
   }
@@ -112,28 +120,33 @@ export class Categorias implements OnInit{
           alert('Atualização Realizada')
           this.isLoading.set(false)
           this.router.navigate(['/Admin/Categorias'])
-          
         },
         error: (err) =>{
-          console.error(err)
           this.isLoading.set(false)
+          alert("Erro ao atualizar a categoria")
         }
       })
     } else{
       this.categoriasService.cadastrarCategoria(formData).subscribe({
         next: () => {
           alert("Publicado com sucesso!")
+          this.getCategorias();
           this.isLoading.set(false)
           this.categoriaform.reset();
           this.imagemselecionada = null;
-          this.getCategorias();
+          this.limparForm()
         },
         error: (err) =>{
-          console.error(err)
           this.isLoading.set(false)
         }
       })
     }
+  }
+  limparForm(){
+    this.categoriaform.reset({
+      name: ''
+    })
+    this.imagemPreview = null
   }
   filtarCategoria(){
     const {categoryId, categoryName} = this.filterForm.value

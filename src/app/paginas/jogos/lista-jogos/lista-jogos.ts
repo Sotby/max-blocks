@@ -5,10 +5,11 @@ import { DashboardCategoriasService } from '../../../core/services/dashboard.cat
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { Loading } from "../../../componentes/loading/loading";
 
 @Component({
   selector: 'app-lista-jogos',
-  imports: [NavBar, CommonModule, ReactiveFormsModule,RouterLink],
+  imports: [NavBar, CommonModule, ReactiveFormsModule, RouterLink, Loading],
   templateUrl: './lista-jogos.html',
   styleUrl: './lista-jogos.css',
 })
@@ -18,6 +19,9 @@ export class ListaJogos implements OnInit {
   jogos = signal<any[]>([]);
   jogosFiltrados = signal<any[]>([]);
   categorias = signal<any[]>([]);
+  isLoading = signal(false)
+  paginaAtual = 1
+  jogosPagina = 6
   filterForm = new FormGroup({
     name: new FormControl(''),
     categoryId: new FormControl(''),
@@ -32,18 +36,30 @@ export class ListaJogos implements OnInit {
     });
   }
   getCategory() {
+    this.isLoading.set(true)
     this.categoryService.getALL().subscribe({
       next: (dados) => {
         this.categorias.set(dados.data);
+        this.isLoading.set(false)
       },
+      error: (err) => {
+        alert("Erro ao obter as categorias")
+        this.isLoading.set(false)
+      }
     });
   }
   getJogos() {
+    this.isLoading.set(true)
     this.jogosService.getALL().subscribe({
       next: (dados) => {
         this.jogos.set(dados.data);
         this.jogosFiltrados.set(this.jogos());
+        this.isLoading.set(false)
       },
+      error: (err) =>{
+        alert("Erro ao obter os jogos")
+        this.isLoading.set(false)
+      }
     });
   }
   filtrarJogos() {
@@ -82,6 +98,20 @@ export class ListaJogos implements OnInit {
     }
     this.jogosFiltrados.set(jogos)
   }
+  paginarJogos(){
+    const inicio = (this.paginaAtual - 1) * this.jogosPagina
+    const fim = inicio + this.jogosPagina
+    return this.jogosFiltrados().slice(inicio,fim)
+  }
+  numeroPaginas(){
+    return Math.ceil(this.jogosFiltrados().length / this.jogosPagina)
+  }
+  paginas() {
+  return Array.from(
+    { length: this.numeroPaginas() },
+    (_, i) => i + 1
+  );
+}
   limparFiltros() {
     this.filterForm.reset({
       name: '',
@@ -102,6 +132,7 @@ export class ListaJogos implements OnInit {
     return this.getLikedGames().includes(id);
   }
   gameFeedback(id: number) {
+    this.isLoading.set(true)
     const likedGames = this.getLikedGames();
     const jogo = this.jogos().find((j) => j.id === id);
 
@@ -114,7 +145,12 @@ export class ListaJogos implements OnInit {
           this.saveLikedGames(novosLikes);
           jogo.likesCount--;
           this.atualizarJogos();
+          this.isLoading.set(false)
         },
+        error: () =>{
+          alert("Erro ao descurtir o jogo")
+          this.isLoading.set(false)
+        }
       });
     } else {
       this.jogosService.curtirJogo(id).subscribe({
@@ -123,6 +159,7 @@ export class ListaJogos implements OnInit {
           this.saveLikedGames(likedGames);
           jogo.likesCount++;
           this.atualizarJogos();
+          this.isLoading.set(false)
         },
         error: (err) => {
           if(err.status === 409){
@@ -132,11 +169,15 @@ export class ListaJogos implements OnInit {
                 this.saveLikedGames(novosLikes);
                 jogo.likesCount--;
                 this.atualizarJogos();
+                this.isLoading.set(false)
               },
               error: (err) =>{
-                console.error("ERRO:", err)
+                this.isLoading.set(false)
               }
             })
+          } else{
+            alert("Erro oo acessar o jogo")
+            this.isLoading.set(false)
           }
         }
       });

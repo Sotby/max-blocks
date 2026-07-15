@@ -82,7 +82,8 @@
   
   </section>
   <section class="game-container">
-      <div class="game" *ngFor="let jogo of jogosFiltrados()">
+    <div class="games">
+      <div class="game" *ngFor="let jogo of paginarJogos()">
         <div class="game-image-container">
           <img [src]="jogo.image_url" alt="" class="game-image" />
           <span class="game-ageRating">{{ jogo.ageRating }}</span>
@@ -112,5 +113,14 @@
         </div>
         <a class="game-play" routerLink="/jogos/game/{{jogo.id}}">Jogar</a>
       </div>
+    </div>
+    @if(numeroPaginas()>1){
+      <div class="pagination">
+        <button (click)="paginaAtual = paginaAtual - 1" [disabled]="paginaAtual === 1" class="paginador-btn anterior">Anterior</button>
+        <button *ngFor="let pagina of paginas()" (click)="paginaAtual = pagina" [class.ativo]="paginaAtual === pagina" class="paginador-btn numbers">{{ pagina }}</button>
+        <button (click)="paginaAtual = paginaAtual + 1" [disabled]="paginaAtual === numeroPaginas()" class="paginador-btn proximo">Próxima</button>
+      </div>
+    }
   </section>
+  <app-loading [isLoading]="isLoading()"></app-loading>
 </main>

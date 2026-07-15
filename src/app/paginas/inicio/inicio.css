@@ -5,6 +5,7 @@
 main{
     background: radial-gradient(var(--Cor-primaria),rgb(20,20,20));
     min-height: 100vh;
+    position: relative;
 }
 #banner{
     display: flex;

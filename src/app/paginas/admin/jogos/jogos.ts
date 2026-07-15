@@ -7,10 +7,11 @@ import { CommonModule } from '@angular/common';
 import { AdminSidebar } from '../../../componentes/admin-sidebar/admin-sidebar';
 import { DashboardCategoriasService } from '../../../core/services/dashboard.categorias.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Loading } from "../../../componentes/loading/loading";
 
 @Component({
   selector: 'app-jogos',
-  imports: [ReactiveFormsModule, CommonModule, AdminSidebar, RouterLink],
+  imports: [ReactiveFormsModule, CommonModule, AdminSidebar, RouterLink, Loading],
   templateUrl: './jogos.html',
   styleUrl: './jogos.css',
 })
@@ -43,8 +44,9 @@ export class Jogos implements OnInit {
   ngOnInit(): void {
     this.getJogos();
     this.getCategory();
-    this.id = this.activatedRoute.snapshot.paramMap.get('id');
-    if (this.id) {
+    this.activatedRoute.paramMap.subscribe(params => {
+      this.id = Number(params.get('id'))
+      if (this.id) {
       this.jogoservice.getID(this.id).subscribe({
         next: (res) => {
           this.jogosForm.patchValue({
@@ -55,9 +57,11 @@ export class Jogos implements OnInit {
             controls: res.data.controls,
             gameUrl: res.data.gameUrl,
           });
+          this.imagemPreview = res.data.image_url
         },
       });
     }
+    })
     this.filterForm.valueChanges.subscribe(() => {
       this.filtarJogos();
     });
@@ -85,6 +89,7 @@ export class Jogos implements OnInit {
   
     this.imagemselecionada = file;
     this.imagemPreview = URL.createObjectURL(file);
+    
   }
   onSubmit(): void {
     this.isLoading.set(true)
@@ -106,7 +111,7 @@ export class Jogos implements OnInit {
           this.router.navigate(['/Admin/Jogos']);
         },
         error: (err) => {
-          alert(err.error.error);
+          alert("Erro ao atualizar o jogo");
           this.isLoading.set(false)
         },
       });
@@ -114,42 +119,63 @@ export class Jogos implements OnInit {
       this.jogoservice.cadastrar(formData).subscribe({
         next: () => {
           alert('Publicado com sucesso!');
+          this.getJogos()
           this.isLoading.set(false)
+          this.limparForm()
         },
       });
     }
   }
   getJogos() {
+    this.isLoading.set(true)
     this.jogoservice.getALL().subscribe({
       next: (dados) => {
         this.jogos.set(dados.data.sort((a: any, b: any) => a.id - b.id));
         this.jogosFiltrados.set(this.jogos())
-        console.log('Dados Recebidos:', dados);
+        this.isLoading.set(false)
       },
       error: (erro) => {
         alert('Erro ao buscar os dados');
+        this.isLoading.set(false)
       },
     });
   }
   deletarJogo(id: number) {
+    this.isLoading.set(true)
     this.jogoservice.deletarjogo(id).subscribe({
       next: () => {
-        console.log('Jogo deletado:', id);
-        window.location.reload();
+        this.isLoading.set(false)
+        this.jogosFiltrados.set(this.jogosFiltrados().filter((game: any) => game.id !== id))
       },
       error: (erro) => {
-        console.error('Erro ao deletar:', erro);
+        this.isLoading.set(false)
         alert('Não foi possível excluir o jogo');
       },
     });
   }
   getCategory() {
+    this.isLoading.set(true)
     this.categoryservice.getALL().subscribe({
       next: (dados) => {
         this.categorias.set(dados.data);
-        console.log('Dados das categorias recebidos:', dados);
+        this.isLoading.set(false)
       },
+      error: (err) =>{
+        this.isLoading.set(false)
+        alert("Erro ao obter as categorias!")
+      }
     });
+  }
+  limparForm(){
+    this.jogosForm.reset({
+      name: '',
+      description: '',
+      categoryId: '',
+      ageRating: '',
+      controls: '',
+      gameUrl: '',
+    })
+    this.imagemPreview = null
   }
   filtarJogos(){
     const {gameId, gameName, categoryId} = this.filterForm.value

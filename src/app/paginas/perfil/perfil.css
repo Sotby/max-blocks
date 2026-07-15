@@ -5,6 +5,7 @@
     color: white;
     display: grid;
     grid-template-columns: 240px 1fr;
+    position: relative;
 }
 body{
     min-height: 100vh;
@@ -21,68 +22,30 @@ body{
 #profile{
     border-bottom: solid 2px var(--Cor-secundaria);
 }
-
-img{
-    margin: 15px;
-    margin-right: 15px;
-    translate: 15px;
-    transition: 0.3s ease;
-    width:110px;
-    align-items: center;
-    height: 110px;
-    border: 4px solid var(--Cor-terciaria);
-    border-radius: 100%;
-    border-width: 100%;
-}
-
-img:hover{
-
-  transform: translateY(-5px);
-  box-shadow: 0px 5px 11px 3px var(--Cor-primaria);
-}
-
-a h1{
-    font-size: 38px;
-    font-family: sans-serif;
-    font-weight: bold;
-    margin: 0px 0px 0px 20px;
-   
-}
-a span{
-    color: var(--Cor-secundaria);
-    font-weight: bold;
-}
 .U{
     color: white;
     font-size: 30px;
-    align-items: center;
-    align-content: center;
-    border-radius: 50px;
-    margin: 1%;
-    margin-right: 2%;
-    margin-left: 2%;
-    width: 100%;
-    height: 100%;
-    user-select:none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-     
+    margin: 20px 0;
+    font-weight: 700;
+    font-size: 48px;
 }
 .usuario{
+    font-size: 22px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     margin-top: 2%;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
 }
 
 .trofeus{
+    font-size: 25px;
     display: flex;
     margin: 50px;
     flex-direction: column; 
     text-align: center;
     font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
-    user-select: none;
+  
 }
 
 .vela{
@@ -91,7 +54,7 @@ a span{
     padding: 3px;
     margin: 3%;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
-
+    user-select: none;
 
 }
 
@@ -101,7 +64,6 @@ a span{
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
 
 }
-
 
 .emblemas-div{
     background-color: #333;
@@ -143,6 +105,9 @@ a span{
 
 .emblemas-section{
     border-bottom: solid 2px var(--Cor-secundaria);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .Ja-nome{
@@ -187,53 +152,139 @@ a span{
 .profile-container{
     height: fit-content;
 }
-
-.game-name{
-    text-align: center;
-    padding-top: 18% ;
-    font-size: 45px;
-    user-select: none;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-wrap:50px;
-    border: 1px solid var(--Cor-primaria) ;
-    border-radius: 30px;
-    background-color: black;
+.profile-image{
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+}
+.liked-games-title{
     width: 100%;
-    height: 200px;
-
+    text-align: center;
+    font-size: 48px;
+    font-weight: 700;
+    font-family: sans-serif;
+    margin: 20px 0;
+    text-decoration: underline;
+    text-decoration-color: var(--Cor-secundaria);
 }
 
-
-.game-name-block{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+/*Game CSS*/
+.game-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    color: white;
+    padding: 20px;
+}
+.game{
+    background: radial-gradient(rgb(60,60,60),rgb(20,20,20));
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    gap: 8px;
+    box-shadow: 0 4px 10px 2px var(--Cor-terciaria);
+    border-radius: 10px;
+    width: 500px;
+    transition: all ease .5s;
+    overflow: hidden;
+}
+.game:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px 8px var(--Cor-terciaria);
+}
+.game-image{
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
+    border: none;
+    outline: none;
+}
+.game-image-container{
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 300px;
+    
+}
+.game-ageRating{
+    position: absolute;
+    background-color: rgba(20,20,20,0.5);
+    padding: 8px 10px;
+    border-radius: 0 0 10px 10px;
+    color: var(--Cor-secundaria);
+    top: 0;
+    right: 20px;
+}
+.game-text-container{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.game-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 20px;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.game-name{
+    width: 50%;
+    text-align: left;
+}
+.game-like-icon{
+    color: var(--Cor-primaria);
+    cursor: pointer;
+}
+.game-like-icon:active{
+    opacity: 0.8;
+}
+.curtido{
     color: var(--Cor-secundaria);
 }
-
-.game-text-div{
-    text-align: center;
-    font-size: 25px; 
-   
-}
-.game-text-lasPlayed{
+.game-data-container{
+    background-color: var(--Cor-primaria);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
     align-items: center;
-    padding-top: 10px;
-
+    padding: 10px 0;
 }
-
-.lado{
-   display: grid;
-   gap: 50px;
-  
+.game-category{
+    background-color:#333;
+    border-radius: 100px;
+    padding: 8px 20px;
 }
-.lado .lado-text{
-   display: flex;
-   justify-content: space-between;
+.game-mapping{
+    background-color: #333;
+    border-radius: 100px;
+    padding: 8px 20px;
+    color: var(--Cor-secundaria);
+    text-transform: uppercase;
 }
-
-.game-hours-div{
-   align-items: center;
-   display: flex;
-   padding-top: 50px;
-   justify-content: space-between;
+.game-mapping-data{
+    color: white;
 }
-
+.game-descricao{
+    text-align: center;
+}
+.game-play{
+    background-color: var(--Cor-primaria);
+    padding: 10px 0;
+    cursor: pointer;
+    font-weight: 700;
+    text-align: center;
+    transition: all ease .5s;
+}
+.game-play:hover{
+    background-color: var(--Cor-secundaria);
+}
+.game-play:active{
+    opacity: 0.8;
+}

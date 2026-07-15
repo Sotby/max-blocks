@@ -3,6 +3,7 @@ main{
   min-height: calc(100vh - 80px);
   height: 100%;
   color: white;
+  position: relative;
 }
 
 /* TOPO / VOLTAR */

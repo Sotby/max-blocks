@@ -1,0 +1,29 @@
+/*Alert CSS*/
+.alert-page{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.alert-container{
+    background: radial-gradient(rgb(60,60,60),rgb(40,40,40));
+    width: 300px;
+    height: 200px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0px 10px 10px 5px var(--Cor-secundaria);
+}
+.alert-title{
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--Cor-secundaria);
+}

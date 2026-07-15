@@ -6,10 +6,11 @@ import { DashboardJogosService } from '../../../core/services/dashboard.jogos.se
 import { CommonModule } from '@angular/common';
 import { AdminSidebar } from "../../../componentes/admin-sidebar/admin-sidebar";
 import { DashboardCategoriasService } from '../../../core/services/dashboard.categorias.service';
+import { Loading } from "../../../componentes/loading/loading";
 
 @Component({
   selector: 'app-visao-geral',
-  imports: [CommonModule, AdminSidebar, RouterLink],
+  imports: [CommonModule, AdminSidebar, RouterLink, Loading],
   templateUrl: './visao-geral.html',
   styleUrl: './visao-geral.css',
 })
@@ -20,6 +21,7 @@ export class VisaoGeral implements OnInit, AfterViewInit {
   jogos = signal<any[]>([]);
   categorias = signal<any[]>([])
   dadosCarregados = signal(false)
+  isLoading = signal(false)
   chart!: Chart;
   @ViewChild('grafico') grafico!: ElementRef<HTMLCanvasElement>;
   ngOnInit(): void {
@@ -76,12 +78,12 @@ export class VisaoGeral implements OnInit, AfterViewInit {
     });
   }
   getJogos() {
+    this.isLoading.set(true)
     this.jogosService.getALL().subscribe({
       next: (dados) => {
         this.jogos.set(dados.data);
-  
         this.dadosCarregados.set(true);
-  
+        this.isLoading.set(false)
         setTimeout(() => {
           if (this.grafico) {
             this.criarGrafico();
@@ -90,13 +92,20 @@ export class VisaoGeral implements OnInit, AfterViewInit {
       },
       error: () => {
         alert('Erro ao buscar os dados');
+        this.isLoading.set(false)
       },
     });
   }
   getCategorias(){
+    this.isLoading.set(true)
     this.categoriasService.getALL().subscribe({
       next: (dados) => {
         this.categorias.set(dados.data);
+        this.isLoading.set(false)
+      },
+      error: (err) => {
+        alert("Erro ao buscar as categorias")
+        this.isLoading.set(false)
       }
     })
   }
@@ -127,7 +136,6 @@ export class VisaoGeral implements OnInit, AfterViewInit {
   
       meses[mes]++;
     });
-    console.log(meses);
     return meses;
   }
   filtrarCategoriasMes(){
@@ -137,14 +145,15 @@ export class VisaoGeral implements OnInit, AfterViewInit {
     return(categoriasMes.length)
   }
   deletarJogo(id: number) {
+    this.isLoading.set(true)
     this.jogosService.deletarjogo(id).subscribe({
       next: () => {
-        console.log('Jogo deletado:', id);
-        window.location.reload()
+        this.isLoading.set(false)
+        this.jogos.set(this.jogos().filter((game: any)=> game.id !== id))
       },
-      error: (erro) => {
-        console.error('Erro ao deletar:', erro);
+      error: (err) => {
         alert('Não foi possível excluir o jogo');
+        this.isLoading.set(false)
       },
     });
   }

@@ -4,9 +4,10 @@ import { DashboardJogosService } from '../../core/services/dashboard.jogos.servi
 import { CommonModule } from '@angular/common';
 import { DashboardCategoriasService } from '../../core/services/dashboard.categorias.service';
 import { RouterLink } from "@angular/router";
+import { Loading } from "../../componentes/loading/loading";
 @Component({
   selector: 'app-inicio',
-  imports: [NavBar, CommonModule, RouterLink],
+  imports: [NavBar, CommonModule, RouterLink, Loading],
   templateUrl: './inicio.html',
   styleUrl: './inicio.css',
 })
@@ -22,7 +23,6 @@ export class Inicio implements OnInit {
   }
   getGames() {
     this.isLoading.set(true);
-
     this.jogosService.getALL().subscribe({
       next: (dados) => {
         const sortedData = [...dados.data].sort((a: any, b: any) => b.likesCount - a.likesCount);
@@ -31,16 +31,25 @@ export class Inicio implements OnInit {
         this.isLoading.set(false);
         this.getCategory()
       },
+      error: (err) =>{
+        alert("Erro ao obter os jogos do servidor")
+        this.isLoading.set(false);
+      }
     });
   }
   getCategory() {
+    this.isLoading.set(true);
     this.categoriasService.getALL().subscribe({
       next: (dados) => {
         this.categorias.set(dados.data);
         let categoriasFiltradas = this.categorias()
         this.categorias.set(categoriasFiltradas.filter(categoria => this.jogos().some(jogo => jogo.categoryId === categoria.id)))
-        console.log('Dados das categorias obtidos:', dados);
+        this.isLoading.set(false);
       },
+      error: (err) =>{
+        alert("Erro ao obter as categorias do servidor")
+        this.isLoading.set(false);
+      }
     });
   }
   getGamesPerCategory(id: number) {
@@ -78,7 +87,7 @@ export class Inicio implements OnInit {
           this.atualizarJogos();
         },
         error: (err) => {
-          if(err.status === 409){
+           if(err.status === 409){
             this.jogosService.descurtirJogo(id).subscribe({
               next: () =>{
                 const novosLikes = likedGames.filter((jogoId: number) => jogoId !== id);
