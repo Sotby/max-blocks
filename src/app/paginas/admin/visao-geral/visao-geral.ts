@@ -145,16 +145,19 @@ export class VisaoGeral implements OnInit, AfterViewInit {
     return(categoriasMes.length)
   }
   deletarJogo(id: number) {
-    this.isLoading.set(true)
-    this.jogosService.deletarjogo(id).subscribe({
-      next: () => {
-        this.isLoading.set(false)
-        this.jogos.set(this.jogos().filter((game: any)=> game.id !== id))
-      },
-      error: (err) => {
-        alert('Não foi possível excluir o jogo');
-        this.isLoading.set(false)
-      },
-    });
-  }
+  this.isLoading.set(true);
+
+  this.jogosService.deletarjogo(id).subscribe({
+    next: () => {
+      this.isLoading.set(false);
+      this.jogos.set(this.jogos().filter(game => game.id !== id));
+      this.chart.data.datasets[0].data = this.quantidadeJogosPorMes();
+      this.chart.update();
+    },
+    error: () => {
+      alert('Não foi possível excluir o jogo');
+      this.isLoading.set(false);
+    }
+  });
+}
 }
