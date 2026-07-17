@@ -69,43 +69,45 @@
     </aside>
   </section>
   <!-- JOGOS PARECIDOS -->
-  <section class="jogos-parecidos">
-    <div class="titulo">
-      <span>Jogos da mesma categoria</span>
-      <div class="barra"></div>
-    </div>
-    <div class="game-container">
-      <div class="game" *ngFor="let jogo of filterGames()">
-        <div class="game-image-container">
-            <img [src]="jogo.image_url" alt="" class="game-image" />
-            <span class="game-ageRating">{{jogo.ageRating}}</span>  
-        </div>
-        <div class="game-text-container">
-            <div class="game-title">
-                <span class="game-name">{{jogo.name}}</span>
-                <span class="game-likes">
-                  <button class="game-like-icon" (click)="gameFeedback(jogo.id)">
-                    <i class="fa fa-thumbs-up" aria-hidden="true" [class.curtido]="isLiked(jogo.id)"></i>
-                  </button>
-                  {{jogo.likesCount}}
-                </span>
-              </div>
-              <div class="game-data-container">
-                <span class="game-category">
-                    {{jogo.category.name}}
-                </span>
-                <span class="game-mapping">
-                    Controles:
-                    <span class="game-mapping-data">{{jogo.controls}}</span>
-                </span>
-              </div>
-              <p class="game-descricao">
-                {{jogo.description}}
-              </p>
-        </div>
-        <button class="game-play" routerLink="/jogos/game/{{jogo.id}}">Jogar</button>
+   @if(filterGames().length>0){
+    <section class="jogos-parecidos">
+      <div class="titulo">
+        <span>Jogos da mesma categoria</span>
+        <div class="barra"></div>
       </div>
-    </div>
-  </section>
+      <div class="game-container">
+        <div class="game" *ngFor="let jogo of filterGames()">
+          <div class="game-image-container">
+              <img [src]="jogo.image_url" alt="" class="game-image" />
+              <span class="game-ageRating">{{jogo.ageRating}}</span>  
+          </div>
+          <div class="game-text-container">
+              <div class="game-title">
+                  <span class="game-name">{{jogo.name}}</span>
+                  <span class="game-likes">
+                    <button class="game-like-icon" (click)="gameFeedback(jogo.id)">
+                      <i class="fa fa-thumbs-up" aria-hidden="true" [class.curtido]="isLiked(jogo.id)"></i>
+                    </button>
+                    {{jogo.likesCount}}
+                  </span>
+                </div>
+                <div class="game-data-container">
+                  <span class="game-category">
+                      {{jogo.category.name}}
+                  </span>
+                  <span class="game-mapping">
+                      Controles:
+                      <span class="game-mapping-data">{{jogo.controls}}</span>
+                  </span>
+                </div>
+                <p class="game-descricao">
+                  {{jogo.description}}
+                </p>
+          </div>
+          <button class="game-play" routerLink="/jogos/game/{{jogo.id}}">Jogar</button>
+        </div>
+      </div>
+    </section>
+   }
   <app-loading [isLoading]="isLoading()"></app-loading>
 </main>

@@ -47,6 +47,7 @@ export class Jogos implements OnInit {
     this.activatedRoute.paramMap.subscribe(params => {
       this.id = Number(params.get('id'))
       if (this.id) {
+      this.isLoading.set(true)
       this.jogoservice.getID(this.id).subscribe({
         next: (res) => {
           this.jogosForm.patchValue({
@@ -58,7 +59,12 @@ export class Jogos implements OnInit {
             gameUrl: res.data.gameUrl,
           });
           this.imagemPreview = res.data.image_url
+          this.isLoading.set(false)
         },
+        error: (err) => {
+          alert("Erro ao editar o jogo")
+          this.isLoading.set(false)
+        }
       });
     }
     })
